@@ -1,4 +1,4 @@
-- **Cristian Gonzalo Sarmiento Castro:
+- **Cristian Gonzalo Sarmiento Castro:**
 
 Soy Técnico en programación y estudiante de Ingeniería Eléctrica 
 de último semestre de la cual me encuentro desarrollando mi tesis por medio de Python,
