@@ -5,7 +5,7 @@ import React from 'react'
 
 
 
-
+//Navbar
 export const navbar = () => {
   return (
     <div className="App">
