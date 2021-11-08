@@ -1,18 +1,14 @@
-import logo from './images/logo-neptuno-bordeado.png';
-import './App.css';
-
-
-
-
-
+import {MenuLateral} from "./components/MenuLateral.jsx"
+import {Navbar} from "./components/Navbar.jsx"
 
 
 function App() {
   return (
-    <div className="App">
-      
+    <>
+      {/* <Navbar /> */}
+      <MenuLateral />
 
-    </div>
+    </>
   );
 }
 

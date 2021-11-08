@@ -1,18 +1,19 @@
-import logo from './images/logo-neptuno-bordeado.png';
-import './App.css';
+import logo from '../images/logo-neptuno-bordeado.png';
+
+
 
 import React from 'react'
 
 
 
 //Navbar
-export const navbar = () => {
+export const Navbar = () => {
   return (
     <div className="App">
-      <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src={logo} alt="" width="30" height="24" class="d-inline-block align-text-top"></img>
+      <nav className="navbar navbar-light bg-light">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="/">
+            <img src={logo} alt="" width="30" height="24" className="d-inline-block align-text-top"></img>
             Neptuno
           </a>
         </div>
