@@ -1,7 +1,7 @@
 import React from 'react'
 import menuLateral from '../css/menuLateral.css'
 import logo from '../images/favicon.png'
-import user from '../images/user_sinfondo.png'
+import user from '../images/mia.png'
 
 export const MenuLateral = () => {
     return (
@@ -112,12 +112,19 @@ export const MenuLateral = () => {
                                 <li><a className="link_name" href="#">Configuración</a></li>
                             </ul>
                         </li>
-                    </ul>
                     <div className="profile-details">
                         <div className="profile-content">
                             <img src={user} alt="user" className="user-logo" />
                         </div>
+                        <li>
+                            <div className="name-job">
+                                <div className="profile_name">Stiven Suárez M</div>
+                                <div className="job">Full Stack</div>
+                            </div>
+                            <i className='bx bx-log-in' ></i>
+                        </li>
                     </div>
+                    </ul>
                 </div>
             </div>
         </>
