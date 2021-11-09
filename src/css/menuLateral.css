@@ -90,7 +90,11 @@
     padding: 6px 6px 14px 80px;
     margin-top: -10px;
     background: #1d1b31;
-    /* display: none; */
+    display: none;
+}
+
+.sidebar .nav-links li.showMenu .sub-menu{
+    display: block;
 }
 
 .sidebar .nav-links li .sub-menu a{
