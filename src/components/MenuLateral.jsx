@@ -6,6 +6,8 @@ import user from '../images/mia.png'
 
 export const MenuLateral = () => {
 
+    /* Código para eliminar y agregar clase showMenu a las etiquetas arrow */
+
     let arrow = []
 
     useEffect(() => {
@@ -18,6 +20,29 @@ export const MenuLateral = () => {
             })
         }
     }, []);
+    /* Finaliza código de etiquetas */
+
+
+    
+
+    /* Código para eliminar y agregar clase "X" al sidebar */
+
+
+
+    useEffect(() => {
+        let sideBar = document.querySelector('.sidebar');
+        let sideBarBtn = document.querySelector('.bx-menu-alt-left');
+        console.log(sideBarBtn);
+    }, [])
+
+    
+
+    /* Finaliza código de sidebar */
+
+
+
+
+
 
     return (
         <>
@@ -141,6 +166,14 @@ export const MenuLateral = () => {
                     </li>
                 </ul>
             </div>
+
+            <section className="home-section">
+                <div className="home-content">
+                    <i className='bx bx-menu-alt-left'></i>
+                    <span className="text">Drop Down Sidebar</span>
+                </div>
+            </section>
+
         </>
     )
 }
