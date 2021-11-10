@@ -32,6 +32,10 @@ export const MenuLateral = () => {
 
 
     useEffect(() => {
+        setTimeout(() => {
+            sideBar.classList.toggle("close");
+            
+        }, 2000);
         let sideBar = document.querySelector('.sidebar');
         let sideBarBtn = document.querySelector('.bx-menu-alt-left');
         console.log(sideBarBtn);

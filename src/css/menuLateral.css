@@ -78,7 +78,7 @@
     overflow: auto;
 }
 
-.sidebar .nav-links{
+.sidebar.close .nav-links{
     overflow: visible;
 }
 
