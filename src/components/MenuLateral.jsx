@@ -6,52 +6,7 @@ import user from '../images/mia.png'
 
 export const MenuLateral = () => {
 
-    const [boton, setBoton] = useState(0);
-
-    useEffect(() => {
-        impresionxd();
-    }, [boton]);
-
-    const impresionxd = () => {
-
-
-        /* let arrow = document.querySelector('.arrow'); */
-
-        /* let arrow = document.getElementById(id).classList.toggle("showMenu"); */
-
-
-
-
-        let arrow = document.querySelectorAll('.arrow');
-        for (var i = 0; i < 2; i++) {
-            arrow[i].addEventListener("click", (e) => {
-                let tarE = e.target.parentElement.parentElement;
-                console.log(tarE);
-                tarE.classList.toggle("showMenu");
-            })
-        }
-
-        /* for(let i = 1; i<4;i++){
-            
-            
-            console.log(`holiClass${i}`);
-        } */
-
-
-
-        /* console.log(arrow);
-        arrow.addEventListener("click", (e) => {
-            let tarE = e.target.parentElement.parentElement;
-            console.log(tarE);
-            tarE.classList.add("showMenu");
-        }); */
-
-
-
-
-
-
-    }
+   
 
 
     return (
@@ -78,9 +33,10 @@ export const MenuLateral = () => {
                                 <i className='bx bx-collection' ></i>
                                 <span className="link_name">Categoria</span>
                             </a>
-                            <i onClick={() => setBoton(boton + 1)} className="bx bxs-chevron-down arrow" ></i>
+                            <i onClick= {impresionxd} className="bx bxs-chevron-down arrow" ></i>
                         </div>
                         {/* {() => setBoton(boton + 1)} */}
+                        {/* onClick={() => setBoton(boton + 1)} */}
                         <ul className="sub-menu">
                             <li><a className="link_name" href="/">Categoria</a></li>
                             <li><a href="/">PRUEBA 1</a></li>
