@@ -43,8 +43,13 @@
 
 .sidebar .nav-links{
     height: 100%;
-    padding-top: 30px;
+    padding-top: 30px 0 150px 0;
     padding-left: 0px;
+    overflow: auto;
+}
+
+.sidebar .nav-links::-webkit-scrollbar{
+    /* display: none; */
 }
 
 .sidebar .nav-links li .icon-links{
@@ -69,6 +74,11 @@
     line-height: 50px;
     color: #fff;
     font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-links li.showMenu i.arrow{
+    transform: rotate(-180deg);
 }
 
 
@@ -153,7 +163,7 @@
 
 .sidebar .profile-details{
     max-width: 260px;
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     display: flex;
     align-items: center;
