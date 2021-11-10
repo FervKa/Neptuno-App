@@ -17,6 +17,29 @@
     height: 100%;
     width: 260px;
     background: #11101d;
+    z-index: 100;
+    transition: all 0.5s ease;
+}
+
+.sidebar.close{
+    width: 78px;
+
+}
+
+.propiaxd{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.propiaxd i{
+    height: 50px;
+    min-width: 78px;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-size: 20px;
+    transition: all 0.3s ease;
 }
 
 .sidebar .logo-details {
@@ -24,18 +47,28 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: start;
 }
 
 .sidebar .logo-details img {
     color: #fff;
     height: 30px;
     text-align: center;
+    margin: 0 20px 0 25px;
 }
 
 .sidebar .logo-details .logo_name {
     font-size: 22px;
     color: #fff;
     font-weight: 600;
+    transition: 0.3s ease;
+    transition-delay: 0.1s;
+}
+
+.sidebar.close .logo-details .logo_name{
+    transition-delay: 0s;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .sidebar .nav-links {
@@ -45,13 +78,23 @@
     overflow: auto;
 }
 
+.sidebar .nav-links{
+    overflow: visible;
+}
+
 .sidebar .nav-links::-webkit-scrollbar {
     display: none;
 }
 
 .sidebar .nav-links li .icon-links {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+
+}
+
+.sidebar.close .nav-links li .icon-links{
+    display: block;
 }
 
 .sidebar .nav-links li {
@@ -72,10 +115,16 @@
     color: #fff;
     font-size: 20px;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .sidebar .nav-links li.showMenu i.arrow {
     transform: rotate(-180deg);
+}
+
+.sidebar.close .nav-links i.arrow{
+    display: none;
+    pointer-events: none;
 }
 
 .sidebar .nav-links li a {
@@ -90,6 +139,12 @@
     color: #fff;
     padding-right: 5px;
     text-align: left;
+}
+
+.sidebar.close .nav-links li a .link_name{
+    opacity: 0;
+    pointer-events: none;
+
 }
 
 .sidebar .nav-links li .sub-menu {
@@ -123,18 +178,25 @@
     margin-top: 0;
     padding: 10px 20px 20px 10px;
     border-radius: 0 6px 6px 0;
-    transition: all 0.4s ease;
     opacity: 0;
+    display: block;
     pointer-events: none;
+    transition: all 0.2s ease;
 }
 
 .sidebar.close .nav-links li:hover .sub-menu {
     top: 0;
     opacity: 1;
     pointer-events: auto;
+    transition: all 0.4s ease;
 }
 
 .sidebar .nav-links li .sub-menu .link_name {
+    display: none;
+}
+
+
+.sidebar.close .nav-links li .sub-menu .link_name {
     display: none;
 }
 
@@ -148,7 +210,8 @@
     opacity: 1;
     pointer-events: auto;
     padding: 3px 20px 6px 16px;
-    border-radius: inherit;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .sidebar .nav-links li:hover .sub-menu.blank {
@@ -157,7 +220,7 @@
 }
 
 .sidebar .profile-details {
-    max-width: 260px;
+    width: 260px;
     position: fixed;
     bottom: 0;
     display: flex;
@@ -165,6 +228,11 @@
     justify-content: space-between;
     background: #1d1b31;
     padding: 6px 0;
+    transition: all 0.5s ease;
+}
+
+.sidebar.close .profile-details{
+    width: 78px;
 }
 
 .sidebar .profile-details .profile-content {
@@ -179,25 +247,42 @@
     border-radius: 16px;
     margin: 0 14px 4px 14px;
     background: #1d1b31;
+    transition: all 0.5s ease;
+}
+
+.sidebar.close .profile-details img {
     padding: 10px;
+
 }
 
 .sidebar .profile-details .profile_name, .sidebar .profile-details .job {
     color: #fff;
     font-size: 15px;
     font-weight: 500;
+    white-space: nowrap;
+}
+
+.sidebar.close .profile-details i, .sidebar.close .profile-details .profile_name, .sidebar.close .profile-details .job{
+    display: none;
 }
 
 .sidebar .profile-details .job {
     font-size: 12px;
 }
 
-.home-section {
+/* .home-section {
     position: relative;
     background: #E4E9F7;
+    padding-top: 60px;
     height: 100vh;
     left: 260px;
     width: calc(100%-260px);
+    transition: all 0.5s ease;
+} */
+
+.sidebar.close ~ .home-section{
+    left: 78px;
+    width: calc(100%-78px);
 }
 
 .home-section .home-content {
@@ -213,6 +298,7 @@
 
 .home-section .home-content .bx-menu-alt-left{
     margin: 0 15px;
+    cursor: pointer;
 }
 
 .home-section .home-content .text{

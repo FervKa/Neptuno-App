@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <MenuLateral />
-      <User />
+      {/* <User /> */}
     </>
   );
 }
