@@ -6,6 +6,10 @@ import user from '../images/mia.png'
 
 export const MenuLateral = () => {
 
+    /* Código para eliminar y agregar clase showMenu a las etiquetas arrow */
+
+
+
     let arrow = []
 
     useEffect(() => {
@@ -18,12 +22,37 @@ export const MenuLateral = () => {
             })
         }
     }, []);
+    /* Finaliza código de etiquetas */
+
+
+
+
+    /* Código para eliminar y agregar clase "X" al sidebar */
+
+
+
+    useEffect(() => {
+        setTimeout(() => {
+            sideBar.classList.toggle("close");
+        }, 1000);
+        let sideBar = document.querySelector('.sidebar');
+        let sideBarBtn = document.querySelector('.bx-menu-alt-left');
+        console.log(sideBarBtn);
+        sideBarBtn.addEventListener("click", () => {
+            sideBar.classList.toggle("close");
+        })
+    }, [])
+
+
+
+    /* Finaliza código de sidebar */
 
     return (
         <>
-            <div className="sidebar">
+            {/* <button onClick="scroll(110, 0);">Clic para desplazarse hacia abajo 100 pixeles</button> */}
+            <div className="sidebar" id="contenedorMaestro">
                 <div className="logo-details">
-                    <img src={logo} alt="icono-logo" className="imagen-ico" />
+                    <img src={logo} alt="icono-logo" className="imagen-ico bx-menu-alt-left" />
                     <span className="logo_name">Neptuno</span>
                 </div>
                 <ul className="nav-links">
@@ -141,6 +170,17 @@ export const MenuLateral = () => {
                     </li>
                 </ul>
             </div>
+
+            {/* <section className="home-section">
+                <div className="home-content">
+                    <i className='bx bx-menu-alt-left'></i>
+                    <span className="text">Drop Down Sidebar</span>
+                </div>
+            </section> */}
+
+
+
+
         </>
     )
 }
