@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 :root {
-    --neptuno: #D96704;
+    --neptuno-cuerpo: #ebcd75;
+    --neptuno-header: #f2b705;
+
 }
 
 * {
@@ -273,12 +275,13 @@
 /* .home-section {
     position: relative;
     background: #E4E9F7;
-    padding-top: 60px;
     height: 100vh;
     left: 260px;
     width: calc(100%-260px);
     transition: all 0.5s ease;
 } */
+
+
 
 .sidebar.close ~ .home-section{
     left: 78px;
