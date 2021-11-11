@@ -1,12 +1,18 @@
-import {MenuLateral} from "./components/MenuLateral.jsx"
+import { Login } from "./components/Login.jsx";
+import { MenuLateral } from "./components/MenuLateral.jsx"
 
 
 
 function App() {
   return (
-    <>
-      <MenuLateral />
-    </>
+
+    <div className="App">
+      <>
+        {/* <MenuLateral /> */}
+        <Login />
+      </>
+
+    </div>
   );
 }
 

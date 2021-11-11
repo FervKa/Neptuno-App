@@ -1,0 +1,46 @@
+@import "./colores.scss";
+@import "./mixins.scss";
+
+body{
+    background-image: url(../images/imagen-bg.jpg);
+    background-repeat: no-repeat; 
+    
+}
+
+.display-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+.abs-center {    
+    margin-top: 20vh;    
+    border-radius: 25px;
+    margin-left: 30%;
+    margin-right: 30%;  
+    
+  }
+
+.botonNaranja{
+      @include colorBoton(white,$color4);    
+  }
+
+  
+
+  .contenedor-login{
+      max-width: 40vw;
+      height: auto;
+      background-color: white;
+      padding: 10px;      
+      border: 1px solid $color3;
+      text-align: center;
+      
+  }
+
+.logotipo-neptuno{
+    font-family: 'Caesar Dressing', cursive;
+}
+
