@@ -1,0 +1,136 @@
+/* * {
+    border: red 1px solid;
+} */
+
+
+
+.profile-card-4 {
+    max-width: 300px;
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.profile-card-4 img {
+    transition: all 0.25s linear;
+    max-height: 300px;
+    /* opacity: 0.5; */
+}
+
+.profile-card-4 .profile-content {
+    position: relative;
+    padding: 15px;
+    background-color: #FFF;
+}
+
+.profile-card-4 .profile-name {
+    font-weight: bold;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: -60px;
+    color: #000;
+    font-size: 17px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.profile-card-4 .profile-name p {
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+}
+
+.profile-card-4 .profile-description {
+    color: #777;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.profile-card-4 .profile-overview {
+    padding: 15px 0px;
+}
+
+.profile-card-4 .profile-overview p {
+    font-size: 10px;
+    font-weight: 600;
+    color: #777;
+}
+
+.profile-card-4 .profile-overview h4 {
+    color: #273751;
+    font-weight: bold;
+}
+
+.profile-card-4 .profile-content::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    top: -10px;
+    left: 0px;
+    right: 0px;
+    background-color: #FFF;
+    z-index: 0;
+    transform: skewY(3deg);
+}
+
+.profile-card-4:hover img {
+    transform: rotate(5deg) scale(1.1, 1.1);
+    filter: brightness(110%);
+}
+
+
+
+
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0px;
+  }
+  
+  .icono-social {
+    align-items: center;  
+    color: rgba(0, 0, 0, .3);
+    display: flex;  
+    height: 70px;
+    justify-content: center;
+    margin: 2px; 
+    text-decoration: none; 
+    transition-duration: .3s;
+    width: 70px;
+  }
+  
+  .redondo {
+    border-radius: 50%;
+  }
+  
+  .icono-social:hover {  
+    color: #fff;
+  }
+  
+  .sombra:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  }
+  
+  #facebook:hover  {
+    background-color: #3b5998;
+  }
+  
+  #linkedin:hover  {
+    background-color: #0177B5;
+  }
+  
+  #twitter:hover  {
+    background-color: #61c5ec;
+  }
+  
+  #instagram:hover  {
+    background: linear-gradient(45DEG, #405DE6,#5851DB,#833AB4, #E1306C,#FD1D1D);
+  }
+  
+  .icono-social:active {
+    transform: scale(.9);
+  }

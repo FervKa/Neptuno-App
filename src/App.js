@@ -6,7 +6,7 @@ import { User } from './components/User.jsx';
 function App() {
   return (
     <>
-      <MenuLateral />
+      {/* <MenuLateral /> */}
       <User />
     </>
   );
