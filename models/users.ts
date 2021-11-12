@@ -5,6 +5,7 @@ const userSchema = new Schema({
     correo:{
         type:String,
         required:true,
+        unique:true,
     },
     identificacion:{
         type:String,
@@ -18,7 +19,7 @@ const userSchema = new Schema({
     apellido:{
         type: String,
         required: true,
-    },    
+    },
 })
 
 //objeto el cual es la entidad que se comunica con mongoose
