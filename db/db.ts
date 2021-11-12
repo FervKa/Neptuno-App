@@ -1,4 +1,4 @@
-import {connect} from "mongoose";
+import {connect} from 'mongoose';
 // const {connect} = require('mongoose');
 
 const conectarBD = async ()=>{
