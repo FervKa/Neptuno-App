@@ -40,7 +40,7 @@
 }
 
 .profile-card img {
-    transition: all 0.25s linear;
+    transition: all 0.25s ease;
     max-height: 305px;
     
    /*  max-width: 480px; */
