@@ -44,7 +44,6 @@ export const MenuLateral = () => {
     }, [])
 
 
-
     /* Finaliza código de sidebar */
 
     return (

@@ -5,6 +5,12 @@
 
 }
 
+
+.col-5 .input{
+    /* background-color: red; */
+    margin-left: 78px;
+}
+
 * {
     margin: 0;
     padding: 0;
