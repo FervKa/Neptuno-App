@@ -3,7 +3,7 @@ import {connect} from 'mongoose';
 
 const conectarBD = async ()=>{
     return await connect(
-        "mongodb+srv://Admin:NeptunoApp@neptunoapp.0fonl.mongodb.net/GestionProyectos?retryWrites=true&w=majority"
+      
         //se cambió <Password> por contraseña 'NeptunoAPP'. Se cambió 'myFirstDatabase' por 'GestionProyectos'
         ).then(()=>{
             console.log("Conexion exitosa");
