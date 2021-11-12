@@ -25,9 +25,9 @@ body{
   }
 
 .botonNaranja{
-      @include colorBoton(white,$color4);    
+      @include colorBoton(white,$color4);
+      
   }
-
   
 
   .contenedor-login{
@@ -40,7 +40,15 @@ body{
       
   }
 
-.logotipo-neptuno{
-    font-family: 'Caesar Dressing', cursive;
+.logotipo-naranja{
+    @include colorLogotipo($color3);
+}
+
+.texto-naranja{
+    color:$color2;
+}
+
+.texto-amarillo{
+    color:$color1;
 }
 
