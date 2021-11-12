@@ -1,10 +1,11 @@
 {
-  "name": "neptuno",
+  "name": "neptunobackend",
   "version": "1.0.0",
-  "description": "Gestion de proyectos de investigacion",
+  "description": "Back End para la aplicacion Neptuno WebApp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.ts"
   },
   "repository": {
     "type": "git",
