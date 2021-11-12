@@ -40,7 +40,7 @@ const userSchema = new Schema<User>({
 })
 
 //objeto el cual es la entidad que se comunica con mongoose
-const UserModel = model('User', userSchema)
+const UserModel = model('User', userSchema,'usuarios') //El tercer parametro es el nombre que se le da a la coleccion en mongodb
 
 export {UserModel} //exportarlo así restringe que al importarlo en otro archivo se pueda cambiar el nombre, obligando a usar uno solo
 // export default UserModel;

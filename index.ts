@@ -20,12 +20,42 @@ const main = async ()=>{
     
   })
   //READ
+  //Buscar y lee todos los usuarios
   await UserModel.find().then((u)=>{
     console.log("Usuarios",u);    
   }).catch((e)=>{
     console.error('Error obteniendo los usuarios',e)
   });
+
+  //UPDATE
+  // finOneAndUpdate() devuelve el primer documeno que coincida con el filtro de busqueda
+  await UserModel.findOneAndUpdate(
+    {correo: 'correo@c.com'},
+    {
+      nombre:'Sutana',
+      Apellido:'Lopez'
+    }
+  ).then((u)=>{
+    console.log("Uusario actualizado", u);    
+  }).catch((e)=>{
+    console.log("Error actualizando usuario",e);
+    
+  })
+
+  //DELETE
+  await UserModel.findOneAndDelete(
+    {correo: 'correo@c.com'}
+  ).then((u)=>{
+    console.log("Usuario eliminado", u);    
+  }).catch((e)=>{
+    console.log("Error eliminando el usuario",e);
+    
+  })
+
 };
+
+
+
 
 main();
 
