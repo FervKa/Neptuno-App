@@ -10,4 +10,15 @@ enum Enum_EstadoUsuario{
     noAutorizado='No autorizado'
 }
 
-export {Enum_RolUsario,Enum_EstadoUsuario}
+enum Enum_EstadoProyecto{
+    activo='Activo',
+    inactivo = 'Inactivo'
+}
+
+enum Enum_FaseProyecto{
+    iniciado='Iniciado',
+    enDesarrollo='En desarrollo',
+    terminado='Terminado'
+}
+
+export {Enum_RolUsario,Enum_EstadoUsuario, Enum_FaseProyecto, Enum_EstadoProyecto}
