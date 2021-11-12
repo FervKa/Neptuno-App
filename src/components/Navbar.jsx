@@ -10,6 +10,7 @@ export const Navbar = ({titulo}) => {
 
     return (
         <>
+        
             <nav className="navbar navbar-light fixed-top bgNP">
                 <div className="container-fluid navbarNP" >
                     <span className="navbar-brand mb-0 h1 ">{titulo}&nbsp;&nbsp;<i className={classes}></i></span>

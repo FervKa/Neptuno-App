@@ -6,10 +6,11 @@
 
 .navbarNP{
     justify-content: end !important
-    
 }
 
 .bgNP{
-    background-color: #d9670457;
+    background-color: #f2b90fb6;
     height: 60px;
+    position: fixed;
+    z-index: 90;
 }
