@@ -5,13 +5,12 @@
 }
 
 .navbarNP{
-    position: fixed;
-    z-index: 100;
     justify-content: end !important
-    
 }
 
 .bgNP{
     background-color: #f2b90fb6;
     height: 60px;
+    position: fixed;
+    z-index: 90;
 }
