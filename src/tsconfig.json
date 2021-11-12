@@ -1,0 +1,5 @@
+{
+    "compilerOptions": {
+        "module":"CommonJS" //Esta linea se puede agregar también en el package.json
+    }
+}
