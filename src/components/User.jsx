@@ -4,6 +4,17 @@ import '../css/usuarios.css'
 
 
 export const User = () => {
+
+    const inputEntrada = document.getElementById("apellido");
+
+    const inputVlido = ()=>{
+        if(inputEntrada.value == ""){
+            
+        }else{
+
+        }
+    }
+
     return (
         <>
             <Navbar titulo='Perfil de Usuario'/>
@@ -78,7 +89,7 @@ export const User = () => {
                                                 </div>
                                                 <div className="mb-3">
                                                     <label htmlFor="apellido" className="form-label  npcolor">Apellido</label>
-                                                    <input type="lastname" className="form-control" id="apellido" aria-describedby="nameHelp" />
+                                                    <input onChange={inputVlido} type="lastname" className="form-control " id="apellido" aria-describedby="nameHelp" required/>
                                                     {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
                                                 </div>
                                                 <div className="mb-3">
