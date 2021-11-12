@@ -1,11 +1,39 @@
 /* * {
     border: red 1px solid;
 } */
+.npcolor {
+  color: #f2b90f;
+}
+.npcolorbold {
+  color: #f2b90f;
+  font-weight: bold;
+}
 
+.backgroundNP {
+  background-image: url("https://trello.com/1/cards/6186f226287fbd178f403c20/attachments/6186f3171a743434984fbc2d/previews/6186f3181a743434984fbc42/download/meeting-g49b02abd6_1920.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background: rgb(110, 24, 24); */
+  filter: alpha(opacity=70);
+  -moz-opacity: 0.7;
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
 
+.form-control {
+  border: #f2b90f 1px solid
+}
 
-.profile-card-4 {
-    max-width: 300px;
+.form-select {
+  border: #f2b90f 1px solid
+}
+
+.profile-card {
+    max-width: 90%;
     background-color: #FFF;
     border-radius: 5px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
@@ -15,19 +43,32 @@
     cursor: pointer;
 }
 
-.profile-card-4 img {
+.profile-card-2 {
+  max-width: 90%;
+  background-color: #FFF;
+  border-radius: 5px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.profile-card img {
     transition: all 0.25s linear;
-    max-height: 300px;
+    max-height: 305px;
+    
+   /*  max-width: 480px; */
     /* opacity: 0.5; */
 }
 
-.profile-card-4 .profile-content {
+.profile-card .profile-content {
     position: relative;
     padding: 15px;
     background-color: #FFF;
 }
 
-.profile-card-4 .profile-name {
+.profile-card .profile-name {
     font-weight: bold;
     position: absolute;
     left: 0px;
@@ -38,34 +79,34 @@
     background-color: rgba(255, 255, 255, 0.7);
 }
 
-.profile-card-4 .profile-name p {
+.profile-card .profile-name p {
     font-weight: 600;
     font-size: 13px;
     letter-spacing: 1.5px;
 }
 
-.profile-card-4 .profile-description {
+.profile-card .profile-description {
     color: #777;
     font-size: 12px;
     padding: 10px;
 }
 
-.profile-card-4 .profile-overview {
+.profile-card .profile-overview {
     padding: 15px 0px;
 }
 
-.profile-card-4 .profile-overview p {
+.profile-card .profile-overview p {
     font-size: 10px;
     font-weight: 600;
     color: #777;
 }
 
-.profile-card-4 .profile-overview h4 {
+.profile-card .profile-overview h4 {
     color: #273751;
     font-weight: bold;
 }
 
-.profile-card-4 .profile-content::before {
+.profile-card .profile-content::before {
     content: "";
     position: absolute;
     height: 20px;
@@ -77,7 +118,7 @@
     transform: skewY(3deg);
 }
 
-.profile-card-4:hover img {
+.profile-card:hover img {
     transform: rotate(5deg) scale(1.1, 1.1);
     filter: brightness(110%);
 }
@@ -93,7 +134,7 @@
   
   .icono-social {
     align-items: center;  
-    color: rgba(0, 0, 0, .3);
+    /* color: rgba(0, 0, 0, .3); */
     display: flex;  
     height: 70px;
     justify-content: center;
@@ -133,4 +174,88 @@
   
   .icono-social:active {
     transform: scale(.9);
+  }
+
+
+  .facebook  {
+    color: #3b5998;
+  }
+  
+  .linkedin  {
+    color: #0177B5;
+  }
+  
+ .twitter  {
+    color: #61c5ec;
+  }
+  
+  .instagram  {
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .facebook:hover  {
+    color: white;
+    transition-duration: .5s;
+  }
+  
+  .linkedin:hover  {
+    color: white;
+    transition-duration: .5s;
+  }
+  
+ .twitter:hover  {
+    color: white;
+    transition-duration: .5s;
+  }
+  
+ .instagram:hover  {
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition-duration: .5s;
+  }
+
+
+  .facebooksh  {
+    color: #3b5998;
+  }
+  
+  .linkedinsh  {
+    color: #0177B5;
+  }
+  
+ .twittersh  {
+    color: #61c5ec;
+  }
+  
+  .instagramsh  {
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .facebooksh:hover  {
+    color: black;
+    transition-duration: .5s;
+  }
+  
+  .linkedinsh:hover  {
+    color: black;
+    transition-duration: .5s;
+  }
+  
+ .twittersh:hover  {
+    color: black;
+    transition-duration: .5s;
+  }
+  
+ .instagramsh:hover  {
+    background: black;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition-duration: .5s;
   }
