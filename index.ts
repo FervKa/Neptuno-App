@@ -1,16 +1,18 @@
 import conectarBD from './db/db';
 import {UserModel} from './models/users';
+import {Enum_RolUsario} from './models/enums';
 
 const main = async ()=>{
   await conectarBD();
 
   //CREATE
   UserModel.create({
-    correo:"unCorreo@c.com",
-    identificacion:"123456",
-    nombre:"Mengana",
-    apellido:"Sutana",
-    rol:'Lider'
+    nombre:"Sutano",
+    apellido:"Perez",
+    correo:"correo@c.com",
+    identificacion:"2345",
+    rol: Enum_RolUsario.administrador,
+
   }).then(u=>{
     console.log("Usuario creado",u)
   }).catch((e)=>{

@@ -1,6 +1,8 @@
 import {Schema, model} from 'mongoose';
+import {Enum_RolUsario} from './enums';
 
 //Definir un tipo nuevo de dato con TS
+//Los enums se pueden definir en un arhivo enums.ts o en este archivo
 interface User{
     correo:string;
     identificacion:string;
@@ -9,11 +11,6 @@ interface User{
     rol: Enum_RolUsario;
 }
 
-enum Enum_RolUsario{
-    estudiante = 'Estudiante',
-    lider = 'Líder',
-    administrador = 'Administrador'
-}
 
 //El esquema se define de acuerdo al UML. Este es el correspondiente a la entidad Usuario (faltan campos por definir)
 const userSchema = new Schema<User>({
