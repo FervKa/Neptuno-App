@@ -1,6 +1,6 @@
 import {MenuLateral} from "./components/MenuLateral.jsx"
 import { User } from './components/User.jsx';
-
+import '../src/css/index.css';
 
 
 function App() {

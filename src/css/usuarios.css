@@ -2,26 +2,11 @@
     border: red 1px solid;
 } */
 .npcolor {
-  color: #f2b90f;
+  color: #f2b705;
 }
 .npcolorbold {
   color: #f2b90f;
   font-weight: bold;
-}
-
-.backgroundNP {
-  background-image: url("https://trello.com/1/cards/6186f226287fbd178f403c20/attachments/6186f3171a743434984fbc2d/previews/6186f3181a743434984fbc42/download/meeting-g49b02abd6_1920.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* background: rgb(110, 24, 24); */
-  filter: alpha(opacity=70);
-  -moz-opacity: 0.7;
-  opacity: 0.7;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
 }
 
 .form-control {

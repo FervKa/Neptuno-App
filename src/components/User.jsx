@@ -8,9 +8,7 @@ export const User = () => {
         <>
             <Navbar titulo='Perfil de Usuario'/>
 
-            <div className="backgroundNP">
-
-            </div>
+            {/* :D */}
 
             <div className="container pt-5 mt-5" >
                 <div className="row">
@@ -74,9 +72,9 @@ export const User = () => {
                                         <div className="col border-end border-3 border-warning">
                                             <form>
                                                 <div className="mb-3">
-                                                    <label htmlFor="nombre" className="form-label  npcolor">Nombre</label>
+                                                    <label htmlFor="nombre" className="form-label  npcolor">Nombre:*</label>
                                                     <input type="name" className="form-control" id="nombre" aria-describedby="nameHelp" />
-                                                    {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
+                                                    {/* <div id="emailHelp" className="form-text">Todos los campos con (*) son obligatorios</div> */}
                                                 </div>
                                                 <div className="mb-3">
                                                     <label htmlFor="apellido" className="form-label  npcolor">Apellido</label>
