@@ -4,6 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import conectarBD from './db/db';
+
+const main = async ()=>{
+  await conectarBD();
+};
+
+main();
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
