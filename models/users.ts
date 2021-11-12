@@ -1,5 +1,5 @@
 import {Schema, model} from 'mongoose';
-import {Enum_RolUsario} from './enums';
+import {Enum_RolUsario, Enum_EstadoUsuario} from './enums';
 
 //Definir un tipo nuevo de dato con TS
 //Los enums se pueden definir en un arhivo enums.ts o en este archivo
@@ -9,6 +9,7 @@ interface User{
     nombre:string;
     apellido:string;
     rol: Enum_RolUsario;
+    estado: Enum_EstadoUsuario;
 }
 
 
@@ -17,6 +18,19 @@ const userSchema = new Schema<User>({
     correo:{
         type:String,
         required:true,
+        unique: true,
+        validate:{
+            validator: async (email)=>{
+                //Validacion del correo que incluya '@'y '.'
+                // if(!email.includes('@')&& !email.includes('.')){
+                //     return false;
+                // }
+
+                //Validacion con Expresion regular: cualquiergrupodecaracteres -> @ -> cualquiergrupodecaracteres -> . -> cualquiergrupodecaracteres maximo 5 -> opcional . -> opcional cualquiergrupodecaracteres maximo 3
+                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+            },
+            message:"Formato email incorrecto",
+        },
     },
     identificacion:{
         type:String,
@@ -35,6 +49,11 @@ const userSchema = new Schema<User>({
         type:String,
         required:true,
         enum:Enum_RolUsario,
+    },
+    estado:{
+        type:String,
+        enum:Enum_EstadoUsuario,
+        default:Enum_EstadoUsuario.pendiente,
     }
     
 })

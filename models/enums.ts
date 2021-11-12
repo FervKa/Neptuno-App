@@ -4,4 +4,10 @@ enum Enum_RolUsario{
     administrador = 'Administrador'
 }
 
-export {Enum_RolUsario}
+enum Enum_EstadoUsuario{
+    pendiente='Pendiente',
+    autorizado='Autorizado',
+    noAutorizado='No autorizado'
+}
+
+export {Enum_RolUsario,Enum_EstadoUsuario}
