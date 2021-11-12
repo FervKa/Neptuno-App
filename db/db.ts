@@ -8,7 +8,7 @@ const conectarBD = async ()=>{
         ).then(()=>{
             console.log("Conexion exitosa");
         }).catch(e=>{
-            console.log("Error",e)
+            console.log("Error. No se puede conectar a la BD",e)
         });
 }
 
