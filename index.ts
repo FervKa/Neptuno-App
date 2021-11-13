@@ -36,7 +36,7 @@ const main = async ()=>{
       Apellido:'Lopez'
     }
   ).then((u)=>{
-    console.log("Uusario actualizado", u);    
+    console.log("Usario actualizado", u);    
   }).catch((e)=>{
     console.log("Error actualizando usuario",e);
     
