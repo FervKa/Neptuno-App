@@ -1,6 +1,6 @@
 import conectarBD from './db/db';
 import {UserModel} from './models/users';
-import {Enum_RolUsario} from './models/enums';
+import {Enum_RolUsario, Enum_EstadoUsuario} from './models/enums';
 
 const main = async ()=>{
   await conectarBD();
@@ -11,6 +11,7 @@ const main = async ()=>{
     apellido:"Perez",
     correo:"correo@c.com",
     identificacion:"2345",
+    estado: Enum_EstadoUsuario.pendiente,
     rol: Enum_RolUsario.administrador,
 
   }).then(u=>{
@@ -33,7 +34,7 @@ const main = async ()=>{
     {correo: 'correo@c.com'},
     {
       nombre:'Sutana',
-      Apellido:'Lopez'
+      apellido:'Lopez'
     }
   ).then((u)=>{
     console.log("Usario actualizado", u);    
@@ -58,4 +59,7 @@ const main = async ()=>{
 
 
 main();
+
+
+
 
