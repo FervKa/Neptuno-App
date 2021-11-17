@@ -8,7 +8,7 @@ interface Progress {
     descripcion: string;
     estudiante: Schema.Types.ObjectId;
     proyecto: Schema.Types.ObjectId;
-    observacionLider: Schema.Types.ObjectId;
+    // observacionLider: Schema.Types.ObjectId;
 }
 
 const progressSchema = new Schema<Progress>({
@@ -30,11 +30,11 @@ const progressSchema = new Schema<Progress>({
         require: true,
         ref: ProjectModel,
     },
-    observacionLider: {
+    /* observacionLider: {
         type: Schema.Types.ObjectId,
         default: null,
         ref: LeaderObservationModel,
-    },
+    }, */
 
 })
 
