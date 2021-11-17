@@ -1,7 +1,7 @@
 import {Schema, model} from 'mongoose';
 import {UserModel} from './users'
 import {Enum_FaseProyecto, Enum_EstadoProyecto} from './enums'
-import { ObjectiveModel } from './objective';
+import { ObjectiveModel } from './objectives';
 
 
 interface Project{
@@ -22,6 +22,7 @@ const projectSchema = new Schema<Project>({
     nombre:{
         type:String,
         required:true,
+        unique:true
     },
     /* objetivos:[{
         type:Schema.Types.ObjectId,
@@ -52,7 +53,7 @@ const projectSchema = new Schema<Project>({
         type:String,
         enum: Enum_EstadoProyecto,
         required:true,
-        default:Enum_EstadoProyecto.activo
+        default:Enum_EstadoProyecto.inactivo
     },
     fase:{
         type:String,
@@ -60,9 +61,6 @@ const projectSchema = new Schema<Project>({
         required:true,
         default: Enum_FaseProyecto.nulo
     }
-
-
-
 })
 
 
