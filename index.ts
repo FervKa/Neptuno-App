@@ -10,13 +10,14 @@ import CRUDproyectos from './cruds/CRUDproyectos';
 const main = async () => {
   await conectarBD();
 
-  await CRUDusuarios.createUser();
-  await CRUDusuarios.readUsers();
-  await CRUDusuarios.readOneUser();
-  await CRUDusuarios.updateUser();
-  await CRUDusuarios.deleteUser();
+  // await CRUDusuarios.createUser();
+  // await CRUDusuarios.readUsers();
+  // await CRUDusuarios.readOneUser();
+  // await CRUDusuarios.updateUser();
+  // await CRUDusuarios.deleteUser();
 
-  // await CRUDproyectos.createProject();
+  await CRUDproyectos.createProject();
+  await CRUDproyectos.readOneProject();
 
 
   /* ------------------------------------------- CRUD Usuarios ----------------------------------*/

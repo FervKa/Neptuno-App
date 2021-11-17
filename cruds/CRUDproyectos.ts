@@ -16,7 +16,7 @@ import { Enum_TipoObjetivo } from '../models/enums';
 //CREATE
 const createProject = async () => {
 
-    const proyectoCRUD = await ProjectModel.create({
+    await ProjectModel.create({
         nombre: "Proyecto_Prueba_CRUD",
         presupuesto: 850,
         lider: '6195472cb89825e34d280118',
@@ -35,7 +35,7 @@ const createProject = async () => {
     await ObjectiveModel.create({
         tipo: Enum_TipoObjetivo.general,
         descripcion: "Este es el objetivo general del proyecto CRUD",
-        proyecto: '61954f2eb7eceb1861773880'
+        proyecto: '61956c4a842eb94f5fc0e8bc'
     }).then((o) => {
         console.log('El objetivo general del proyecto CRUD es: ', o);
 
@@ -47,12 +47,12 @@ const createProject = async () => {
     await ObjectiveModel.create({
         tipo: Enum_TipoObjetivo.especifico,
         descripcion: "Este es el PRIMER objetivo específico del proyecto CRUD",
-        proyecto: '61954f2eb7eceb1861773880'
+        proyecto: '61956c4a842eb94f5fc0e8bc'
     })
     await ObjectiveModel.create({
         tipo: Enum_TipoObjetivo.especifico,
         descripcion: "Este es el SEGUNDO objetivo específico del proyecto CRUD",
-        proyecto: '61954f2eb7eceb1861773880'
+        proyecto: '61956c4a842eb94f5fc0e8bc'
     })
 }
 
@@ -68,20 +68,20 @@ const readOneProject = async () => {
 
     //findOne() busca un solo documento <DocumentModel.findOne({campo:'valor});>
 
-    const proyectoBuscado = await ProjectModel.findOne({ __id: '61954f2eb7eceb1861773880' });
+    const proyectoBuscado = await ProjectModel.findOne({ _id: '61956c4a842eb94f5fc0e8bc' });
     console.log('El proyecto buscado es: ', proyectoBuscado);
 
     //Se buscan todos los objetivos que estén relacionados con el proyecto buscado
-    const objetivosProyectoBuscado = await ObjectiveModel.find({ proyecto: proyectoBuscado._id });
-    console.log('Los objetivos del proyecto son: ', objetivosProyectoBuscado);
+    const objetivosProyectoBuscado = await ObjectiveModel.find({ proyecto: proyectoBuscado.id});
+    // console.log('Los objetivos del proyecto son: ', objetivosProyectoBuscado);
 
     const proyectoBuscadoMasObjetivos = { ...proyectoBuscado, objetivos: objetivosProyectoBuscado }
 
     const objetivosEspecificos = await ObjectiveModel.find({ tipo: Enum_TipoObjetivo.especifico });
-    console.log("El objetivo especifico es", objetivosEspecificos);
+    // console.log("El objetivo especifico es", objetivosEspecificos);
 
     console.log('El proyecto completo es: ', proyectoBuscadoMasObjetivos);
 
 }
 
-export default { createProject }
+export default { createProject, readOneProject }
