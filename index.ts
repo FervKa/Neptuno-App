@@ -81,25 +81,49 @@ const main = async () => {
 
   //-----CREACION DE OBJETIVOS DE PRUEBA
 
-  await ObjectiveModel.create({
+  /* await ObjectiveModel.create({
     tipo: Enum_TipoObjetivo.general,
     descripcion: "Este es el objetivo general",
-    proyecto: '61946d1e74ca6af5f19b0cac'    
+    proyecto: '61948b680b42b0a964268d9b'    
   })
 
   await ObjectiveModel.create({
     tipo: Enum_TipoObjetivo.especifico,
     descripcion: "Este es el PRIMER objetivo específico",
-    proyecto: '61946d1e74ca6af5f19b0cac'    
+    proyecto: '61948b680b42b0a964268d9b'    
   })
   await ObjectiveModel.create({
     tipo: Enum_TipoObjetivo.especifico,
     descripcion: "Este es el SEGUNDO objetivo específico",
-    proyecto: '61946d1e74ca6af5f19b0cac'    
-  })
+    proyecto: '61948b680b42b0a964268d9b'    
+  }) */
 
   
   //-----------------------------------------------READ Proyectos
+  
+  /* La siguiente busqueda se realiza teniendo en cuenta que en la relacion Proyecto-Objetivos, los objetivos son los que tienen relacionado el proyecto
+  Son dos pasos pasos para hacerlo:
+    1. Se busca el proyecto deseado
+    2. Se buscan todos los objetivos del proyecto deseado mediante el campo 'proyecto' del ObjectiveModel
+    3. Se unifican los dos documentos en una nueva variable */
+
+  //findOne() busca un solo documento <DocumentModel.findOne({campo:'valor});>
+
+  const proyectoBuscado = await ProjectModel.findOne({__id: '61946d1e74ca6af5f19b0cac'});
+  console.log('El proyecto buscado es: ', proyectoBuscado);
+
+  const objetivosProyectoBuscado = await ObjectiveModel.find({proyecto: proyectoBuscado._id});
+  console.log('Los objetivos del proyecto son: ', objetivosProyectoBuscado);
+
+  const proyectoBuscadoMasObjetivos = {...proyectoBuscado, objetivos: objetivosProyectoBuscado}
+  
+  const objetivosEspecificos = await ObjectiveModel.find({tipo: Enum_TipoObjetivo.especifico});
+  console.log("El objetivo especifico es", objetivosEspecificos);
+  
+  console.log('El proyecto completo es: ', proyectoBuscadoMasObjetivos);
+  
+  
+  
   //Buscar y lee todos los Proyectos
   await ProjectModel.find().then((u) => {
     console.log("Proyectos", u);
@@ -110,18 +134,14 @@ const main = async () => {
 
   //------------------------------------------------UPDATE Proyectos
   // finOneAndUpdate() devuelve el primer documeno que coincida con el filtro de busqueda
-  /*  await ProjectModel.findOneAndUpdate(
-     {correo: 'correo@c.com'},
-     {
-       nombre:'Sutana',
-       apellido:'Lopez'
-     }
-   ).then((p)=>{
-     console.log("Uusario actualizado", p);    
+   await ProjectModel.findOneAndUpdate(
+     
+        ).then((p)=>{
+     console.log("Usuario actualizado", p);    
    }).catch((e)=>{
      console.log("Error actualizando Proyect",e);
      
-   }) */
+   })
 
   //---------------------------------------------------DELETE Proyecto
   /*  await ProjectModel.findOneAndDelete(
