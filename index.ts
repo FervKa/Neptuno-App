@@ -73,45 +73,45 @@ const main = async ()=>{
     objetivos:'objetivos'
 
 
-  }).then(p=>{
-    console.log("Proyecto creado",u)
+  }).then((p)=>{
+    console.log("Proyecto creado",p)
   }).catch((e)=>{
     console.log("Error al crear el Proyecto",e);
   })
 
 
 
-  //-----------------------------------------------READ usuario
-  //Buscar y lee todos los usuarios
+  //-----------------------------------------------READ Proyectos
+  //Buscar y lee todos los Proyectos
   /* await UserModel.find().then((u)=>{
-    console.log("Usuarios",u);    
+    console.log("Proyectos",u);    
   }).catch((e)=>{
-    console.error('Error obteniendo los usuarios',e)
+    console.error('Error obteniendo los Proyectos',e)
   }); */
 
 
-  //------------------------------------------------UPDATE Usuario
+  //------------------------------------------------UPDATE Proyectos
   // finOneAndUpdate() devuelve el primer documeno que coincida con el filtro de busqueda
- /*  await UserModel.findOneAndUpdate(
+ /*  await ProjectModel.findOneAndUpdate(
     {correo: 'correo@c.com'},
     {
       nombre:'Sutana',
       apellido:'Lopez'
     }
-  ).then((u)=>{
-    console.log("Uusario actualizado", u);    
+  ).then((p)=>{
+    console.log("Uusario actualizado", p);    
   }).catch((e)=>{
-    console.log("Error actualizando usuario",e);
+    console.log("Error actualizando Proyect",e);
     
   }) */
 
-  //---------------------------------------------------DELETE usuario
- /*  await UserModel.findOneAndDelete(
+  //---------------------------------------------------DELETE Proyecto
+ /*  await ProjectModel.findOneAndDelete(
     {correo: 'correo@c.com'}
-  ).then((u)=>{
-    console.log("Usuario eliminado", u);    
+  ).then((p)=>{
+    console.log("Proyecto eliminado", p);    
   }).catch((e)=>{
-    console.log("Error eliminando el usuario",e);
+    console.log("Error eliminando el Proyecto",e);
     
   })*/
 
