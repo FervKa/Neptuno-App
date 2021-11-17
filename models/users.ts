@@ -4,10 +4,10 @@ import {Enum_RolUsario, Enum_EstadoUsuario} from './enums';
 //Definir un tipo nuevo de dato con TS
 //Los enums se pueden definir en un arhivo enums.ts o en este archivo
 interface User{
-    correo:string;
-    identificacion:string;
-    nombre:string;
-    apellido:string;
+    correo:Schema.Types.String;
+    identificacion:Schema.Types.String;
+    nombre:Schema.Types.String;
+    apellido:Schema.Types.String;
     rol: Enum_RolUsario;
     estado: Enum_EstadoUsuario;
 }
@@ -16,7 +16,7 @@ interface User{
 //El esquema se define de acuerdo al UML. Este es el correspondiente a la entidad Usuario (faltan campos por definir)
 const userSchema = new Schema<User>({
     correo:{
-        type:String,
+        type:Schema.Types.String,
         required:true,
         unique: true,
         validate:{
@@ -33,25 +33,25 @@ const userSchema = new Schema<User>({
         },
     },
     identificacion:{
-        type:String,
+        type:Schema.Types.String,
         required:true,
         unique:true,
     },
     nombre:{
-        type: String,
+        type: Schema.Types.String,
         required: true,
     },    
     apellido:{
-        type: String,
+        type: Schema.Types.String,
         required: true,
     },
     rol:{
-        type:String,
+        type:Schema.Types.String,
         required:true,
         enum:Enum_RolUsario,
     },
     estado:{
-        type:String,
+        type:Schema.Types.String,
         enum:Enum_EstadoUsuario,
         default:Enum_EstadoUsuario.pendiente,
     }

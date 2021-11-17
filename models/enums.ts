@@ -21,4 +21,10 @@ enum Enum_FaseProyecto{
     terminado='Terminado'
 }
 
-export {Enum_RolUsario,Enum_EstadoUsuario, Enum_FaseProyecto, Enum_EstadoProyecto}
+enum Enum_TipoObjetivo{
+    general = 'General',
+    especifico = 'Especifico',
+
+}
+
+export {Enum_RolUsario,Enum_EstadoUsuario, Enum_FaseProyecto, Enum_EstadoProyecto, Enum_TipoObjetivo}

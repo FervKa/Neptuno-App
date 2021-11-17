@@ -10,7 +10,7 @@ interface Project{
     presupuesto:Number;
     fechaInicio:Date;
     fechaTerminacion:Date;
-    lider:UserModel;
+    lider:{UserModel};
     estado: Enum_EstadoProyecto;
     fase:Enum_FaseProyecto;
 
