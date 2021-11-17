@@ -65,7 +65,7 @@ const main = async () => {
 
   /* ------------------------------------------- CRUD Proyectos ----------------------------------*/
   //---------------------------------------------CREATE Proyecto
-  await ProjectModel.create({
+  /* await ProjectModel.create({
     nombre: 'Proyecto prueba wstavera',
     //objetivos:Schema.Types.ObjectId;
     presupuesto: 1000,
@@ -77,8 +77,28 @@ const main = async () => {
     console.log("Proyecto creado", p)
   }).catch((e) => {
     console.log("Error al crear el Proyecto", e);
+  }) */
+
+  //-----CREACION DE OBJETIVOS DE PRUEBA
+
+  await ObjectiveModel.create({
+    tipo: Enum_TipoObjetivo.general,
+    descripcion: "Este es el objetivo general",
+    proyecto: '61946d1e74ca6af5f19b0cac'    
   })
 
+  await ObjectiveModel.create({
+    tipo: Enum_TipoObjetivo.especifico,
+    descripcion: "Este es el PRIMER objetivo específico",
+    proyecto: '61946d1e74ca6af5f19b0cac'    
+  })
+  await ObjectiveModel.create({
+    tipo: Enum_TipoObjetivo.especifico,
+    descripcion: "Este es el SEGUNDO objetivo específico",
+    proyecto: '61946d1e74ca6af5f19b0cac'    
+  })
+
+  
   //-----------------------------------------------READ Proyectos
   //Buscar y lee todos los Proyectos
   await ProjectModel.find().then((u) => {
@@ -113,12 +133,5 @@ const main = async () => {
      
    })*/
 };
-
-
-
-
-
-
-
 
 main();
