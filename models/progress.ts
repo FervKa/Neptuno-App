@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { UserModel } from './users';
 import { ProjectModel } from './projects';
-import { LeaderObservationModel } from './leaderObservation';
+// import { LeaderObservationModel } from './leaderObservation';
 
 interface Progress {
     fechaAvance: Date;

@@ -12,7 +12,7 @@ import { Enum_RolUsario, Enum_EstadoUsuario } from '../models/enums';
 
 //CREATE
 const createUser = async () => {
-    const lider = await UserModel.create({
+    await UserModel.create({
         nombre: "Lider_Nombre",
         apellido: "Lider_Apellido",
         correo: "lider@lider.com",
@@ -26,7 +26,7 @@ const createUser = async () => {
 
     })
 
-    const estudianteA = await UserModel.create({
+    await UserModel.create({
         nombre: "Estudiante_Nombre",
         apellido: "Estudiante_Apellido",
         correo: "estudiante@estudiante.com",
@@ -39,7 +39,7 @@ const createUser = async () => {
 
     })
 
-    const estudianteB = await UserModel.create({
+    await UserModel.create({
         nombre: "Pepito",
         apellido: "Perez",
         correo: "pepito.perez@estudiante.com",
@@ -52,7 +52,7 @@ const createUser = async () => {
 
     })
 
-    const administrador = await UserModel.create({
+    await UserModel.create({
         nombre: "Administrador_Nombre",
         apellido: "Administrador_Apellido",
         correo: "administrador@administrador.com",
@@ -101,7 +101,7 @@ const readOneUser = async () => {
 const updateUser = async () => {
 
     return await UserModel.findOneAndUpdate(
-        { identificacion: '67890' },
+        { identificacion: '28645' },
         {
             nombre: 'Sutano',
             apellido: 'Mengano'

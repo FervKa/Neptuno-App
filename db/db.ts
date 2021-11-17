@@ -1,5 +1,5 @@
 import {connect} from 'mongoose';
-import { MongoClient } from 'mongodb';
+// import { MongoClient } from 'mongodb';
 // const {connect} = require('mongoose');
 import dotenv = require("dotenv");
 dotenv.config()

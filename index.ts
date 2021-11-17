@@ -16,23 +16,24 @@ const main = async () => {
   await CRUDusuarios.updateUser();
   await CRUDusuarios.deleteUser();
 
-  await CRUDproyectos.createProject();
+  // await CRUDproyectos.createProject();
+
+
   /* ------------------------------------------- CRUD Usuarios ----------------------------------*/
   //---------------------------------------------CREATE usuario
   /* await UserModel.create({
      nombre:"Lider_Nombre",
      apellido:"Lider_Apellido",
      correo:"lider@lider.com",
-     identificacion:"12345",
-     estado: Enum_EstadoUsuario.pendiente,
+     identificacion:"12345",     
      rol: Enum_RolUsario.administrador, 
    }).then(u=>{
      console.log("Usuario creado",u)
    }).catch((e)=>{
      console.log("Error al crear el usuario",e);
      
-   }) */
-
+   })
+ */
    /* await UserModel.create({
     nombre:"Estudiante_Nombre",
     apellido:"Estudiante_Apellido",
@@ -128,7 +129,7 @@ const main = async () => {
 
   //findOne() busca un solo documento <DocumentModel.findOne({campo:'valor});>
 
-  const proyectoBuscado = await ProjectModel.findOne({__id: '61946d1e74ca6af5f19b0cac'});
+  // const proyectoBuscado = await ProjectModel.findOne({__id: '61946d1e74ca6af5f19b0cac'});
   // console.log('El proyecto buscado es: ', proyectoBuscado);
 
   // const objetivosProyectoBuscado = await ObjectiveModel.find({proyecto: proyectoBuscado._id});

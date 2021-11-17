@@ -33,25 +33,25 @@ const userSchema = new Schema<User>({
         },
     },
     identificacion: {
-        type: Schema.Types.String,
+        type: String,
         required: true,
         unique: true,
     },
     nombre: {
-        type: Schema.Types.String,
+        type: String,
         required: true,
     },
     apellido: {
-        type: Schema.Types.String,
+        type: String,
         required: true,
     },
     rol: {
-        type: Schema.Types.String,
+        type: String,
         required: true,
         enum: Enum_RolUsario,
     },
     estado: {
-        type: Schema.Types.String,
+        type: String,
         enum: Enum_EstadoUsuario,
         default: Enum_EstadoUsuario.pendiente,
     }
@@ -60,6 +60,6 @@ const userSchema = new Schema<User>({
 
 //objeto el cual es la entidad que se comunica con mongoose
 const UserModel = model('User', userSchema, 'usuarios') //El tercer parametro es el nombre que se le da a la coleccion en mongodb
-
+ 
 export { UserModel } //exportarlo así restringe que al importarlo en otro archivo se pueda cambiar el nombre, obligando a usar uno solo
 // export default UserModel;
