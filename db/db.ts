@@ -1,10 +1,7 @@
 import {connect} from 'mongoose';
 import { MongoClient } from 'mongodb';
-import dotenv = require('dotenv');
-dotenv.config();
-
 // const {connect} = require('mongoose');
-const dotenv = require("dotenv")
+import dotenv = require("dotenv");
 dotenv.config()
 
 const conectarBD = async ()=>{

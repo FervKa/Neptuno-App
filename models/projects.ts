@@ -52,14 +52,14 @@ const projectSchema = new Schema<Project>({
     estado:{
         type:String,
         enum: Enum_EstadoProyecto,
-        required:true,
-        default:Enum_EstadoProyecto.inactivo
+        default:Enum_EstadoProyecto.inactivo,//Al tener un valor por defecto, 'require:true' no se necesita
+        
     },
     fase:{
         type:String,
         enum: Enum_FaseProyecto,
-        required:true,
-        default: Enum_FaseProyecto.nulo
+        default: Enum_FaseProyecto.nulo,
+        
     }
 })
 
