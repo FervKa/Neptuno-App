@@ -4,6 +4,8 @@ import dotenv = require('dotenv');
 dotenv.config();
 
 // const {connect} = require('mongoose');
+const dotenv = require("dotenv")
+dotenv.config()
 
 const conectarBD = async ()=>{
     return await connect(
