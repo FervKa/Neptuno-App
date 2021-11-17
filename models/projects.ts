@@ -5,7 +5,6 @@ import { ObjectiveModel } from './objectives';
 
 
 interface Project{
-    codigo:string;
     nombre:string;
     /* objetivos:Schema.Types.ObjectId; */
     // objetivos:String;
@@ -42,7 +41,7 @@ const projectSchema = new Schema<Project>({
     },
     fechaTerminacion:{
         type: Date,
-        required: true
+        required: true,
     },
     lider:{
         type:Schema.Types.ObjectId,//relacion fuerte y directa papar tener en cuenta con la tabla de usuario
