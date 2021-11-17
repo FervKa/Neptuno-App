@@ -18,7 +18,14 @@ enum Enum_EstadoProyecto{
 enum Enum_FaseProyecto{
     iniciado='Iniciado',
     enDesarrollo='En desarrollo',
-    terminado='Terminado'
+    terminado='Terminado',
+    nulo=''
 }
 
-export {Enum_RolUsario,Enum_EstadoUsuario, Enum_FaseProyecto, Enum_EstadoProyecto}
+enum Enum_TipoObjetivo{
+    general='General',
+    especifico='Específico',
+}
+
+
+export {Enum_RolUsario,Enum_EstadoUsuario, Enum_FaseProyecto, Enum_EstadoProyecto, Enum_TipoObjetivo}
