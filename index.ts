@@ -5,6 +5,7 @@ import { ObjectiveModel } from './models/objectives';
 import { Enum_RolUsario, Enum_EstadoUsuario, Enum_TipoObjetivo } from './models/enums';
 import CRUDusuarios from './cruds/CRUDusuarios';
 import CRUDproyectos from './cruds/CRUDproyectos';
+import CRUDinscripciones from './cruds/CRUDinscripciones';
 
 
 const main = async () => {
@@ -17,8 +18,15 @@ const main = async () => {
   // await CRUDusuarios.deleteUser();
 
   await CRUDproyectos.createProject();
+  await CRUDproyectos.readProjects();
   await CRUDproyectos.readOneProject();
+  await CRUDproyectos.updateProject();
+  await CRUDproyectos.deleteProyect();
 
+  await CRUDinscripciones.createApplication();
+  await CRUDinscripciones.readApplications();
+  await CRUDinscripciones.updateAplication();
+  await CRUDinscripciones.deleteApplication();
 
   /* ------------------------------------------- CRUD Usuarios ----------------------------------*/
   //---------------------------------------------CREATE usuario
@@ -35,19 +43,19 @@ const main = async () => {
      
    })
  */
-   /* await UserModel.create({
-    nombre:"Estudiante_Nombre",
-    apellido:"Estudiante_Apellido",
-    correo:"lider@lider.com",
-    identificacion:"12345",
-    estado: Enum_EstadoUsuario.pendiente,
-    rol: Enum_RolUsario.administrador, 
-  }).then(u=>{
-    console.log("Usuario creado",u)
-  }).catch((e)=>{
-    console.log("Error al crear el usuario",e);
-    
-  }) */
+  /* await UserModel.create({
+   nombre:"Estudiante_Nombre",
+   apellido:"Estudiante_Apellido",
+   correo:"lider@lider.com",
+   identificacion:"12345",
+   estado: Enum_EstadoUsuario.pendiente,
+   rol: Enum_RolUsario.administrador, 
+ }).then(u=>{
+   console.log("Usuario creado",u)
+ }).catch((e)=>{
+   console.log("Error al crear el usuario",e);
+   
+ }) */
 
   //-----------------------------------------------READ usuario
   //Buscar y lee todos los usuarios
@@ -102,26 +110,26 @@ const main = async () => {
 
   //-----CREACION DE OBJETIVOS DE PRUEBA
 
-  /* await ObjectiveModel.create({
-    tipo: Enum_TipoObjetivo.general,
-    descripcion: "Este es el objetivo general",
-    proyecto: '61948b680b42b0a964268d9b'    
-  })
+  // await ObjectiveModel.create({
+  //   tipo: Enum_TipoObjetivo.general,
+  //   descripcion: "Este es el objetivo general",
+  //   proyecto: '61948b680b42b0a964268d9b'    
+  // })
 
-  await ObjectiveModel.create({
-    tipo: Enum_TipoObjetivo.especifico,
-    descripcion: "Este es el PRIMER objetivo específico",
-    proyecto: '61948b680b42b0a964268d9b'    
-  })
-  await ObjectiveModel.create({
-    tipo: Enum_TipoObjetivo.especifico,
-    descripcion: "Este es el SEGUNDO objetivo específico",
-    proyecto: '61948b680b42b0a964268d9b'    
-  }) */
+  // await ObjectiveModel.create({
+  //   tipo: Enum_TipoObjetivo.especifico,
+  //   descripcion: "Este es el PRIMER objetivo específico",
+  //   proyecto: '61948b680b42b0a964268d9b'    
+  // })
+  // await ObjectiveModel.create({
+  //   tipo: Enum_TipoObjetivo.especifico,
+  //   descripcion: "Este es el SEGUNDO objetivo específico",
+  //   proyecto: '61948b680b42b0a964268d9b'    
+  // })
 
-  
+
   //-----------------------------------------------READ Proyectos
-  
+
   /* La siguiente busqueda se realiza teniendo en cuenta que en la relacion Proyecto-Objetivos, los objetivos son los que tienen relacionado el proyecto
   Son dos pasos pasos para hacerlo:
     1. Se busca el proyecto deseado
@@ -137,14 +145,14 @@ const main = async () => {
   // console.log('Los objetivos del proyecto son: ', objetivosProyectoBuscado);
 
   // const proyectoBuscadoMasObjetivos = {...proyectoBuscado, objetivos: objetivosProyectoBuscado}
-  
+
   // const objetivosEspecificos = await ObjectiveModel.find({tipo: Enum_TipoObjetivo.especifico});
   // console.log("El objetivo especifico es", objetivosEspecificos);
-  
+
   // console.log('El proyecto completo es: ', proyectoBuscadoMasObjetivos);
-  
-  
-  
+
+
+
   //Buscar y lee todos los Proyectos
   // await ProjectModel.find().then((u) => {
   //   console.log("Proyectos", u);
@@ -156,12 +164,12 @@ const main = async () => {
   //------------------------------------------------UPDATE Proyectos
   // finOneAndUpdate() devuelve el primer documeno que coincida con el filtro de busqueda
   //  await ProjectModel.findOneAndUpdate(
-     
+
   //       ).then((p)=>{
   //    console.log("Proyecto actualizado", p);    
   //  }).catch((e)=>{
   //    console.log("Error actualizando Proyect",e);
-     
+
   //  })
 
   //---------------------------------------------------DELETE Proyecto

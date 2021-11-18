@@ -100,7 +100,7 @@ const readOneUser = async () => {
 //UPDATE
 const updateUser = async () => {
 
-    return await UserModel.findOneAndUpdate(
+    await UserModel.findOneAndUpdate(
         { identificacion: '28645' },
         {
             nombre: 'Sutano',
