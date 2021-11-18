@@ -25,7 +25,7 @@ const main = async () => {
 
   await CRUDinscripciones.createApplication();
   await CRUDinscripciones.readApplications();
-  await CRUDinscripciones.updateAplication();
+  await CRUDinscripciones.updateApplication();
   await CRUDinscripciones.deleteApplication();
 
   /* ------------------------------------------- CRUD Usuarios ----------------------------------*/
