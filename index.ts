@@ -6,6 +6,7 @@ import { Enum_RolUsario, Enum_EstadoUsuario, Enum_TipoObjetivo } from './models/
 import CRUDusuarios from './cruds/CRUDusuarios';
 import CRUDproyectos from './cruds/CRUDproyectos';
 import CRUDinscripciones from './cruds/CRUDinscripciones';
+import CRUDavances from './cruds/CRUDavances';
 
 
 const main = async () => {
@@ -17,16 +18,21 @@ const main = async () => {
   // await CRUDusuarios.updateUser();
   // await CRUDusuarios.deleteUser();
 
-  await CRUDproyectos.createProject();
-  await CRUDproyectos.readProjects();
-  await CRUDproyectos.readOneProject();
-  await CRUDproyectos.updateProject();
-  await CRUDproyectos.deleteProyect();
+  // await CRUDproyectos.createProject();
+  // await CRUDproyectos.readProjects();
+  // await CRUDproyectos.readOneProject();
+  // await CRUDproyectos.updateProject();
+  // await CRUDproyectos.deleteProyect();
 
   await CRUDinscripciones.createApplication();
   await CRUDinscripciones.readApplications();
   await CRUDinscripciones.updateApplication();
   await CRUDinscripciones.deleteApplication();
+
+  await CRUDavances.createProgress();
+  await CRUDavances.readProgresss();
+  await CRUDavances.updateProgress();
+  await CRUDavances.deleteProgress();
 
   /* ------------------------------------------- CRUD Usuarios ----------------------------------*/
   //---------------------------------------------CREATE usuario

@@ -52,25 +52,36 @@ const updateProgress = async () => {
     await ProgressModel.findOneAndUpdate(
         { project: '61948b680b42b0a964268d9b' },
         {
-            fechaIngreso: new Date('2023/01/01')
+            fechaAvance: new Date('2023/01/01')
         }
     ).then((a) => {
-        console.log('La inscripcion fue actualizada. ', a);
+        console.log('El avance fue actualizado. ', a);
         
     }). catch((e)=>{
-        console.log('Error. La inscripcion no pudo ser actualizada.', e);
+        console.log('Error. El avance no pudo ser actualizado.', e);
         
     })
 }
 
 //DELETE
 const deleteProgress = async () => {
+
+    const avanceABorrar = await ProgressModel.findOne({descripcion:'Avance del proyecto'})
+
+    await LeaderObservationModel.deleteMany({ avance: avanceABorrar.id }).then((o) => {
+        console.log('Las observaciones del lider se borraron.', o);
+
+    }).catch((e) => {
+        console.log('No se pudieron borrar las observaciones del lider. ', e);
+
+    })
+
     await ProgressModel.findOneAndDelete({project: '61948b680b42b0a964268d9b' }
     ).then((a)=>{
-        console.log('La inscripcion fue borrada. ', a);
+        console.log('El avance fue borrado. ', a);
         
     }).catch((e)=>{
-        console.log('Error. La inscripcion no pudo borrarse',e);
+        console.log('Error. El avance no pudo borrarse',e);
         
     })
 }
