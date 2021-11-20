@@ -12,11 +12,11 @@ import CRUDavances from './cruds/CRUDavances';
 const main = async () => {
   await conectarBD();
 
-  // await CRUDusuarios.createUser();
-  // await CRUDusuarios.readUsers();
-  // await CRUDusuarios.readOneUser();
-  // await CRUDusuarios.updateUser();
-  // await CRUDusuarios.deleteUser();
+  await CRUDusuarios.createUser();
+  await CRUDusuarios.readUsers();
+  /* await CRUDusuarios.readOneUser(); */
+  /* await CRUDusuarios.updateUser(); */
+  /* await CRUDusuarios.deleteUser(); */
 
   // await CRUDproyectos.createProject();
   // await CRUDproyectos.readProjects();
@@ -24,7 +24,7 @@ const main = async () => {
   // await CRUDproyectos.updateProject();
   // await CRUDproyectos.deleteProyect();
 
-  await CRUDinscripciones.createApplication();
+  /* await CRUDinscripciones.createApplication();
   await CRUDinscripciones.readApplications();
   await CRUDinscripciones.updateApplication();
   await CRUDinscripciones.deleteApplication();
@@ -32,7 +32,7 @@ const main = async () => {
   await CRUDavances.createProgress();
   await CRUDavances.readProgresss();
   await CRUDavances.updateProgress();
-  await CRUDavances.deleteProgress();
+  await CRUDavances.deleteProgress(); */
 
   /* ------------------------------------------- CRUD Usuarios ----------------------------------*/
   //---------------------------------------------CREATE usuario
