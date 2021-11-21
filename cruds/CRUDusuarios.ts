@@ -13,10 +13,10 @@ import { Enum_RolUsario, Enum_EstadoUsuario } from '../models/enums';
 //CREATE
 const createUser = async () => {
     await UserModel.create({
-        nombre: "Lider_Nombre",
-        apellido: "Lider_Apellido",
-        correo: "lider@lider.com",
-        identificacion: "12345",
+        nombre: "Stiven",
+        apellido: "Líder yo",
+        correo: "lider@hotm.com",
+        identificacion: "45654234",
         estado: Enum_EstadoUsuario.autorizado,
         rol: Enum_RolUsario.lider,
     }).then(u => {
@@ -126,6 +126,7 @@ const deleteUser = async () => {
 
     })
 }
+
 
 
 export default { createUser, readUsers, readOneUser, updateUser, deleteUser }

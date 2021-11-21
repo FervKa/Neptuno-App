@@ -17,7 +17,7 @@
     "url": "https://github.com/FervKa/Neptuno-App/issues"
   },
   "homepage": "https://github.com/FervKa/Neptuno-App#readme",
-  "type": "module",
+  
   "dependencies": {
     "apollo-server-express": "^3.5.0",
     "cors": "^2.8.5",
