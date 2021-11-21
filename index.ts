@@ -5,8 +5,10 @@ import CRUDproyectos from './cruds/CRUDproyectos';
 import CRUDinscripciones from './cruds/CRUDinscripciones';
 import CRUDavances from './cruds/CRUDavances';
 
+import express from 'express'
+import cors from 'cors'
 //GraphQL y createApplication
-import {ApolloServer, gql} from 'apollo-server'
+import {ApolloServer, gql} from 'apollo-server-express'
 
 
 // const main = async () => {
@@ -83,6 +85,14 @@ const resolvers = {
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 const server = new ApolloServer({ typeDefs, resolvers });
+
+const app = express();
+
+app.use(express.json());
+
+app.use(cors());
+
+app.listen
 
 // The `listen` method launches a web server.
 server.listen().then(({ url }) => {
