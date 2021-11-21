@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import '../css/menuLateral.css'
 import logo from '../images/favicon.png'
 import user from '../images/mia.png'
+import logoNightmare from '../images/Logo_Nightmare.png'
+import logoNightmare_Letra from '../images/Logo_nightmare_letra.png'
 
 
 export const MenuLateral = () => {
@@ -56,12 +58,41 @@ export const MenuLateral = () => {
                 </div>
                 <ul className="nav-links">
                     <li>
+                        <div className="profile-details mt-3 text-center border-top border-3 border-light pt-3 border-bottom">
+                            <div className="profile-content">
+                                <img src={user} alt="user" className="user-logo" />
+                            </div>
+                            <div className="name-job">
+                                <div className="profile_name">Stiven Suárez M</div>
+                                <div className="job">Full Stack</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
                         <a href="/">
-                            <i className='bx bx-grid-alt' ></i>
-                            <span className="link_name">Dashboard</span>
+                            <i className='bx bx-user-circle'></i>
+                            <span className="link_name">Perfil</span>
                         </a>
                         <ul className="sub-menu blank">
-                            <li><a className="link_name" href="/">Categoria</a></li>
+                            <li><a className="link_name" href="/">Perfil</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/">
+                            <i className='bx bx-brain'></i>
+                            <span className="link_name">Gestión de Proyectos</span>
+                        </a>
+                        <ul className="sub-menu blank">
+                            <li><a className="link_name" href="/">Proyectos</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/">
+                            <i className='bx bx-brain'></i>
+                            <span className="link_name">Gestión de Avances</span>
+                        </a>
+                        <ul className="sub-menu blank">
+                            <li><a className="link_name" href="/">Avances</a></li>
                         </ul>
                     </li>
                     {/* <button >Holi</button> */}
@@ -80,93 +111,18 @@ export const MenuLateral = () => {
                             <li><a href="/">PRUEBA 3</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <div className="icon-links">
-                            <a href="/">
-                                <i className='bx bx-book-bookmark'></i>
-                                <span className="link_name">Posteos</span>
-                            </a>
-                            <i className="bx bxs-chevron-down arrow" ></i>
-                        </div>
-                        <ul className="sub-menu">
-                            <li><a className="link_name" href="/">Categoria</a></li>
-                            <li><a href="/">PRUEBA 1</a></li>
-                            <li><a href="/">PRUEBA 2</a></li>
-                            <li><a href="/">PRUEBA 3</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/">
-                            <i className='bx bx-pie-chart-alt-2' ></i>
-                            <span className="link_name">Analítica</span>
+                    <div className="contenido-propio border-top border-3 border-light">
+                        <a className="">
+                            <img className="im-logo" src={logoNightmare} alt="logonightmaer" />
+                            <img className="im-propia" src={logoNightmare_Letra} alt="logoletra" />
                         </a>
-                        <ul className="sub-menu blank">
-                            <li><a className="link_name" href="/">Analítica</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/">
-                            <i className='bx bx-line-chart-down'></i>
-                            <span className="link_name">Gráficos</span>
+                    </div>
+                    <div className="contenido-log border-top border-3 border-light propiaxd">
+                        <a className="logout">
+                            <i className='bx bx-log-in alineado_xd'></i>
+                            <a href="/">Cerrar Sesión</a>
                         </a>
-                        <ul className="sub-menu blank">
-                            <li><a className="link_name" href="/">Gráficos</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div className="icon-links">
-                            <a href="/">
-                                <i className='bx bx-plug' ></i>
-                                <span className="link_name">Comple</span>
-                            </a>
-                            <i className='bx bxs-chevron-down arrow'></i>
-                        </div>
-                        <ul className="sub-menu">
-                            <li><a className="link_name" href="/">Categoria</a></li>
-                            <li><a href="/">PRUEBA 1</a></li>
-                            <li><a href="/">PRUEBA 2</a></li>
-                            <li><a href="/">PRUEBA 3</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/">
-                            <i className='bx bx-compass' ></i>
-                            <span className="link_name">Explora</span>
-                        </a>
-                        <ul className="sub-menu blank">
-                            <li><a className="link_name" href="/">Explora</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/">
-                            <i className='bx bx-history' ></i>
-                            <span className="link_name">Historia</span>
-                        </a>
-                        <ul className="sub-menu blank">
-                            <li><a className="link_name" href="/">Historia</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/">
-                            <i className='bx bx-cog' ></i>
-                            <span className="link_name">Configuración</span>
-                        </a>
-                        <ul className="sub-menu blank">
-                            <li><a className="link_name" href="/">Configuración</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div className="profile-details">
-                            <div className="profile-content">
-                                <img src={user} alt="user" className="user-logo" />
-                            </div>
-                            <div className="name-job">
-                                <div className="profile_name">Stiven Suárez M</div>
-                                <div className="job">Full Stack</div>
-                            </div>
-                            <i className='bx bx-log-in' ></i>
-                        </div>
-                    </li>
+                    </div>
                 </ul>
             </div>
 
