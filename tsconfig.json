@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
         "module": "CommonJS", //Esta linea se puede agregar también en el package.json. Permite hacer imports del tipo: import {connect} from 'mongoose'
+        "esModuleInterop": true,//Soluciona los conflictos al importar express y cors
     }
 }

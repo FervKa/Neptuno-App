@@ -1,62 +1,37 @@
 //MongoDB, Moongoose
 import conectarBD from './db/db';
-import CRUDusuarios from './cruds/CRUDusuarios';
-import CRUDproyectos from './cruds/CRUDproyectos';
-import CRUDinscripciones from './cruds/CRUDinscripciones';
-import CRUDavances from './cruds/CRUDavances';
 
-//GraphQL y createApplication
-import {ApolloServer, gql} from 'apollo-server'
-
-
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
-const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
-  # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
-  }
-
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
-  type Query {
-    books: [Book]
-  }
-`;
-
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-];
-
-// Resolvers define the technique for fetching the types defined in the
-// schema. This resolver retrieves books from the "books" array above.
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-};
-
-
+//GraphQL y apollo
+import cors from 'cors'
+import express from 'express'
+import {ApolloServer} from 'apollo-server-express'
+import {typeDefs} from './graphql/types'
+import {resolvers} from './graphql/resolvers'
 
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
-const server = new ApolloServer({ typeDefs, resolvers });
-
-// The `listen` method launches a web server.
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+const server = new ApolloServer({ 
+  typeDefs:typeDefs, 
+  resolvers:resolvers,
 });
+
+const app = express();
+app.use(express.json());//Midleware para usar request como tipo JSON
+
+app.use(cors());
+
+app.listen ({port: process.env.PORT || 4000}, async() =>{
+  await conectarBD();
+  await server.start()
+
+  server.applyMiddleware({app}) //Se le pasan los mismo middleware de express al servidor de apollo
+  // The `listen` method launches a web server.
+  
+   console.log(`🚀  Server ready`);    
+  
+})
+
+
+
 
