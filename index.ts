@@ -9,35 +9,6 @@ import CRUDavances from './cruds/CRUDavances';
 import {ApolloServer, gql} from 'apollo-server'
 
 
-// const main = async () => {
-//   await conectarBD();
-
-//   // await CRUDusuarios.createUser();
-//   // await CRUDusuarios.readUsers();
-//   // await CRUDusuarios.readOneUser();
-//   // await CRUDusuarios.updateUser();
-//   // await CRUDusuarios.deleteUser();
-
-//   // await CRUDproyectos.createProject();
-//   // await CRUDproyectos.readProjects();
-//   // await CRUDproyectos.readOneProject();
-//   // await CRUDproyectos.updateProject();
-//   // await CRUDproyectos.deleteProyect();
-
-//   // await CRUDinscripciones.createApplication();
-//   // await CRUDinscripciones.readApplications();
-//   // await CRUDinscripciones.updateApplication();
-//   // await CRUDinscripciones.deleteApplication();
-
-//   // await CRUDavances.createProgress();
-//   // await CRUDavances.readProgresss();
-//   // await CRUDavances.updateProgress();
-//   // await CRUDavances.deleteProgress();
-  
-// };
-
-// main();
-
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
 // your data.
