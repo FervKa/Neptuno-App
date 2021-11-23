@@ -39,6 +39,10 @@ const typeDefs = gql`
             #El campo _id no es obligatorio al crear porque lo asigna mongoDB.
         ):Usuario
     }
+
+    type Mutation{
+        eliminarUsuario(_id:ID!, correo: String, identificacion:String):Usuario        
+    }
 `;
 
 export { typeDefs }
