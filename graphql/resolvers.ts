@@ -38,7 +38,21 @@ const resolvers = {
                 const usuarioEliminado = await UserModel.findOneAndDelete({ identificacion: args.identificacion })
                 return usuarioEliminado
             }
+        },
+        editarUsuario: async (parent, args) => {
+            const usuarioEditado = await UserModel.findByIdAndUpdate(args._id,
+                {
+                    nombre: args.nombre,
+                    apellido: args.apellido,
+                    identificacion: args.identificacion,
+                    correo: args.correo,
+                    rol: args.rol,
+                    estado: args.estado,
+
+                })
+                return usuarioEditado
         }
+
     }
 
 }

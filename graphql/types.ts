@@ -38,11 +38,20 @@ const typeDefs = gql`
             #Los campos estado, rol e _id tienen valores por defecto. No son obligatorios
             #El campo _id no es obligatorio al crear porque lo asigna mongoDB.
         ):Usuario
-    }
 
-    type Mutation{
         eliminarUsuario(_id:ID!, correo: String, identificacion:String):Usuario        
+    
+        editarUsuario(
+            _id: ID!
+            nombre:String
+            apellido: String
+            correo: String
+            identificacion:String        
+            estado:Enum_EstadoUsuario
+            rol: Enum_RolUsario
+        ):Usuario
     }
+    
 `;
 
 export { typeDefs }
