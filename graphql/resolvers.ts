@@ -3,10 +3,23 @@ import { UserModel } from "../models/users"
 const resolvers = {
 
     Query: {
-        Usuarios: async (parent, args) => {
+        leerUsuarios: async (parent, args) => {
             const usuarios = await UserModel.find()
             return usuarios
         },
+        leerUsuario: async (parent, args) => {
+            if (Object.keys(args).includes("_id")) {
+                const usuario = await UserModel.findOne({ _id: args._id })
+                return usuario
+            } else if (Object.keys(args).includes("correo")) {
+                const usuario = await UserModel.findOne({ correo: args.correo })
+                return usuario
+
+            } else if (Object.keys(args).includes("identificacion")) {
+                const usuario = await UserModel.findOne({ identificacion: args.identificacion })
+                return usuario
+            }
+        }
     },
 
     Mutation: {

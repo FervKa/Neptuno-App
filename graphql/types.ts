@@ -26,7 +26,8 @@ const typeDefs = gql`
     }
 
     type Query{#Se define una consulta, es decir, un READ
-        Usuarios:[Usuario] #La sintaxis es <resolver>:<Dato deseado>. El resolver trae los datos segun como se especifican. En este caso crea un array con datos tipo Usuario (los campos deseados se especifican en Apollo) definido mas arriba
+        leerUsuarios:[Usuario] #La sintaxis es <resolver>:<Dato deseado>. El resolver trae los datos segun como se especifican. En este caso crea un array con datos tipo Usuario (los campos deseados se especifican en Apollo) definido mas arriba
+        leerUsuario(_id:ID!,correo:String, identificacion:String):Usuario
     }
 
     type Mutation{
