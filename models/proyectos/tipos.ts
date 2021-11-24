@@ -6,6 +6,7 @@ type Objetivo {
     _id: ID!
     descripcion: String!
     tipo: Enum_TipoObjetivo!
+    proyecto:Proyecto!
   }
 
     type Proyecto{
@@ -25,4 +26,4 @@ type Objetivo {
     }
 `
 
-export {tiposProyecto}
+export { tiposProyecto }

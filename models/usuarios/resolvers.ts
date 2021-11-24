@@ -65,9 +65,7 @@ const resolversUsuario = {
                 })
                 return usuarioEditado
         }
-
     }
-
 }
 
 export { resolversUsuario }
