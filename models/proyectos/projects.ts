@@ -1,6 +1,6 @@
 import {Schema, model} from 'mongoose';
-import {UserModel} from '../users'
-import {Enum_FaseProyecto, Enum_EstadoProyecto} from '../enums'
+import {UserModel} from '../usuarios/users'
+import {Enum_FaseProyecto, Enum_EstadoProyecto} from '../enums/enums'
 // import { ObjectiveModel } from './objectives';
 
 
