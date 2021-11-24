@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Enum_RolUsario, Enum_EstadoUsuario } from './enums';
+import { Enum_RolUsario, Enum_EstadoUsuario } from '../enums/enums';
 
 //Definir un tipo nuevo de dato con TS
 //Los enums se pueden definir en un arhivo enums.ts o en este archivo

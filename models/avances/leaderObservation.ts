@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { UserModel } from './users';
+import { UserModel } from '../usuarios/users';
 import { ProgressModel } from './progress';
 
 interface LeaderObservation {

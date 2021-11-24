@@ -2,8 +2,8 @@
 // import { ProjectModel } from '../models/projects';
 // import { ObjectiveModel } from '../models/objectives';
 // import { ApplicationModel } from '../models/applications';
-import { LeaderObservationModel } from '../models/leaderObservation';
-import { ProgressModel } from '../models/progress';
+import { LeaderObservationModel } from '../models/avances/leaderObservation';
+import { ProgressModel } from '../models/avances/progress';
 
 // import { Enum_RolUsario, Enum_EstadoUsuario } from '../models/enums';
 // import { Enum_EstadoProyecto, Enum_FaseProyecto } from '../models/enums';

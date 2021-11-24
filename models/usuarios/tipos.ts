@@ -1,19 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-const typeDefs = gql`
-    scalar Date
-
-    enum Enum_RolUsario{# GraphQL recomienda que los enumeradores se escriban en mayusculas. Estos tambien se cambiaron en los enumeradores de mongoose (archivo enums.ts)
-        ESTUDIANTE
-        LIDER
-        ADMINISTRADOR
-    }
-
-    enum Enum_EstadoUsuario{
-        PENDIENTE
-        AUTORIZADO
-        NO_AUTORIZADO
-    }
+const tiposUsuario = gql`
     
     type Usuario{ #Se definen los esquemas gql para cada documento nuevamente.
         _id: ID! #El signo de exclamacion (!) indica que el campo es obligatorio.
@@ -56,4 +43,4 @@ const typeDefs = gql`
     
 `;
 
-export { typeDefs }
+export { tiposUsuario }

@@ -1,13 +1,13 @@
 // import { UserModel } from '../models/users';
-import { ProjectModel } from '../models/projects';
-import { ObjectiveModel } from '../models/objectives';
+import { ProjectModel } from '../models/proyectos/projects';
+import { ObjectiveModel } from '../models/proyectos/objectives';
 // import { ApplicationModel } from '../models/applications';
 // import { LeaderObservationModel } from '../models/leaderObservation';
 // import { ProgressModel } from '../models/progress';
 
 // import { Enum_RolUsario, Enum_EstadoUsuario } from '../models/enums';
 // import { Enum_EstadoProyecto, Enum_FaseProyecto } from '../models/enums';
-import { Enum_TipoObjetivo } from '../models/enums';
+import { Enum_TipoObjetivo } from '../models/enums/enums';
 // import { Enum_EstadoInscripcion } from '../models/enums';
 
 

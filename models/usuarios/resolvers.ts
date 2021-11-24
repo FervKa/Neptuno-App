@@ -1,6 +1,6 @@
-import { UserModel } from "../models/usuarios/users"
+import { UserModel } from "./users"
 
-const resolvers = {
+const resolversUsuarios = {
 
     Query: {
         leerUsuarios: async (parent, args) => {
@@ -70,4 +70,4 @@ const resolvers = {
 
 }
 
-export { resolvers }
+export { resolversUsuarios }
