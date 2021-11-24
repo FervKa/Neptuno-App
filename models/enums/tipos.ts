@@ -16,27 +16,27 @@ const tiposEnums = gql`
     }   
     
     enum Enum_EstadoProyecto{
-    ACTIVO
-    INACTIVO
-}
+        ACTIVO
+        INACTIVO
+    }
 
-enum Enum_FaseProyecto{
-    INICIADO
-    EN_DESARROLLO
-    TERMINADO
-    NULO
-}
+    enum Enum_FaseProyecto{
+        INICIADO
+        EN_DESARROLLO
+        TERMINADO
+        POR_DEFINIR
+    }
 
-enum Enum_TipoObjetivo{
-    GENERAL
-    ESPECIFICO
-}
+    enum Enum_TipoObjetivo{
+        GENERAL
+        ESPECIFICO
+    }
 
-enum Enum_EstadoInscripcion{
-    ACEPTADA
-    RECHAZADA
-    NULO
-}
+    enum Enum_EstadoInscripcion{
+        ACEPTADA
+        RECHAZADA
+        PENDIENTE
+    }
     
 `;
 

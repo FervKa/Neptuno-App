@@ -19,18 +19,18 @@ enum Enum_FaseProyecto{
     iniciado='INICIADO',
     enDesarrollo='EN_DESARROLLO',
     terminado='TERMINADO',
-    nulo=''
+    porDefinir='POR_DEFINIR'
 }
 
 enum Enum_TipoObjetivo{
-    general='General',
-    especifico='Específico',
+    general='GENERAL',
+    especifico='ESPECIFICO',
 }
 
 enum Enum_EstadoInscripcion{
-    aceptada='Aceptada',
-    rechazada='Rechazada',
-    nulo='',
+    aceptada='ACEPTADA',
+    rechazada='RECHAZADA',
+    pendiente='PENDIENTE',
 }
 
 export {Enum_RolUsario,Enum_EstadoUsuario, Enum_FaseProyecto, Enum_EstadoProyecto, Enum_TipoObjetivo, Enum_EstadoInscripcion}

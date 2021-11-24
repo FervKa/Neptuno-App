@@ -57,7 +57,7 @@ const projectSchema = new Schema<Project>({
     fase:{
         type:String,
         enum: Enum_FaseProyecto,
-        default: Enum_FaseProyecto.nulo,
+        default: Enum_FaseProyecto.porDefinir,
         
     }
 })
