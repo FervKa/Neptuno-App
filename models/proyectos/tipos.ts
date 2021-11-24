@@ -21,7 +21,7 @@ type Objetivo {
     }
     type Query{
         leerProyectos:[Proyecto]
-        leerProyecto(_id:ID!, nombre: String):Proyecto
+        leerProyecto(_id:ID, nombre: String):Proyecto
     }
 `
 
