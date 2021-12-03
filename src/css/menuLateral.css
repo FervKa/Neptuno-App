@@ -49,7 +49,7 @@
     line-height: 50px;
     color: #fff;
     font-size: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .sidebar .logo-details {
@@ -73,7 +73,7 @@
     font-size: 22px;
     color: #fff;
     font-weight: 600;
-    transition: 0.3s ease;
+    transition: 0.4s ease;
     transition-delay: 0.1s;
 }
 
@@ -130,7 +130,7 @@
     line-height: 50px;
     color: #fff;
     font-size: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     cursor: pointer;
     border-radius: 20px;
 }
@@ -183,7 +183,7 @@
     padding: 5px 0;
     white-space: nowrap;
     opacity: 0.6;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     border-radius: 20px;
 }
 
@@ -344,6 +344,7 @@
 
 .sidebar.close .contenido-log {
     width: 78px;
+    transition: all 0.4s ease;
 }
 
 .sidebar .contenido-log a {
@@ -352,7 +353,7 @@
     text-decoration: none;
     color: #fff;
     white-space: nowrap;
-    transition: all 0.3s ease; */
+    transition: all 0.4s ease; */
     text-decoration: none;
     height: 50 px;
     min-width: 78 px;
@@ -360,7 +361,7 @@
     line-height: 50px;
     color: #fff;
     font-size: 18px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     cursor: pointer;
 
 }
@@ -377,7 +378,7 @@
 .sidebar.close .contenido-log a a {
     display: none;
     pointer-events: none;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 
 }
 
@@ -385,7 +386,7 @@
     height: 50px;
     min-width: 78px;
     align-content: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 
 }
 
@@ -394,14 +395,14 @@
     color: white;
     text-align: center;
     font-size: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     /* height: 50px;
     min-width: 78px;
     text-align: center;
     line-height: 50px;
     color: #fff;
     font-size: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     cursor: pointer; */
 }
 
@@ -411,35 +412,40 @@
     position: absolute;
     bottom: 60px; */
     text-decoration: none;
-    height: 50 px;
-    min-width: 78 px;
+    height: 50px;
+    min-width: 280px;
     text-align: center;
     line-height: 50px;
     color: #fff;
     font-size: 18px;
-    transition: all 0.3s ease;
     position: fixed;
     bottom: 60px;
     white-space: nowrap;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+}
+.sidebar.close .contenido-propio {
+    min-width: 78px;
+    transition: all 0.4s ease;
 }
 
 .sidebar .contenido-propio a img.im-logo {
-    width: 50px;
-    margin-left: 20px;
-    transition: all 0.3s ease;
+    width: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: all 0.4s ease;
 }
 
 .sidebar.close .contenido-propio a img.im-logo{
-    width: 40px ;
+    width: 35px ;
+    transition: all 0.4s ease;
 }
 
 .sidebar .contenido-propio a img.im-propia {
-    width: 230px;
-    transition: all 0.3s ease;
+    width: 190px;
+    transition: all 0.4s ease;
 }
 
 .sidebar.close .contenido-propio a img.im-propia {
     display: none;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }

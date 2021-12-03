@@ -2,20 +2,21 @@ import React, { useState, useEffect } from 'react'
 import '../css/menuLateral.css'
 import logo from '../images/favicon.png'
 import user from '../images/mia.png'
-import logoNightmare from '../images/Logo_Nightmare.png'
-import logoNightmare_Letra from '../images/Logo_nightmare_letra.png'
+import logoNightmare from '../images/icono_nightmare.png'
+import logoNightmare_Letra from '../images/letra_logo_nightmare.png'
 
 
 export const MenuLateral = () => {
 
     /* Código para eliminar y agregar clase showMenu a las etiquetas arrow */
 
+    const [arrow, setArrow] = useState([]);
 
-
-    let arrow = []
+    //let arrow = []
 
     useEffect(() => {
-        arrow = document.querySelectorAll('.arrow');
+        //arrow = document.querySelectorAll('.arrow');
+        setArrow(document.querySelectorAll('.arrow'))
         for (var i = 0; i < arrow.length; i++) {
             arrow[i].addEventListener("click", (e) => {
                 let tarE = e.target.parentElement.parentElement;
@@ -27,19 +28,14 @@ export const MenuLateral = () => {
     /* Finaliza código de etiquetas */
 
 
-
-
     /* Código para eliminar y agregar clase "X" al sidebar */
-
-
-
     useEffect(() => {
         setTimeout(() => {
             sideBar.classList.toggle("close");
         }, 1000);
         let sideBar = document.querySelector('.sidebar');
         let sideBarBtn = document.querySelector('.bx-menu-alt-left');
-        console.log(sideBarBtn);
+        //console.log(sideBarBtn);
         sideBarBtn.addEventListener("click", () => {
             sideBar.classList.toggle("close");
         })
@@ -98,7 +94,7 @@ export const MenuLateral = () => {
                     {/* <button >Holi</button> */}
                     <li>
                         <div className="icon-links">
-                            <a href="#">
+                            <a href="index.js">
                                 <i className='bx bx-collection' ></i>
                                 <span className="link_name">Categoria</span>
                             </a>
@@ -112,29 +108,19 @@ export const MenuLateral = () => {
                         </ul>
                     </li>
                     <div className="contenido-propio border-top border-3 border-light">
-                        <a className="">
+                        <a href="index.js">
                             <img className="im-logo" src={logoNightmare} alt="logonightmaer" />
                             <img className="im-propia" src={logoNightmare_Letra} alt="logoletra" />
                         </a>
                     </div>
                     <div className="contenido-log border-top border-3 border-light propiaxd">
-                        <a className="logout">
+                        <a className="logout" href="index.js">
                             <i className='bx bx-log-in alineado_xd'></i>
                             <a href="/">Cerrar Sesión</a>
                         </a>
                     </div>
                 </ul>
             </div>
-
-            {/* <section className="home-section">
-                <div className="home-content">
-                    <i className='bx bx-menu-alt-left'></i>
-                    <span className="text">Drop Down Sidebar</span>
-                </div>
-            </section> */}
-
-
-
 
         </>
     )
