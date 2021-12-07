@@ -1,5 +1,5 @@
 import React from 'react';
-import "../css/estilos.scss";
+import "../estilos/estilos.scss";
 import logoNeptunoBordeado from '../images/logo-neptuno-bordeado.png';
 
 export const Login = () => {

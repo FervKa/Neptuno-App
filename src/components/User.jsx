@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Navbar } from './Navbar';
-import '../css/usuarios.css'
+import '../estilos/usuarios.css'
 
 
 export const User = () => {
