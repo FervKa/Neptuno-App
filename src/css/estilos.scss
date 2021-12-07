@@ -12,8 +12,7 @@
 }
 
 .abs-center {    
-    margin-top: 20vh;    
-    border-radius: 25px;
+       
     margin-left: 30%;
     margin-right: 30%;  
     
@@ -32,7 +31,8 @@
       padding: 10px;      
       border: 1px solid $color3;
       text-align: center;
-      
+      border-radius: 25px;
+      margin-top: 5vh;
   }
 
 .logotipo-naranja{

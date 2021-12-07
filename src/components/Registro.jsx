@@ -6,9 +6,9 @@ export const Registro = () => {
 
             <div className="container" style={{maxWidth: "700px"}}>
 
-                <div className="profile-card-2 border border-3 border-warning ">
+                <div className="contenedor-login">
 
-                    <div className="profile-content">
+                    <div className="profile-content ">
                         <div className="container pb-3">
                             <div className="row">
                                 <div className="profile-name mt-3 text-center border-bottom border-3 border-warning pb-3  npcolorbold">

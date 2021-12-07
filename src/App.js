@@ -10,8 +10,8 @@ function App() {
     <>
       {/* <MenuLateral /> */}
       {/* <User /> */}
-      {/* <Login /> */}
-      <Registro />
+      {<Login />}
+      {/* <Registro /> */}
     </>
   );
 }
