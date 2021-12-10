@@ -1,5 +1,5 @@
 import React from 'react'
-import '../css/navbar.css'
+import '../estilos/navbar.css'
 
 
 export const Navbar = ({titulo}) => {

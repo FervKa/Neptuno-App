@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Navbar } from './Navbar';
 import '../css/usuarios.css'
-import { MenuLateral } from './MenuLateral';
+import {MenuLateral} from './MenuLateral'
 
 
 export const User = () => {
@@ -204,7 +204,7 @@ export const User = () => {
                     </div>
 
                 </div>
-                <MenuLateral/>
+                <MenuLateral />
             </div>
 
         </>
