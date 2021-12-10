@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbarNP{
+    justify-content: end !important
+}
+
+.bgNP{
+    background-color: #f2b90f;
+    height: 60px;
+    position: fixed;
+    z-index: 90;
+}

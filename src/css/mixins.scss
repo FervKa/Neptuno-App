@@ -1,0 +1,14 @@
+@mixin colorBoton($colorTexto, $colorFondo){
+    background-color: $colorFondo;
+    color: $colorTexto;    
+    
+}
+
+@mixin colorLogotipo ($color) {
+    font-family: 'Caesar Dressing', cursive;
+    color: $color;
+}
+
+@mixin letraNeptuno{
+    font-family: 'Caesar Dressing', cursive;
+}
