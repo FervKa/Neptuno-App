@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "./mixins.scss";
+
 
 :root {
     --neptuno-cuerpo: #ebcd75;
@@ -69,7 +71,8 @@
     cursor: pointer;
 }
 
-.sidebar .logo-details .logo_name {
+.sidebar .logo-details .logo_name{
+    @include letraNeptuno;
     font-size: 22px;
     color: #fff;
     font-weight: 600;
@@ -158,6 +161,25 @@
     padding-right: 5px;
     text-align: left;
     white-space: nowrap;
+}
+
+.sidebar .nav-links li a .link_User{
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    padding-right: 5px;
+    text-align: left;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.sidebar.close .nav-links li a .link_User{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar .nav-links li.cursor_here{
+    cursor: pointer
 }
 
 .sidebar.close .nav-links li a .link_name {
@@ -422,6 +444,7 @@
     bottom: 60px;
     white-space: nowrap;
     transition: all 0.4s ease;
+    white-space: nowrap;
 }
 .sidebar.close .contenido-propio {
     min-width: 78px;

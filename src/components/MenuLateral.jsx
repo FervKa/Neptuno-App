@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import '../css/menuLateral.css'
+import '../css/menuLateral.scss'
 import logo from '../images/favicon.png'
 import user from '../images/mia.png'
 import logoNightmare from '../images/icono_nightmare.png'
 import logoNightmare_Letra from '../images/letra_logo_nightmare.png'
-
+import { useNavigate } from 'react-router';
+import { NavLink } from 'react-router-dom'
+/* import { Link, NavLink } from 'react-router-dom'; */
 
 export const MenuLateral = () => {
 
@@ -44,6 +46,15 @@ export const MenuLateral = () => {
 
     /* Finaliza código de sidebar */
 
+    /* ROUTES */
+    const navigate = useNavigate();
+
+    const handleUsuarios = () => {navigate('/usuarios')};
+    const handlePerfil = () => {navigate('/perfil')};
+
+
+    /* Finaliza ROUTES */
+
     return (
         <>
             {/* <button onClick="scroll(110, 0);">Clic para desplazarse hacia abajo 100 pixeles</button> */}
@@ -65,12 +76,12 @@ export const MenuLateral = () => {
                         </div>
                     </li>
                     <li>
-                        <a href="/">
+                        <NavLink to="/perfil" >
                             <i className='bx bx-user-circle'></i>
                             <span className="link_name">Perfil</span>
-                        </a>
+                        </NavLink>
                         <ul className="sub-menu blank">
-                            <li><a className="link_name" href="/">Perfil</a></li>
+                            <li><a className="link_name">Perfil</a></li>
                         </ul>
                     </li>
                     <li>
@@ -106,6 +117,19 @@ export const MenuLateral = () => {
                             <li><a href="/">PRUEBA 2</a></li>
                             <li><a href="/">PRUEBA 3</a></li>
                         </ul>
+                    </li>
+                    <li className='cursor_here'>
+                        <a onClick={handleUsuarios}>
+                            <i className='bx bx-group'></i>
+                            <span  className="link_User">Usuarios</span>
+                        </a>
+                        <ul className="sub-menu blank">
+                            <li><a className="link_User">Usuarios</a></li>
+                        </ul>
+                        {/* <Link to ="/usuarios">
+                            <i className='bx bx-group'></i>
+                            <span  className="link_name">Usuarios</span>
+                        </Link>  */}
                     </li>
                     <div className="contenido-propio border-top border-3 border-light">
                         <a href="index.js">
