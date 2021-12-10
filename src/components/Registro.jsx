@@ -19,10 +19,8 @@ export const Registro = () => {
                     </div>
 
                     <div className="container">
-
                         <div className="col border-3">
-                            <form>
-
+                            <form action="POST">
                                 <input
                                     required
                                     placeholder="Nombre"
@@ -31,8 +29,6 @@ export const Registro = () => {
                                     id="nombre"
                                     aria-describedby="nameHelp"
                                 />
-
-
                                 <input
                                     required
                                     placeholder="Apellido"
@@ -42,8 +38,6 @@ export const Registro = () => {
                                     aria-describedby="nameHelp"
                                     required
                                 />
-
-
                                 <input
                                     required
                                     placeholder="Identificación"
@@ -53,9 +47,6 @@ export const Registro = () => {
                                     aria-describedby="nameHelp"
                                     required
                                 />
-
-
-
                                 <select
                                     className="form-select mb-3"
                                     aria-label="Default select example"
@@ -67,11 +58,7 @@ export const Registro = () => {
                                     <option value="2">Lider</option>
                                     <option value="3">Administrador</option>
                                 </select>
-
-
                                 <input placeholder="Correo electrónico" type="email" className="mb-3 form-control" id="Email" aria-describedby="emailHelp" />
-
-
                                 <input
                                     placeholder="Contraseña"
                                     type="password"
@@ -79,27 +66,21 @@ export const Registro = () => {
                                     id="Password"
                                     aria-describedby="passlHelp"
                                 />
-
-                                <div className="container pb-3">
-                                    <div className="row text-center">
-                                        <div className="col">
-                                            <button className="botonNaranja btn w-100 isI" type="button">
-                                                Registrar
-                                            </button>
-                                        </div>
-                                        <div className="col">
-                                            <button className="btn btn-dark w-100 isI" type="button">
-                                                Cancelar
-                                            </button>
-                                        </div>
+                                <div className="row text-center pb-3">
+                                    <div className="col">
+                                        <button className="botonNaranja btn w-100 isI" type="button">
+                                            Registrar
+                                        </button>
+                                    </div>
+                                    <div className="col">
+                                        <button className="btn btn-dark w-100 isI" type="button">
+                                            Cancelar
+                                        </button>
                                     </div>
                                 </div>
                             </form>
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
         </>

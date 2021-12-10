@@ -17,8 +17,7 @@ export const Login = () => {
                     <button className="botonNaranja btn mb-3 w-75">Ingresar</button>
                 </form>
                 <div className="row w-75 mx-auto">
-                    <p className="col texto-naranja">¿No tienes cuenta?   <a className="col" href="#">  Regístrate</a></p>
-                    
+                    <p className="col texto-naranja">¿No tienes cuenta?   <a className="col" href="#">  Regístrate</a></p>                    
 
                 </div>
 
