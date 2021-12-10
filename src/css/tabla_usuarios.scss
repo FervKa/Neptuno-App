@@ -1,11 +1,15 @@
-div.tabla_usuarios{
-    background-color: lavender;
+.tabla_usuarios{
+    background-color: rgba(230, 230, 250, 0.842);
     position: inherit;
     z-index: 100;
-    margin-left: 78px;
+    margin-left: 65px;
+    border-radius: 1.5rem;
+    margin-top: 90px;
 }
 
-div.tabla_usuarios .estilo_propioxd{
-    max-width: 500px;
+td{
+    font-size: 15px;
 }
+
+
 

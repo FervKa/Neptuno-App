@@ -414,9 +414,11 @@
 
 
 .sidebar .contenido-log .logout {
+    display: flex;
     color: white;
     text-align: center;
     font-size: 20px;
+    white-space: nowrap;
     transition: all 0.4s ease;
     /* height: 50px;
     min-width: 78px;
@@ -444,7 +446,6 @@
     bottom: 60px;
     white-space: nowrap;
     transition: all 0.4s ease;
-    white-space: nowrap;
 }
 .sidebar.close .contenido-propio {
     min-width: 78px;

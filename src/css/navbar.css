@@ -14,3 +14,7 @@
     position: fixed;
     z-index: 90;
 }
+
+.tamano_icono{
+    font-size: 25px;
+}
