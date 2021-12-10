@@ -3,6 +3,7 @@ import "../css/estilos.scss";
 import logoNeptunoBordeado from '../images/logo-neptuno-bordeado.png';
 import { User } from './User';
 import { useNavigate } from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 
 export const Login = () => {
@@ -29,7 +30,7 @@ export const Login = () => {
             </form>
             <div className="row w-75 mx-auto">
                 <p className="col texto-naranja">¿No tienes cuenta?</p>
-                <a className="col" href="#"> Regístrate</a>
+                <NavLink className="col" to="/registro"> Regístrate</NavLink>
             </div>
         </div>
     </>

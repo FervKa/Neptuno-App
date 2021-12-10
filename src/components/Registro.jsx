@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "../css/estilos.scss";
 import logoNeptunoBordeado from '../images/logo-neptuno-bordeado.png';
 
@@ -72,11 +73,11 @@ export const Registro = () => {
                                             Registrar
                                         </button>
                                     </div>
-                                    <div className="col">
+                                    <NavLink to="/" className="col">
                                         <button className="btn btn-dark w-100 isI" type="button">
                                             Cancelar
                                         </button>
-                                    </div>
+                                    </NavLink>
                                 </div>
                             </form>
                         </div>

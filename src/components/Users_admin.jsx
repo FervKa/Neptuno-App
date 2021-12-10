@@ -42,17 +42,11 @@ const User_admin = () => {
                                         <td>{u.correo}</td>
                                         <td>{u.estado}</td>
                                         <td>{u.rol}</td>
-
-
                                     </tr>
-
                                 )
                             })}
                         </tbody>}
                     </table>
-                </div>
-                <div>
-
                 </div>
                 <div>
                     <MenuLateral />
