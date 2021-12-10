@@ -49,8 +49,8 @@ export const MenuLateral = () => {
     /* ROUTES */
     const navigate = useNavigate();
 
-    const handleUsuarios = () => {navigate('/usuarios')};
-    const handlePerfil = () => {navigate('/perfil')};
+    const handleUsuarios = () => { navigate('/usuarios') };
+    const handlePerfil = () => { navigate('/perfil') };
 
 
     /* Finaliza ROUTES */
@@ -121,7 +121,7 @@ export const MenuLateral = () => {
                     <li className='cursor_here'>
                         <a onClick={handleUsuarios}>
                             <i className='bx bx-group'></i>
-                            <span  className="link_User">Usuarios</span>
+                            <span className="link_User">Usuarios</span>
                         </a>
                         <ul className="sub-menu blank">
                             <li><a className="link_User">Usuarios</a></li>
@@ -132,16 +132,16 @@ export const MenuLateral = () => {
                         </Link>  */}
                     </li>
                     <div className="contenido-propio border-top border-3 border-light">
-                        <a href="index.js">
+                        <a>
                             <img className="im-logo" src={logoNightmare} alt="logonightmaer" />
                             <img className="im-propia" src={logoNightmare_Letra} alt="logoletra" />
                         </a>
                     </div>
                     <div className="contenido-log border-top border-3 border-light propiaxd">
-                        <a className="logout" href="index.js">
+                        <NavLink to="/" className="logout">
                             <i className='bx bx-log-in alineado_xd'></i>
-                            <a href="/">Cerrar Sesión</a>
-                        </a>
+                            <a>Cerrar Sesión</a>
+                        </NavLink>
                     </div>
                 </ul>
             </div>
