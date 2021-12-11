@@ -24,7 +24,7 @@ function App() {
       <ApolloProvider client={client}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<User />} />
             <Route path="/perfil" element={<User />} />
             <Route path="/usuarios" element={<User_admin />} />
 
@@ -34,6 +34,7 @@ function App() {
             {/* <Consult /> */}
             <Route path='/auth' element={<AuthLayout />}>
               <Route path="registro" element={<Registro />} />
+              <Route path='login' element={<Login/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

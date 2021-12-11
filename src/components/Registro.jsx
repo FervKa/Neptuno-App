@@ -7,16 +7,18 @@ import useFormData from "../hooks/useFormData";
 import { useMutation } from '@apollo/client'
 import { REGISTRO } from './graphql/auth/mutations'
 import { toast } from "react-toastify";
-
+import { useNavigate } from "react-router";
 
 export const Registro = () => {
     const { form, formData, updateFormData } = useFormData(null)
+
+    const navigate = useNavigate();
 
     const [Registro, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(REGISTRO);
 
     const submitForm = (e) => {
         e.preventDefault();
-        console.log('fd', formData);
+        
         Registro({
             variables: { ...formData }
         })
@@ -24,17 +26,18 @@ export const Registro = () => {
 
     useEffect(() => {
         console.log('mutacion registro', mutationData);
-        toast.success('Registro exitoso')
+        // toast.success('Registro exitoso')
         if (mutationData) {
             if (mutationData.Registro.token) {
                 localStorage.setItem('token', mutationData.Registro.token)
+                navigate("/perfil")
             }
         }
     }, [mutationData])
 
     useEffect(() => {
         if (!mutationError) {
-            toast.error('Error al crear el usuario', mutationError)
+            // toast.error('Error al crear el usuario', mutationError)
         }
     }, [mutationError])
 
