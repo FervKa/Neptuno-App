@@ -22,7 +22,7 @@ const User_admin = () => {
                     <thead>
                         <tr>
 
-                            <th scope="col">#</th>
+                            <th scope="col"></th>
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
@@ -37,12 +37,7 @@ const User_admin = () => {
                         {data && data.leerUsuarios.map((u) => {
                             return (
                                 <tr key={u._id}>
-                                    <td>
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            </input>
-                                        </div>
-                                    </td>
+                                    <td></td>
                                     <td>{u._id}</td>
                                     <td>{u.nombres}</td>
                                     <td>{u.apellidos}</td>
@@ -50,11 +45,10 @@ const User_admin = () => {
                                     <td>{u.correo}</td>
                                     <td>{u.estado}</td>
                                     <td>{u.rol}</td>
-                                    <td>
+                                    <td className='text-center'>
                                         <Link to={`/usuarios/editar/${u._id}`}>
                                             <i className='bx bx-edit-alt'></i>
                                         </Link>
-
                                     </td>
                                 </tr>
                             )

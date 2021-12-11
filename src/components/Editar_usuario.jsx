@@ -28,6 +28,14 @@ const Editar_usuario = () => {
         />
     }
 
+    /* const datos = async () =>{
+        
+        const nombre = await data.leerUsuario.nombre;
+
+        return nombre
+
+    } */
+
     useEffect(() => {
         console.log("dt", data);
 
@@ -41,15 +49,20 @@ const Editar_usuario = () => {
                 <div>
                     USUARIO {_id}
                 </div>
-                {data && data.leerUsuario(() => {
+                {/* {data && data.leerUsuario.map((u)=>{
+                    return (
+                        <h1>{u.nombre}</h1>
+                    )
+                })} */}
+                {/* {data && data.leerUsuario(() => {
                     return (<Input
                         label="Nombre de la persona: "
                         type="text"
                         name="nombre"
-                        /* defaultValue={data} */
+                        defaultValue={data}
                         required={true}
                     />)
-                })}
+                })} */}
 
 
             </div>}
