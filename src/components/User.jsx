@@ -12,7 +12,7 @@ export const User = () => {
 
 
 
-    const { data, loading, error } = useQuery(GET_USUARIO);
+    const { data, loading, error } = useQuery(GET_USUARIOS);
 
 
     useEffect(() => {

@@ -6,23 +6,43 @@ import logoNeptunoBordeado from '../images/logo-neptuno-bordeado.png';
 import useFormData from "../hooks/useFormData";
 import { useMutation } from '@apollo/client'
 import { REGISTRO } from './graphql/auth/mutations'
-
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
+import { useAuth } from "../context/authContext";
 
 export const Registro = () => {
+    const {setToken} = useAuth()
+
     const { form, formData, updateFormData } = useFormData(null)
-    const [registrar, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(REGISTRO);
+
+    const navigate = useNavigate();
+
+    const [Registro, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(REGISTRO);
 
     const submitForm = (e) => {
         e.preventDefault();
-        console.log('fd', formData);
-        registrar({
+        
+        Registro({
             variables: { ...formData }
         })
     }
 
     useEffect(() => {
         console.log('mutacion registro', mutationData);
+        // toast.success('Registro exitoso')
+        if (mutationData) {
+            if (mutationData.Registro.token) {
+                setToken(mutationData.Registro.token)
+                navigate("/perfil")
+            }
+        }
     }, [mutationData])
+
+    useEffect(() => {
+        if (!mutationError) {
+            // toast.error('Error al crear el usuario', mutationError)
+        }
+    }, [mutationError,setToken, navigate])
 
 
     return (
@@ -82,19 +102,18 @@ export const Registro = () => {
                     className="form-select w-75 mb-3"
                     required
                 >
-                    <option disabled selected value="">
+                    <option value="">
                         Rol
                     </option>
                     <option value="ESTUDIANTE">Estudiante</option>
                     <option value="LIDER">Lider</option>
                     <option value="ADMINISTRADOR">Administrador</option>
                 </select>
-                <button disabled={Object.keys(formData).length===0} type='submit' className="col botonNaranja btn w-75 mb-3">
+                <button disabled={Object.keys(formData).length === 0} type='submit' className="col botonNaranja btn w-75 mb-3">
                     Registrar
                 </button>
             </form>
-            <p className="texto-naranja" >¿Ya tienes cuenta? <Link to="/" > Ingresa</Link></p>
+            <p className="texto-naranja" >¿Ya tienes cuenta? <Link to="/auth/login" > Ingresa</Link></p>
         </div>
-
     );
 };
