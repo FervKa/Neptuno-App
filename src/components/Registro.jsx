@@ -6,10 +6,12 @@ import logoNeptunoBordeado from '../images/logo-neptuno-bordeado.png';
 import useFormData from "../hooks/useFormData";
 import { useMutation } from '@apollo/client'
 import { REGISTRO } from './graphql/auth/mutations'
+import { toast } from "react-toastify";
 
 
 export const Registro = () => {
     const { form, formData, updateFormData } = useFormData(null)
+
     const [Registro, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(REGISTRO);
 
     const submitForm = (e) => {
@@ -22,7 +24,19 @@ export const Registro = () => {
 
     useEffect(() => {
         console.log('mutacion registro', mutationData);
+        toast.success('Registro exitoso')
+        if (mutationData) {
+            if (mutationData.Registro.token) {
+                localStorage.setItem('token', mutationData.Registro.token)
+            }
+        }
     }, [mutationData])
+
+    useEffect(() => {
+        if (!mutationError) {
+            toast.error('Error al crear el usuario', mutationError)
+        }
+    }, [mutationError])
 
 
     return (
@@ -89,7 +103,7 @@ export const Registro = () => {
                     <option value="LIDER">Lider</option>
                     <option value="ADMINISTRADOR">Administrador</option>
                 </select>
-                <button disabled={Object.keys(formData).length===0} type='submit' className="col botonNaranja btn w-75 mb-3">
+                <button disabled={Object.keys(formData).length === 0} type='submit' className="col botonNaranja btn w-75 mb-3">
                     Registrar
                 </button>
             </form>

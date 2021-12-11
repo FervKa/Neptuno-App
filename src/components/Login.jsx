@@ -32,7 +32,7 @@ export const Login = () => {
                 <button type ='submit' onClick={handleUser} className="botonNaranja btn mb-3 w-75">Ingresar</button>
             </form>
             <div className="row w-75 mx-auto">
-                <p className="texto-naranja">¿No tienes cuenta? <Link to="/registro"> Regístrate</Link></p>
+                <p className="texto-naranja">¿No tienes cuenta? <Link to="/auth/registro"> Regístrate</Link></p>
                 
             </div>
         </div>
