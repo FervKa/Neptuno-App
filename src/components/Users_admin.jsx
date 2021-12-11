@@ -4,6 +4,7 @@ import '../css/tabla_usuarios.scss';
 import { useQuery } from '@apollo/client';
 import { GET_USUARIOS } from './graphql/usuarios/querys';
 import { Navbar } from './Navbar';
+import { Link } from 'react-router-dom';
 
 
 const User_admin = () => {
@@ -29,6 +30,7 @@ const User_admin = () => {
                             <th scope="col">Correo</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Rol</th>
+                            <th scope="col">Editar</th>
                         </tr>
                     </thead>
                     {<tbody>
@@ -48,6 +50,12 @@ const User_admin = () => {
                                     <td>{u.correo}</td>
                                     <td>{u.estado}</td>
                                     <td>{u.rol}</td>
+                                    <td>
+                                        <Link to={`/usuarios/editar/${u._id}`}>
+                                            <i className='bx bx-edit-alt'></i>
+                                        </Link>
+
+                                    </td>
                                 </tr>
                             )
                         })}

@@ -3,14 +3,14 @@ import { Navbar } from './Navbar';
 import '../css/usuarios.css'
 import { MenuLateral } from './MenuLateral'
 import { useQuery } from '@apollo/client';
-import { GET_USUARIO } from './graphql/usuario/querys';
+import { GET_USUARIO, GET_USUARIOS } from './graphql/usuarios/querys';
 
 
 export const User = () => {
 
     const [email, setEmail] = useState("");
 
-    
+
 
     const { data, loading, error } = useQuery(GET_USUARIO);
 
@@ -18,14 +18,6 @@ export const User = () => {
     useEffect(() => {
         console.log("Recibidos con éxito:", data)
     }, [data])
-
-    /* const datos = async () =>{
-        const nombre = await data.leerUsuario.nombres
-        const apellido = await data.leerUsuario.apellidos
-
-
-    } */
-
 
 
 
@@ -45,7 +37,6 @@ export const User = () => {
         setEmail("");
     };
 
-
     return (
         <>
             <Navbar titulo='Perfil de Usuario' />
@@ -59,8 +50,8 @@ export const User = () => {
                         <div className="profile-card text-center border border-3 border-warning">
                             <img src="https://cdn.pixabay.com/photo/2017/06/26/13/03/webdesigner-2443766_960_720.jpg" className="img img-responsive" />
                             <div className="profile-content">
-                                <div className="profile-name">{/* {nombre} */}
-                                    {/* <p>{info.correo}</p> */}
+                                <div className="profile-name">Stiven Suárez
+                                    <p>ferbohi@outlook.com</p>
                                 </div>
 
                                 <h6 className="border-top border-3 border-warning pt-3 npcolorbold">Experiencia Laboral</h6>
