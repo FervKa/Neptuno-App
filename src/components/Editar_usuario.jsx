@@ -18,29 +18,14 @@ const Editar_usuario = () => {
         variables: { _id },
     });
 
-    const plantilla = () => {
-        return <Input
-            label="Nombre de la persona: "
-            type="text"
-            name="nombre"
-            /* defaultValue={data} */
-            required={true}
-        />
-    }
 
-    /* const datos = async () =>{
-        
-        const nombre = await data.leerUsuario.nombre;
-
-        return nombre
-
-    } */
 
     useEffect(() => {
         console.log("dt", data);
 
     }, [data])
 
+   
     return (
         <>
             <Navbar />
@@ -49,11 +34,15 @@ const Editar_usuario = () => {
                 <div>
                     USUARIO {_id}
                 </div>
-                {/* {data && data.leerUsuario.map((u)=>{
-                    return (
-                        <h1>{u.nombre}</h1>
-                    )
-                })} */}
+
+
+                {/* {data && data.leerUsuario.map((u)=>{ <h1>{u.nombre}</h1>})} */}
+                {/* {data && data.leerUsuario.map(user => user.name)} */}
+
+                
+
+
+
                 {/* {data && data.leerUsuario(() => {
                     return (<Input
                         label="Nombre de la persona: "
