@@ -1,16 +1,29 @@
 import React from "react";
-import { useRef } from 'react'
+import { useEffect } from 'react'
 import { Link } from "react-router-dom";
 import "../css/estilos.scss";
 import logoNeptunoBordeado from '../images/logo-neptuno-bordeado.png';
 import useFormData from "../hooks/useFormData";
+import { useMutation } from '@apollo/client'
+import { REGISTRO } from './graphql/auth/mutations'
+
 
 export const Registro = () => {
     const { form, formData, updateFormData } = useFormData(null)
+    const [registrar, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(REGISTRO);
+
     const submitForm = (e) => {
         e.preventDefault();
-        console.log('fd',formData);
+        console.log('fd', formData);
+        registrar({
+            variables: { ...formData }
+        })
     }
+
+    useEffect(() => {
+        console.log('mutacion registro', mutationData);
+    }, [mutationData])
+
 
     return (
         <div className="contenedor-login abs-center">
@@ -25,22 +38,6 @@ export const Registro = () => {
             <form className='display-flex' ref={form} onSubmit={submitForm} onChange={updateFormData}>
                 <input
                     required
-                    placeholder="Nombre"
-                    type="text"
-                    className="form-control w-75 mb-3"
-                    id="nombres"
-                    name="nombres"
-                />
-                <input
-                    required
-                    placeholder="Apellido"
-                    type="text"
-                    className="form-control w-75  mb-3"
-                    id="apellidos"
-                    name="apellidos"
-                />
-                <input
-                    required
                     placeholder="Identificación"
                     type="number"
                     min={0}
@@ -48,19 +45,22 @@ export const Registro = () => {
                     id="identificacion"
                     name="identificacion"
                 />
-                <select
-                    id="rol"
-                    name="rol"
-                    className="form-select w-75 mb-3"
+                <input
                     required
-                >
-                    <option disabled selected value="">
-                        Rol
-                    </option>
-                    <option value="ESTUDIANTE">Estudiante</option>
-                    <option value="LIDER">Lider</option>
-                    <option value="ADMINISTRADOR">Administrador</option>
-                </select>
+                    placeholder="Nombres"
+                    type="text"
+                    className="form-control w-75 mb-3"
+                    id="nombres"
+                    name="nombres"
+                />
+                <input
+                    required
+                    placeholder="Apellidos"
+                    type="text"
+                    className="form-control w-75  mb-3"
+                    id="apellidos"
+                    name="apellidos"
+                />
                 <input required
                     placeholder="Correo electrónico"
                     type="email"
@@ -76,7 +76,20 @@ export const Registro = () => {
                     id="password"
                     name="password"
                 />
-                <button type='submit' className="col botonNaranja btn w-75 mb-3">
+                <select
+                    id="rol"
+                    name="rol"
+                    className="form-select w-75 mb-3"
+                    required
+                >
+                    <option disabled selected value="">
+                        Rol
+                    </option>
+                    <option value="ESTUDIANTE">Estudiante</option>
+                    <option value="LIDER">Lider</option>
+                    <option value="ADMINISTRADOR">Administrador</option>
+                </select>
+                <button disabled={Object.keys(formData).length===0} type='submit' className="col botonNaranja btn w-75 mb-3">
                     Registrar
                 </button>
             </form>
