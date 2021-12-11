@@ -9,13 +9,13 @@ import User_admin from "./components/Users_admin.jsx";
 import Editar_usuario from "./components/Editar_usuario.jsx";
 
 
-/* const httpLink = createHttpLink({
+const httpLink = createHttpLink({
   uri: "https://neptuno-app.herokuapp.com/graphql"
-}) */
+})
 
 const client = new ApolloClient({
-  uri: "https://neptuno-app.herokuapp.com/graphql",
-  cache: new InMemoryCache()
+  uri: httpLink,
+  cache: new InMemoryCache(),
 })
 
 function App() {

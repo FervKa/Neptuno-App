@@ -1,89 +1,100 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect } from 'react'
+import { Link } from "react-router-dom";
 import "../css/estilos.scss";
 import logoNeptunoBordeado from '../images/logo-neptuno-bordeado.png';
+import useFormData from "../hooks/useFormData";
+import { useMutation } from '@apollo/client'
+import { REGISTRO } from './graphql/auth/mutations'
+
 
 export const Registro = () => {
+    const { form, formData, updateFormData } = useFormData(null)
+    const [registrar, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(REGISTRO);
+
+    const submitForm = (e) => {
+        e.preventDefault();
+        console.log('fd', formData);
+        registrar({
+            variables: { ...formData }
+        })
+    }
+
+    useEffect(() => {
+        console.log('mutacion registro', mutationData);
+    }, [mutationData])
+
+
     return (
-        <>
-            <div className="container" style={{ maxWidth: "700px" }}>
-                <div className="contenedor-login abs-center">
-
-                    <div className="container">
-
-                        <div align="center">
-                            <img className="img-fluid" src={logoNeptunoBordeado} alt="Logo Neptuno" width="100px" />
-                        </div>
-                        <p className="logotipo-naranja mb-3 fs-1">NEPTUNO</p>
-                        <p className="text-wrap texto-naranja">Registrar Usuario</p>
-
-                    </div>
-
-                    <div className="container">
-                        <div className="col border-3">
-                            <form action="POST">
-                                <input
-                                    required
-                                    placeholder="Nombre"
-                                    type="text"
-                                    className="form-control isI mb-3"
-                                    id="nombre"
-                                    aria-describedby="nameHelp"
-                                />
-                                <input
-                                    required
-                                    placeholder="Apellido"
-                                    type="lastname"
-                                    className="form-control isI mb-3"
-                                    id="apellido"
-                                    aria-describedby="nameHelp"
-                                    required
-                                />
-                                <input
-                                    required
-                                    placeholder="Identificación"
-                                    type="number"
-                                    className="form-control isI mb-3"
-                                    id="ident"
-                                    aria-describedby="nameHelp"
-                                    required
-                                />
-                                <select
-                                    className="form-select mb-3"
-                                    aria-label="Default select example"
-                                >
-                                    <option disabled selected defaultValue>
-                                        Rol
-                                    </option>
-                                    <option value="1">Estudiante</option>
-                                    <option value="2">Lider</option>
-                                    <option value="3">Administrador</option>
-                                </select>
-                                <input placeholder="Correo electrónico" type="email" className="mb-3 form-control" id="Email" aria-describedby="emailHelp" />
-                                <input
-                                    placeholder="Contraseña"
-                                    type="password"
-                                    className="form-control mb-3"
-                                    id="Password"
-                                    aria-describedby="passlHelp"
-                                />
-                                <div className="row text-center pb-3">
-                                    <div className="col">
-                                        <button className="botonNaranja btn w-100 isI" type="button">
-                                            Registrar
-                                        </button>
-                                    </div>
-                                    <NavLink to="/" className="col">
-                                        <button className="btn btn-dark w-100 isI" type="button">
-                                            Cancelar
-                                        </button>
-                                    </NavLink>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+        <div className="contenedor-login abs-center">
+            <div className="container">
+                <div align="center">
+                    <img className="img-fluid" src={logoNeptunoBordeado} alt="Logo Neptuno" width="100px" />
                 </div>
+                <p className="logotipo-naranja mb-3 fs-1">NEPTUNO</p>
+                <p className="text-wrap texto-naranja">Sistema de Gestión de Proyectos de Investigación</p>
             </div>
-        </>
+
+            <form className='display-flex' ref={form} onSubmit={submitForm} onChange={updateFormData}>
+                <input
+                    required
+                    placeholder="Identificación"
+                    type="number"
+                    min={0}
+                    className="form-control w-75  mb-3"
+                    id="identificacion"
+                    name="identificacion"
+                />
+                <input
+                    required
+                    placeholder="Nombres"
+                    type="text"
+                    className="form-control w-75 mb-3"
+                    id="nombres"
+                    name="nombres"
+                />
+                <input
+                    required
+                    placeholder="Apellidos"
+                    type="text"
+                    className="form-control w-75  mb-3"
+                    id="apellidos"
+                    name="apellidos"
+                />
+                <input required
+                    placeholder="Correo electrónico"
+                    type="email"
+                    className="mb-3 w-75 form-control"
+                    id="correo"
+                    name="correo"
+                />
+                <input
+                    required
+                    placeholder="Contraseña"
+                    type="password"
+                    className="form-control w-75 mb-3"
+                    id="password"
+                    name="password"
+                />
+                <select
+                    id="rol"
+                    name="rol"
+                    className="form-select w-75 mb-3"
+                    required
+                >
+                    <option disabled selected value="">
+                        Rol
+                    </option>
+                    <option value="ESTUDIANTE">Estudiante</option>
+                    <option value="LIDER">Lider</option>
+                    <option value="ADMINISTRADOR">Administrador</option>
+                </select>
+                <button disabled={Object.keys(formData).length===0} type='submit' className="col botonNaranja btn w-75 mb-3">
+                    Registrar
+                </button>
+            </form>
+            <p className="texto-naranja" >¿Ya tienes cuenta? <Link to="/" > Ingresa</Link></p>
+        </div>
+
     );
 };
