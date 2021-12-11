@@ -17,6 +17,7 @@ export const Navbar = ({titulo}) => {
                 <div className="container-fluid navbarNP" >
                     <span className="navbar-brand h1 ">{titulo}&nbsp;&nbsp;<i className={classes}></i></span>
                 </div>
+                div
             </nav>
         </>
     )
