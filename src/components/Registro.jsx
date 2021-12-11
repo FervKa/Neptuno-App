@@ -10,12 +10,12 @@ import { REGISTRO } from './graphql/auth/mutations'
 
 export const Registro = () => {
     const { form, formData, updateFormData } = useFormData(null)
-    const [registrar, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(REGISTRO);
+    const [Registro, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(REGISTRO);
 
     const submitForm = (e) => {
         e.preventDefault();
         console.log('fd', formData);
-        registrar({
+        Registro({
             variables: { ...formData }
         })
     }
@@ -82,7 +82,7 @@ export const Registro = () => {
                     className="form-select w-75 mb-3"
                     required
                 >
-                    <option disabled selected value="">
+                    <option value="">
                         Rol
                     </option>
                     <option value="ESTUDIANTE">Estudiante</option>
