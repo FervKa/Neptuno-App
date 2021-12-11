@@ -3,7 +3,7 @@ import { Navbar } from './Navbar';
 import '../css/usuarios.css'
 import { MenuLateral } from './MenuLateral'
 import { useQuery } from '@apollo/client';
-import { GET_USUARIO } from './graphql/usuario/querys';
+import { GET_USUARIOS } from './graphql/usuarios/querys';
 
 
 export const User = () => {
@@ -12,7 +12,7 @@ export const User = () => {
 
     
 
-    const { data, loading, error } = useQuery(GET_USUARIO);
+    const { data, loading, error } = useQuery(GET_USUARIOS);
 
 
     useEffect(() => {

@@ -95,6 +95,5 @@ export const Registro = () => {
             </form>
             <p className="texto-naranja" >¿Ya tienes cuenta? <Link to="/" > Ingresa</Link></p>
         </div>
-
     );
 };
