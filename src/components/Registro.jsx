@@ -113,7 +113,7 @@ export const Registro = () => {
                     Registrar
                 </button>
             </form>
-            <p className="texto-naranja" >¿Ya tienes cuenta? <Link to="/" > Ingresa</Link></p>
+            <p className="texto-naranja" >¿Ya tienes cuenta? <Link to="/auth/login" > Ingresa</Link></p>
         </div>
     );
 };
