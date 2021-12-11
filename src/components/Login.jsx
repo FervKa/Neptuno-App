@@ -48,7 +48,7 @@ export const Login = () => {
             <form ref={form} onSubmit={submitForm} onChange={updateFormData} className="display-flex" >
                 <input required name='correo' placeholder="Correo electronico" className="w-75 form-control mb-3" type="text" />
                 <input required name='password' placeholder="Contraseña" className="w-75 form-control mb-3" type="password" />
-                <button type ='submit' className="botonNaranja btn mb-3 w-75">Ingresar</button>
+                <button disabled={Object.keys(formData).length === 0} type ='submit' className="botonNaranja btn mb-3 w-75">Ingresar</button>
             </form>
             <div className="row w-75 mx-auto">
                 <p className="texto-naranja">¿No tienes cuenta? <Link to="/auth/registro"> Regístrate</Link></p>
