@@ -8,6 +8,8 @@ export const Navbar = ({titulo}) => {
         var classes = "bx bx-user-circle tamano_icono"
     }else if(titulo === "Usuarios"){
         var classes = 'bx bx-group font-size-50px'
+    }else if(titulo === "Proyectos"){
+        var classes = 'bx bx-brain font-size-50px'
     }
 
     return (

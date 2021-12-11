@@ -9,11 +9,13 @@ import User_admin from "./components/Users_admin.jsx";
 import { AuthLayout } from '../src/layouts/AuthLayout'
 import { AuthContext } from "./context/authContext.js";
 import { useState } from "react";
+import Editar_usuario from "./components/Editar_usuario.jsx";
+import Proyectos from './components/Proyectos';
 
 
-const httpLink = createHttpLink({
+/* const httpLink = createHttpLink({
   uri: "https://neptuno-app.herokuapp.com/graphql"
-})
+}) */
 
 const client = new ApolloClient({
   uri: "https://neptuno-app.herokuapp.com/graphql",
@@ -24,23 +26,24 @@ function App() {
 
   const [authToken, setAuthToken] = useState("")
 
-  const setToken =(token)=>{
+  const setToken = (token) => {
     setAuthToken(token)
-    if(token){
-      localStorage.setItem('token',JSON.stringify(token))
+    if (token) {
+      localStorage.setItem('token', JSON.stringify(token))
     }
   }
 
   return (
     <>
       <ApolloProvider client={client}>
-        <AuthContext.Provider value={{setToken}}>
+        <AuthContext.Provider value={{ setToken }}>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<User />} />
               <Route path="/perfil" element={<User />} />
               <Route path="/usuarios" element={<User_admin />} />
-
+              <Route path="/usuarios/editar/:_id" element={<Editar_usuario />} />
+              <Route path="/proyectos" element={<Proyectos />} />
               {/* <MenuLateral /> */}
               {/* <User /> */}
               {/* <Registro /> */}

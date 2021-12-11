@@ -4,6 +4,7 @@ import '../css/tabla_usuarios.scss';
 import { useQuery } from '@apollo/client';
 import { GET_USUARIOS } from './graphql/usuarios/querys';
 import { Navbar } from './Navbar';
+import { Link } from 'react-router-dom';
 
 
 const User_admin = () => {
@@ -21,7 +22,7 @@ const User_admin = () => {
                     <thead>
                         <tr>
 
-                            <th scope="col">#</th>
+                            <th scope="col"></th>
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
@@ -29,18 +30,14 @@ const User_admin = () => {
                             <th scope="col">Correo</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Rol</th>
+                            <th scope="col">Editar</th>
                         </tr>
                     </thead>
                     {<tbody>
                         {data && data.leerUsuarios.map((u) => {
                             return (
                                 <tr key={u._id}>
-                                    <td>
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            </input>
-                                        </div>
-                                    </td>
+                                    <td></td>
                                     <td>{u._id}</td>
                                     <td>{u.nombres}</td>
                                     <td>{u.apellidos}</td>
@@ -48,6 +45,11 @@ const User_admin = () => {
                                     <td>{u.correo}</td>
                                     <td>{u.estado}</td>
                                     <td>{u.rol}</td>
+                                    <td className='text-center'>
+                                        <Link to={`/usuarios/editar/${u._id}`}>
+                                            <i className='bx bx-edit-alt'></i>
+                                        </Link>
+                                    </td>
                                 </tr>
                             )
                         })}
