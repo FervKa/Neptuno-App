@@ -8,8 +8,11 @@ import { useMutation } from '@apollo/client'
 import { REGISTRO } from './graphql/auth/mutations'
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import { useAuth } from "../context/authContext";
 
 export const Registro = () => {
+    const {setToken} = useAuth()
+
     const { form, formData, updateFormData } = useFormData(null)
 
     const navigate = useNavigate();
@@ -29,7 +32,7 @@ export const Registro = () => {
         // toast.success('Registro exitoso')
         if (mutationData) {
             if (mutationData.Registro.token) {
-                localStorage.setItem('token', mutationData.Registro.token)
+                setToken(mutationData.Registro.token)
                 navigate("/perfil")
             }
         }
@@ -39,7 +42,7 @@ export const Registro = () => {
         if (!mutationError) {
             // toast.error('Error al crear el usuario', mutationError)
         }
-    }, [mutationError])
+    }, [mutationError,setToken, navigate])
 
 
     return (

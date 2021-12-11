@@ -8,6 +8,7 @@ const LOGIN = gql`
     }
   }
 `;
+
 const REGISTRO = gql`
   mutation Registro(
     $identificacion: String!

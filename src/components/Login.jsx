@@ -7,26 +7,35 @@ import { Link } from 'react-router-dom';
 import useFormData from "../hooks/useFormData";
 import { useMutation } from '@apollo/client'
 import { LOGIN } from './graphql/auth/mutations'
+import { useAuth } from '../context/authContext';
 
 export const Login = () => {
+    const {setToken} = useAuth()
+
     const { form, formData, updateFormData } = useFormData(null)
 
     const navigate = useNavigate();
 
     const [Ingreso, {data: mutationData, loading: mutationLoading, error: mutationError}]=useMutation(LOGIN)
-   
 
     const submitForm =(e)=>{
         e.preventDefault();
-        console.log("Formulario login", formData);
+        console.log("Formulario login ", formData);
         Ingreso({
-            variables:{formData}
+            variables:{...formData}
         })
+        
     }
 
     useEffect(() => {
         console.log('mutacion de ingreso', mutationData);
-    }, [mutationData])
+        if(mutationData){
+            if(mutationData.Ingreso.token){
+                setToken(mutationData.Ingreso.token)
+                navigate("/perfil")
+            }
+        }
+    }, [mutationData, setToken, navigate])
 
 
     return <>
@@ -36,9 +45,9 @@ export const Login = () => {
             </div>
             <p className="logotipo-naranja mb-3 fs-1">NEPTUNO</p>
             <p className="text-wrap texto-naranja">Sistema de Gestión de Proyectos de Investigación</p>
-            <form ref={form} onSubmit={submitForm} onChange={updateFormData} action="POST" className="display-flex" >
+            <form ref={form} onSubmit={submitForm} onChange={updateFormData} className="display-flex" >
                 <input required name='correo' placeholder="Correo electronico" className="w-75 form-control mb-3" type="text" />
-                <input required name= 'password' placeholder="Contraseña" className="w-75 form-control mb-3" type="password" />
+                <input required name='password' placeholder="Contraseña" className="w-75 form-control mb-3" type="password" />
                 <button type ='submit' className="botonNaranja btn mb-3 w-75">Ingresar</button>
             </form>
             <div className="row w-75 mx-auto">
