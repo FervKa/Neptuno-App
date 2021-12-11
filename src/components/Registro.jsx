@@ -4,6 +4,12 @@ import "../css/estilos.scss";
 import logoNeptunoBordeado from '../images/logo-neptuno-bordeado.png';
 
 export const Registro = () => {
+
+    const submitForm = (e) => {
+        e.preventDefault();
+    }
+
+
     return (
         <>
             <div className="container" style={{ maxWidth: "700px" }}>
@@ -21,13 +27,13 @@ export const Registro = () => {
 
                     <div className="container">
                         <div className="col border-3">
-                            <form action="POST">
+                            <form action="POST" onSubmit={submitForm}>
                                 <input
                                     required
                                     placeholder="Nombre"
                                     type="text"
                                     className="form-control isI mb-3"
-                                    id="nombre"
+                                    id="nombres"
                                     aria-describedby="nameHelp"
                                 />
                                 <input
@@ -35,7 +41,7 @@ export const Registro = () => {
                                     placeholder="Apellido"
                                     type="lastname"
                                     className="form-control isI mb-3"
-                                    id="apellido"
+                                    id="apellidos"
                                     aria-describedby="nameHelp"
                                     required
                                 />
@@ -44,32 +50,35 @@ export const Registro = () => {
                                     placeholder="Identificación"
                                     type="number"
                                     className="form-control isI mb-3"
-                                    id="ident"
+                                    id="identificacion"
                                     aria-describedby="nameHelp"
                                     required
                                 />
                                 <select
+                                    id="rol"
                                     className="form-select mb-3"
                                     aria-label="Default select example"
+                                    required
                                 >
-                                    <option disabled selected defaultValue>
+                                    <option disabled selected value="">
                                         Rol
                                     </option>
                                     <option value="1">Estudiante</option>
                                     <option value="2">Lider</option>
                                     <option value="3">Administrador</option>
                                 </select>
-                                <input placeholder="Correo electrónico" type="email" className="mb-3 form-control" id="Email" aria-describedby="emailHelp" />
+                                <input required placeholder="Correo electrónico" type="email" className="mb-3 form-control" id="correo" aria-describedby="emailHelp" />
                                 <input
+                                    required
                                     placeholder="Contraseña"
                                     type="password"
                                     className="form-control mb-3"
-                                    id="Password"
+                                    id="password"
                                     aria-describedby="passlHelp"
                                 />
                                 <div className="row text-center pb-3">
                                     <div className="col">
-                                        <button className="botonNaranja btn w-100 isI" type="button">
+                                        <button type='submit' className="botonNaranja btn w-100 isI">
                                             Registrar
                                         </button>
                                     </div>
