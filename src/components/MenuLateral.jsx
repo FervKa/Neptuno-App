@@ -85,12 +85,12 @@ export const MenuLateral = () => {
                         </ul>
                     </li>
                     <li>
-                        <a href="/">
+                        <NavLink to="/proyectos">
                             <i className='bx bx-brain'></i>
                             <span className="link_name">Gestión de Proyectos</span>
-                        </a>
+                        </NavLink>
                         <ul className="sub-menu blank">
-                            <li><a className="link_name" href="/">Proyectos</a></li>
+                            <li><a className="link_name">Proyectos</a></li>
                         </ul>
                     </li>
                     <li>

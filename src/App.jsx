@@ -7,6 +7,7 @@ import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from "@ap
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import User_admin from "./components/Users_admin.jsx";
 import Editar_usuario from "./components/Editar_usuario.jsx";
+import Proyectos from './components/Proyectos';
 
 
 const httpLink = createHttpLink({
@@ -29,6 +30,7 @@ function App() {
             <Route path="/usuarios" element={<User_admin />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/usuarios/editar/:_id" element={<Editar_usuario />} />
+            <Route path="/proyectos" element={<Proyectos />} />  
               {/* <MenuLateral /> */}
               {/* <User /> */}
               {/* <Registro /> */}
