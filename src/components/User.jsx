@@ -225,7 +225,7 @@ export const User = () => {
                     </div>
 
                 </div>
-                <MenuLateral />
+                {/* <MenuLateral /> */}
             </div>
 
         </>

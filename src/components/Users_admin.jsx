@@ -15,7 +15,7 @@ const User_admin = () => {
 
     return (
         <>
-            <Navbar titulo='Usuarios' />
+            {<Navbar titulo='Usuarios' />}
             <div className='container m-3'>
                 <table className="table table-sm tabla_usuarios table-striped table-hover">
                     <thead>
@@ -55,7 +55,7 @@ const User_admin = () => {
                 </table>
             </div>
             <div>
-                <MenuLateral />
+                {/* <MenuLateral /> */}
             </div>
         </>
     )

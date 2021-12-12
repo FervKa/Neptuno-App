@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router'
 import { ToastContainer } from 'react-toastify'
 import { REFRESCAR_TOKEN } from '../components/graphql/auth/mutations';
+import { MenuLateral } from '../components/MenuLateral';
 import { Navbar } from '../components/Navbar';
 import { useAuth } from '../context/authContext';
 
@@ -42,9 +43,9 @@ const PrivateLayout = () => {
 
     return (
         <div>
-            <Navbar/>
+            {/* {<Navbar/>} */}
             <Outlet />
-            
+            {<MenuLateral/>}
             <ToastContainer />
         </div>
     )
