@@ -32,4 +32,15 @@ const REGISTRO = gql`
   }
 `;
 
-export { LOGIN, REGISTRO };
+const REFRESCAR_TOKEN = gql`
+
+mutation RefrescarToken {
+  refrescarToken {
+    error
+    token
+  }
+}
+
+`
+
+export { LOGIN, REGISTRO, REFRESCAR_TOKEN};

@@ -24,7 +24,6 @@ export const Login = () => {
         Ingreso({
             variables:{...formData}
         })
-        
     }
 
     useEffect(() => {
