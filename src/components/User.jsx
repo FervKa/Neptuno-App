@@ -125,7 +125,7 @@ export const User = () => {
                                                 </div>
                                                 <div className="mb-3">
                                                     <label htmlFor="Email" className="form-label  npcolor">Email</label>
-                                                    <input onChange={e => (setEmail(e.target.value))} type="email" className="form-control" id="Email" aria-describedby="emailHelp" />
+                                                    <input type="email" className="form-control" id="Email" aria-describedby="emailHelp" />
                                                 </div>
 
                                             </form>
@@ -209,7 +209,6 @@ export const User = () => {
                                         <button onClick={validacion} className="btn btn-warning  isI" type="button">Actualizar Perfil</button>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
