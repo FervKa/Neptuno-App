@@ -2,7 +2,7 @@ import { User } from './components/User.jsx';
 import '../src/css/index.css';
 import { Login } from './components/Login';
 import { Registro } from "./components/Registro.jsx";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import User_admin from "./components/Users_admin.jsx";
 import { AuthLayout } from '../src/layouts/AuthLayout'
@@ -18,7 +18,9 @@ import { Proyecto } from './components/Proyecto.jsx';
 }) */
 
 const client = new ApolloClient({
-  uri: "https://neptuno-app.herokuapp.com/graphql",
+  link: new HttpLink({
+    uri: "https://neptuno-app.herokuapp.com/graphql",
+  }),
   cache: new InMemoryCache(),
 })
 
