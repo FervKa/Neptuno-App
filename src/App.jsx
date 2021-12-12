@@ -1,20 +1,21 @@
 import { User } from './components/User.jsx';
-import '../src/css/index.css';
+import Proyectos from './components/Proyectos';
+import { Proyecto } from './components/Proyecto.jsx';
+import User_admin from "./components/Users_admin.jsx";
+import Editar_usuario from "./components/Editar_usuario.jsx";
 import { Login } from './components/Login';
 import { Registro } from "./components/Registro.jsx";
+import { AuthContext } from "./context/authContext.js";
+import { UserContext } from './context/userContext'
+import { AuthLayout } from '../src/layouts/AuthLayout'
+import PrivateLayout from "./layouts/PrivateLayout.jsx";
+import '../src/css/index.css';
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import User_admin from "./components/Users_admin.jsx";
-import { AuthLayout } from '../src/layouts/AuthLayout'
-import { AuthContext } from "./context/authContext.js";
-import { UserContext } from './context/userContext'
 import { useState, useEffect } from "react";
-import Editar_usuario from "./components/Editar_usuario.jsx";
-import Proyectos from './components/Proyectos';
-import PrivateLayout from "./layouts/PrivateLayout.jsx";
-import jwt_decode from 'jwt-decode';
-import { Proyecto } from './components/Proyecto.jsx';
+import jwt_decode from 'jwt-decode'
+
 
 const httpLink = createHttpLink({
   uri: 'https://neptuno-app.herokuapp.com/graphql',
@@ -27,45 +28,48 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `${token}` : '',
     },
   };
 });
 
 const client = new ApolloClient({
-  uri: authLink.concat(httpLink),
-  // link: new HttpLink({
-  //   uri: "https://neptuno-app.herokuapp.com/graphql",
-  // }),
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 })
 
 function App() {
   const [userData, setUserData] = useState({});
-
   const [authToken, setAuthToken] = useState("")
 
   const setToken = (token) => {
-    setAuthToken(token)
     if (token) {
+      setAuthToken(token)
       localStorage.setItem('token', JSON.stringify(token))
+    }else{
+      setAuthToken(null)
+      localStorage.removeItem('token')
     }
   }
 
   useEffect(() => {
-    if (authToken) {
-      const decoded = jwt_decode(authToken);
+    
+    if(authToken){
+      const decodedToken = jwt_decode(authToken)
+      // console.log('token decoded: ',decodedToken);
       setUserData({
-        _id: decoded._id,
-        nombre: decoded.nombre,
-        apellido: decoded.apellido,
-        identificacion: decoded.identificacion,
-        correo: decoded.correo,
-        rol: decoded.rol,
-        estado: decoded.estado,
+        _id: decodedToken._id,
+        nombres: decodedToken.nombres,
+        apellidos: decodedToken.apellidos,
+        identificacion: decodedToken.identificacion,
+        correo: decodedToken.correo,
+        rol: decodedToken.rol,
+        estado: decodedToken.estado
       });
+      // console.log('Datos de usuario',userData);
     }
-  }, [authToken]);
+  },[authToken])
+
 
   return (
     <>
@@ -79,10 +83,8 @@ function App() {
                   <Route path="/perfil" element={<User />} />
                   <Route path="/usuarios" element={<User_admin />} />
                   <Route path="/usuarios/editar/:_id" element={<Editar_usuario />} />
-                  <Route path="/proyectos" element={<Proyectos />} />
-                  {/* <MenuLateral /> */}
-                  {/* <User /> */}
-                  {/* <Registro /> */}
+                  <Route path="/proyectos" element={<Proyectos />} />                  
+                  
                   {/* <Consult /> */}
                 </Route>
                 <Route path='/auth' element={<AuthLayout />}>
