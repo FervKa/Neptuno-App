@@ -83,7 +83,8 @@ function App() {
                   <Route path="/perfil" element={<User />} />
                   <Route path="/usuarios" element={<User_admin />} />
                   <Route path="/usuarios/editar/:_id" element={<Editar_usuario />} />
-                  <Route path="/proyectos" element={<Proyectos />} />                  
+                  <Route path="/proyectos" element={<Proyectos />} />  
+                  <Route path="/proyecto/:_id" element={<Proyecto />} />   
                   
                   {/* <Consult /> */}
                 </Route>
