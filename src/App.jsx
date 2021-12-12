@@ -34,6 +34,9 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
   uri: authLink.concat(httpLink),
+  // link: new HttpLink({
+  //   uri: "https://neptuno-app.herokuapp.com/graphql",
+  // }),
   cache: new InMemoryCache(),
 })
 
