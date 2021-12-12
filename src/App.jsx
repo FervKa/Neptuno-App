@@ -1,4 +1,3 @@
-import { MenuLateral } from "./components/MenuLateral.jsx"
 import { User } from './components/User.jsx';
 import '../src/css/index.css';
 import { Login } from './components/Login';
@@ -10,11 +9,12 @@ import User_admin from "./components/Users_admin.jsx";
 import { AuthLayout } from '../src/layouts/AuthLayout'
 import { AuthContext } from "./context/authContext.js";
 import { UserContext } from './context/userContext'
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import Editar_usuario from "./components/Editar_usuario.jsx";
 import Proyectos from './components/Proyectos';
 import PrivateLayout from "./layouts/PrivateLayout.jsx";
 import jwt_decode from 'jwt-decode';
+import { Proyecto } from './components/Proyecto.jsx';
 
 const httpLink = createHttpLink({
   uri: 'https://neptuno-app.herokuapp.com/graphql',

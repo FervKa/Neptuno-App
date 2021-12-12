@@ -1,7 +1,7 @@
 import React from 'react'
 import '../css/loading.css'
 
-export const Loading = () => {
+export const Loader = () => {
   return (
     <>
       <div className="spinner"></div>
