@@ -34,7 +34,7 @@ export const Proyecto = () => {
                 :
                 <>
                 <div className="container" style={{marginTop: "100px"}}>
-                    <MenuLateral />
+                    {/* <MenuLateral /> */}
                     <Navbar titulo={data.leerProyecto.nombre} />
                     <div className="row">
                         {<div className="col">
@@ -68,6 +68,7 @@ export const Proyecto = () => {
                                     <div className="card-body">
 
                                     <h4 className="card-title">
+                                        Objetivos
                                         tipo: {o.tipo}
                                         </h4>
                                         {/* <h6>Inicio: {p.fechaInicio}</h6>

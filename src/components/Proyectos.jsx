@@ -32,7 +32,7 @@ const Proyectos = () => {
     return (
         <>
             <Navbar titulo='Proyectos' />
-            <MenuLateral />
+            {/* <MenuLateral /> */}
             {
             loading ?
             <Loader />
@@ -55,7 +55,7 @@ const Proyectos = () => {
                             <h6>Inicio: {p.fechaInicio}</h6>
                             <p className="card-text">Lider: {p.lider.nombres} {p.lider.apellidos}</p>
                             <p className="card-text">Estado: {p.estado}</p>
-                            <Link to={`/proyectos/${p._id}`} className="btn btn-primary">
+                            <Link to={`/proyecto/${p._id}`} className="btn btn-primary">
                                 Ver mas...
                             </Link>
                         </div>
