@@ -8,7 +8,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import User_admin from "./components/Users_admin.jsx";
 import { AuthLayout } from '../src/layouts/AuthLayout'
 import { AuthContext } from "./context/authContext.js";
-import { useState } from "react";
+import { UserContext } from "./context/usercontext";
+import { useState, useEffect } from "react";
+import PrivateLayout from "./layouts/PrivateLayout.jsx";
 
 
 const httpLink = createHttpLink({
@@ -21,36 +23,39 @@ const client = new ApolloClient({
 })
 
 function App() {
-
+  const [userData, setUserData] = useState({});
   const [authToken, setAuthToken] = useState("")
 
-  const setToken =(token)=>{
+  const setToken = (token) => {
     setAuthToken(token)
-    if(token){
-      localStorage.setItem('token',JSON.stringify(token))
+    if (token) {
+      localStorage.setItem('token', JSON.stringify(token))
     }
   }
 
   return (
     <>
       <ApolloProvider client={client}>
-        <AuthContext.Provider value={{setToken}}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<User />} />
-              <Route path="/perfil" element={<User />} />
-              <Route path="/usuarios" element={<User_admin />} />
-
-              {/* <MenuLateral /> */}
-              {/* <User /> */}
-              {/* <Registro /> */}
-              {/* <Consult /> */}
-              <Route path='/auth' element={<AuthLayout />}>
-                <Route path="registro" element={<Registro />} />
-                <Route path='login' element={<Login />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
+        <AuthContext.Provider value={{ authToken, setAuthToken, setToken }}>
+          <UserContext.Provider value={{ userData, setUserData }}>
+            <BrowserRouter>
+              <Routes>
+                <Route path='/' element={<PrivateLayout />}>
+                  <Route path="" element={<User />} />
+                  <Route path="/perfil" element={<User />} />
+                  <Route path="/usuarios" element={<User_admin />} />
+                  {/* <MenuLateral /> */}
+                  {/* <User /> */}
+                  {/* <Registro /> */}
+                  {/* <Consult /> */}
+                </Route>
+                <Route path='/auth' element={<AuthLayout />}>
+                  <Route path="registro" element={<Registro />} />
+                  <Route path='login' element={<Login />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </UserContext.Provider>
         </AuthContext.Provider>
       </ApolloProvider>
     </>
