@@ -1,8 +1,29 @@
 .cont_propio {
-    margin-top: 76px;
+    margin-top: 8%;
     background-color: beige;
+    max-width: 50%;
+    justify-content: center;
+    border-radius: 5px;
 }
 
-.input-group-text{
-    height: 38px;
+/* .input_tam{
+    max-width: 50%;
+    text-align: center;
+} */
+
+.tamano_form{
+    justify-content: center;
+    max-width: 60%;
+    align-items: center; 
+    text-align: center;
+    margin: auto;
 }
+
+.botun{
+    margin-top: 2%;
+}
+
+/* .tamano_row{
+    width: 100%;
+}
+ */
