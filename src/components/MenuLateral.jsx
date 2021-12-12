@@ -6,7 +6,7 @@ import logoNightmare from '../images/icono_nightmare.png'
 import logoNightmare_Letra from '../images/letra_logo_nightmare.png'
 import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router-dom'
-/* import { Link, NavLink } from 'react-router-dom'; */
+import { useAuth } from '../context/authContext';
 
 export const MenuLateral = () => {
 
@@ -54,6 +54,13 @@ export const MenuLateral = () => {
 
 
     /* Finaliza ROUTES */
+
+    const {setToken} = useAuth()
+
+    const borrarToken=()=>{
+        setToken(null)
+        // navigate('/auth/login')
+    }
 
     return (
         <>
@@ -137,9 +144,9 @@ export const MenuLateral = () => {
                             <img className="im-propia" src={logoNightmare_Letra} alt="logoletra" />
                         </a>
                     </div>
-                    <div className="contenido-log border-top border-3 border-light propiaxd">
-                        <NavLink to="/" className="logout">
-                            <i className='bx bx-log-in alineado_xd'></i>
+                    <div className="contenido-log border-top border-3 border-light propiaxd" >
+                        <NavLink to="/auth/login" className="logout" >
+                            <i className='bx bx-log-in alineado_xd' onClick={()=>borrarToken()}></i>
                             <a>Cerrar Sesión</a>
                         </NavLink>
                     </div>

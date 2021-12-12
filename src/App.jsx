@@ -40,9 +40,12 @@ function App() {
   const [authToken, setAuthToken] = useState("")
 
   const setToken = (token) => {
-    setAuthToken(token)
     if (token) {
+      setAuthToken(token)
       localStorage.setItem('token', JSON.stringify(token))
+    }else{
+      setAuthToken(null)
+      localStorage.removeItem('token')
     }
   }
 
