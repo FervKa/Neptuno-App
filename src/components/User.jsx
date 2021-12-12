@@ -4,13 +4,13 @@ import '../css/usuarios.css'
 import { MenuLateral } from './MenuLateral'
 import { useQuery } from '@apollo/client';
 import { GET_USUARIO, GET_USUARIOS } from './graphql/usuarios/querys';
-
+import { useUser } from '../context/userContext'
 
 export const User = () => {
 
     const [email, setEmail] = useState("");
 
-
+    const {userData} = useUser()
 
     const { data, loading, error } = useQuery(GET_USUARIOS);
 
@@ -50,8 +50,8 @@ export const User = () => {
                         <div className="profile-card text-center border border-3 border-warning">
                             <img src="https://cdn.pixabay.com/photo/2017/06/26/13/03/webdesigner-2443766_960_720.jpg" className="img img-responsive" />
                             <div className="profile-content">
-                                <div className="profile-name">Stiven Suárez
-                                    <p>ferbohi@outlook.com</p>
+                                <div className="profile-name">{userData.nombres} {userData.apellidos}
+                                    <p>{userData.correo}</p>
                                 </div>
 
                                 <h6 className="border-top border-3 border-warning pt-3 npcolorbold">Experiencia Laboral</h6>
@@ -68,7 +68,7 @@ export const User = () => {
 
 
 
-                                <h6 className="border-top border-3 border-warning pt-3  npcolorbold">Estudiante</h6>
+                                <h6 className="border-top border-3 border-warning pt-3  npcolorbold">{userData.rol}</h6>
 
                                 <div className="contenedor" style={{ justifyContent: "center" }}>
                                     <a href="#" className="icono-social sombra redondo" id="facebook"><i className="fab fa-2x fa-facebook-f facebook" aria-hidden="true"></i></a>

@@ -303,14 +303,14 @@
 
 }
 
-.sidebar .profile-details .profile_name, .sidebar .profile-details .job {
+.sidebar .profile-details .profile_name, .sidebar .profile-details .job, .sidebar .profile-details .profile_surname, .sidebar .profile-details .profile_role  {
     color: #fff;
     font-size: 15px;
     font-weight: 500;
     white-space: nowrap;
 }
 
-.sidebar.close .profile-details i, .sidebar.close .profile-details .profile_name, .sidebar.close .profile-details .job {
+.sidebar.close .profile-details i, .sidebar.close .profile-details .profile_name, .sidebar.close .profile-details .job, .sidebar.close .profile-details .profile_surname, .sidebar.close .profile-details .profile_role {
     display: none;
 }
 

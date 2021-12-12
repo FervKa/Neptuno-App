@@ -7,8 +7,11 @@ import logoNightmare_Letra from '../images/letra_logo_nightmare.png'
 import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router-dom'
 import { useAuth } from '../context/authContext';
+import { useUser } from '../context/userContext'
 
 export const MenuLateral = () => {
+
+    const {userData} = useUser()
 
     /* Código para eliminar y agregar clase showMenu a las etiquetas arrow */
 
@@ -77,8 +80,10 @@ export const MenuLateral = () => {
                                 <img src={user} alt="user" className="user-logo" />
                             </div>
                             <div className="name-job">
-                                <div className="profile_name">Stiven Suárez M</div>
-                                <div className="job">Full Stack</div>
+                                <div className="profile_name">{userData.nombres}</div>
+                                <div className="profile_surname">{userData.apellidos}</div>
+                                <div className="profile_role">{userData.rol}</div>
+                                {/* <div className="job">Full Stack</div> */}
                             </div>
                         </div>
                     </li>

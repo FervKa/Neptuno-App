@@ -22,7 +22,7 @@ export const Login = () => {
         e.preventDefault();
         console.log("Formulario login ", formData);
         Ingreso({
-            variables:{formData}
+            variables:formData
         })
     }
 
