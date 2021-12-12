@@ -8,10 +8,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import User_admin from "./components/Users_admin.jsx";
 import { AuthLayout } from '../src/layouts/AuthLayout'
 import { AuthContext } from "./context/authContext.js";
-import { UserContext } from "./context/usercontext";
+import { UserContext } from "./context/userContext";
 import { useState, useEffect } from "react";
 import PrivateLayout from "./layouts/PrivateLayout.jsx";
 import { setContext } from '@apollo/client/link/context';
+import jwt_decode from 'jwt-decode'
 
 
 const httpLink = createHttpLink({
@@ -49,6 +50,23 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    
+    if(authToken){
+      const decodedToken = jwt_decode(authToken)
+      // console.log('token decoded: ',decodedToken);
+      setUserData({
+        _id: decodedToken._id,
+        nombres: decodedToken.nombres,
+        apellidos: decodedToken.apellidos,
+        identificacion: decodedToken.identificacion,
+        correo: decodedToken.correo,
+        rol: decodedToken.rol,
+        estado: decodedToken.estado
+      });
+      // console.log('Datos de usuario',userData);
+    }
+  },[authToken])
 
 
   return (

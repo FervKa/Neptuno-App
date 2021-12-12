@@ -6,8 +6,12 @@ import { REFRESCAR_TOKEN } from '../components/graphql/auth/mutations';
 import { MenuLateral } from '../components/MenuLateral';
 import { Navbar } from '../components/Navbar';
 import { useAuth } from '../context/authContext';
+import { useUser } from '../context/userContext';
+
 
 const PrivateLayout = () => {
+
+    const {userData} = useUser()
 
     const navigate = useNavigate();
 
@@ -34,6 +38,7 @@ const PrivateLayout = () => {
     }, [mutationData, loadingAuth])
 
     useEffect(() => {
+        //useEffect meramente informativo
         console.log("token de contexto Actual ", authToken);
         console.log("token de localStorage Actual ", localStorage.getItem('token'));
     },[authToken])
