@@ -47,7 +47,7 @@ const PrivateLayout = () => {
 
 
     return (
-        <div>
+        <div>            
             {/* {<Navbar/>} */}
             <Outlet />
             {<MenuLateral/>}
