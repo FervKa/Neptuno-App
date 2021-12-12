@@ -15,16 +15,19 @@ export const Proyecto = () => {
     });
 
     //const [objetivosProyecto, setObjetivosProyecto] = useState([])
-    let objetivosProyecto = []
+    /* let objetivosProyecto = []
+    let avancesProyecto = []
     
     const cargarProyecto = () => { 
         loading ? console.log("prueba"): objetivosProyecto= data.leerProyecto.objetivos
-        console.log(objetivosProyecto);
+        loading ? console.log("prueba"): avancesProyecto= data.leerProyecto.avances
+        console.log(objetivosProyecto.length);
+        console.log(avancesProyecto);
     }
 
     useEffect(() => {
         cargarProyecto()
-    }, [data])
+    }, [data]) */
 
   return (
     <>    
@@ -40,13 +43,12 @@ export const Proyecto = () => {
                         {<div className="col">
                             <div className="card">
                                 <div className="card-body">
-
-                                    <h4 className="card-title">
-                                        {data.leerProyecto.nombre}
-                                        </h4>
-                                        <h6>Inicio: {data.leerProyecto.fechaInicio}</h6>
-                                        <p className="card-text">Lider: {data.leerProyecto.lider.nombres} {data.leerProyecto.lider.apellidos}</p>
-                                        <p className="card-text">Estado: {data.leerProyecto.estado}</p>
+                                    <h4 className="card-title">{data.leerProyecto.nombre}</h4>
+                                    <h6>Inicio: {data.leerProyecto.fechaInicio}</h6>
+                                    <p className="card-text">Lider: {data.leerProyecto.lider.nombres} {data.leerProyecto.lider.apellidos}</p>
+                                    <p className="card-text">Estado: {data.leerProyecto.estado}</p>
+                                    <p className="card-text">Objetivos: {data.leerProyecto.objetivos.length}</p>
+                                    <p className="card-text">Avances: {data.leerProyecto.avances.length}</p>
                                 </div>
                                 <div className="card-footer">
                                     <small className="text-muted">${data.leerProyecto.presupuesto}</small>
@@ -54,53 +56,45 @@ export const Proyecto = () => {
                             </div>
                         </div>}
                     </div>
-
                     <br />
 
-                    <div className="row">
+                    {/* <h4 className="card-title">Objetivos</h4> */}
 
+                    <div className="row">
                         <div className="col">
-                        
-                            {
-                                objetivosProyecto.map((o) => (
+                            { data && data.leerProyecto.objetivos.map((o) => (
                                 <div className="col" key={o._id}>
                                     <div className="card">
                                     <div className="card-body">
+                                        <h6>OBJETIVO {o.tipo} </h6>
+                                        <p className="card-text">{o.descripcion}</p>
+                                        {/* <p className="card-text">Estado: {p.estado}</p> */}
+                                    </div>
 
-                                    <h4 className="card-title">
-                                        Objetivos
-                                        tipo: {o.tipo}
-                                        </h4>
-                                        {/* <h6>Inicio: {p.fechaInicio}</h6>
-                                        <p className="card-text">Lider: {p.lider.nombres} {p.lider.apellidos}</p>
-                                        <p className="card-text">Estado: {p.estado}</p> */}
-                                    </div>
-                                    <div className="card-footer">
-                                       {/*  <small className="text-muted">${p.presupuesto}</small> */}
-                                    </div>
                                     </div>
                                 </div>
                                 )) }
                         </div>
 
                         <div className="col">
-                        <div className="card">
-                                <div className="card-body">
-
-                                    <h4 className="card-title">
-                                        Avances
-                                        </h4>
-                                        <h6>tipo: {data.leerProyecto.avances.fechaAvance}</h6>
-                                       {/*  <p className="card-text">Descripcion: {data.leerProyecto.avance.descripcion} </p> */}
-                                        
+                            { data && data.leerProyecto.avances.map((a) => (
+                                <div className="col" key={a._id}>
+                                    <div className="card">
+                                    <div className="card-body">
+                                        <h6>Avance </h6>
+                                        <p className="card-text">{a.descripcion}</p>
+                                        {/* <p className="card-text">Estado: {p.estado}</p> */}
+                                    </div>
+                                    
+                                    </div>
                                 </div>
-                                <div className="card-footer">
-                                    {/* <small className="text-muted">{data.leerProyecto.avance._id}</small> */}
-                                </div>
-                            </div>
+                                )) }
                         </div>
-                    </div>
 
+                        
+                    </div>
+                    
+                    <br />
                     <Link to="/proyectos" className="btn btn-primary" >regresar</Link>
                 </div>
           </>}

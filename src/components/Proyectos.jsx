@@ -13,13 +13,14 @@ const Proyectos = () => {
 
     const { data, loading, error } = useQuery(GET_PROYECTOS);
   
-    /* const cargarProyectos = () => {
-        console.log(data)
-    } */
+
+    const cargarProyectos = () => {
+        //console.log(data)
+    }
   
-    /* useEffect(() => {
+    useEffect(() => {
         cargarProyectos()
-    }, [data]) */
+    }, [data])
 
     
     useEffect(() => {
@@ -55,6 +56,8 @@ const Proyectos = () => {
                             <h6>Inicio: {p.fechaInicio}</h6>
                             <p className="card-text">Lider: {p.lider.nombres} {p.lider.apellidos}</p>
                             <p className="card-text">Estado: {p.estado}</p>
+                            {/* <p className="card-text">Objetivos: {p.objetivos.length}</p>
+                            <p className="card-text">Avances: {p.avances.length}</p> */}
                             <Link to={`/proyecto/${p._id}`} className="btn btn-primary">
                                 Ver mas...
                             </Link>
