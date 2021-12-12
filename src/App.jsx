@@ -11,14 +11,27 @@ import { AuthContext } from "./context/authContext.js";
 import { UserContext } from "./context/usercontext";
 import { useState, useEffect } from "react";
 import PrivateLayout from "./layouts/PrivateLayout.jsx";
+import { setContext } from '@apollo/client/link/context';
 
 
 const httpLink = createHttpLink({
   uri: "https://neptuno-app.herokuapp.com/graphql"
 })
 
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = JSON.parse(localStorage.getItem('token'));
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `${token}` : '',
+    },
+  };
+});
+
 const client = new ApolloClient({
-  uri: "https://neptuno-app.herokuapp.com/graphql",
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 })
 
