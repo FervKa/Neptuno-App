@@ -1,9 +1,8 @@
-import { MenuLateral } from "./components/MenuLateral.jsx"
 import { User } from './components/User.jsx';
 import '../src/css/index.css';
 import { Login } from './components/Login';
 import { Registro } from "./components/Registro.jsx";
-import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from "@apollo/client";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import User_admin from "./components/Users_admin.jsx";
 import { AuthLayout } from '../src/layouts/AuthLayout'
@@ -11,6 +10,7 @@ import { AuthContext } from "./context/authContext.js";
 import { useState } from "react";
 import Editar_usuario from "./components/Editar_usuario.jsx";
 import Proyectos from './components/Proyectos';
+import { Proyecto } from './components/Proyecto.jsx';
 
 
 /* const httpLink = createHttpLink({
@@ -44,6 +44,7 @@ function App() {
               <Route path="/usuarios" element={<User_admin />} />
               <Route path="/usuarios/editar/:_id" element={<Editar_usuario />} />
               <Route path="/proyectos" element={<Proyectos />} />
+              <Route path="/proyectos/:_id" element={<Proyecto />} />
               {/* <MenuLateral /> */}
               {/* <User /> */}
               {/* <Registro /> */}
