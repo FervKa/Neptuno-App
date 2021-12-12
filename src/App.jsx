@@ -10,11 +10,11 @@ import User_admin from "./components/Users_admin.jsx";
 import { AuthLayout } from '../src/layouts/AuthLayout'
 import { AuthContext } from "./context/authContext.js";
 import { UserContext } from './context/userContext'
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import Editar_usuario from "./components/Editar_usuario.jsx";
 import Proyectos from './components/Proyectos';
 import PrivateLayout from "./layouts/PrivateLayout.jsx";
-
+import jwt_decode from 'jwt-decode';
 
 const httpLink = createHttpLink({
   uri: 'https://neptuno-app.herokuapp.com/graphql',
@@ -51,6 +51,21 @@ function App() {
       localStorage.setItem('token', JSON.stringify(token))
     }
   }
+
+  useEffect(() => {
+    if (authToken) {
+      const decoded = jwt_decode(authToken);
+      setUserData({
+        _id: decoded._id,
+        nombre: decoded.nombre,
+        apellido: decoded.apellido,
+        identificacion: decoded.identificacion,
+        correo: decoded.correo,
+        rol: decoded.rol,
+        estado: decoded.estado,
+      });
+    }
+  }, [authToken]);
 
   return (
     <>

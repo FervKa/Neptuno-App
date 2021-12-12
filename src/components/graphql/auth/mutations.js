@@ -2,11 +2,11 @@ import { gql } from "@apollo/client";
 
 const LOGIN = gql`
   mutation Ingreso($correo: String!, $password: String!) {
-    Ingreso(correo: $correo, password: $password) {
-      error
-      token
-    }
+  Ingreso(correo: $correo, password: $password) {
+    error
+    token
   }
+}
 `;
 
 const REGISTRO = gql`
@@ -33,14 +33,12 @@ const REGISTRO = gql`
 `;
 
 const REFRESCAR_TOKEN = gql`
-
-mutation RefrescarToken {
-  refrescarToken {
-    error
-    token
+  mutation RefrescarToken {
+    refrescarToken {
+      error
+      token
+    }
   }
-}
+`;
 
-`
-
-export { LOGIN, REGISTRO, REFRESCAR_TOKEN};
+export { LOGIN, REGISTRO, REFRESCAR_TOKEN };
