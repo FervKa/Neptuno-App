@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Loader } from './Loader';
 import { useMutation, useQuery } from '@apollo/client';
-import { GET_PROYECTO } from './graphql/proyectos/querys';
+import { GET_INCRIPCIONES, GET_PROYECTO } from './graphql/proyectos/querys';
 import { CREAR_AVANCE, CREAR_OBJETIVO, EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE } from './graphql/proyectos/mutations';
 import { Navbar } from './Navbar';
 import useFormData from '../hooks/useFormData';
@@ -20,6 +20,12 @@ export const Proyecto = () => {
     const { data: queryData, error: queryError, loading: queryLoading } = useQuery(GET_PROYECTO, {
         variables: { _id },
     });
+
+    const { data: queryDataI, error: queryErrorI, loading: queryLoadingI } = useQuery(GET_INCRIPCIONES, {
+        variables: { proyecto: _id },
+    });
+
+
 
     const [editarProyectoEstado, { data: mutationData, error: mutationEror, loading: mutationLoading }] = useMutation(EDITAR_PROYECTO_ESTADO);
     const [editarProyectoFase, { data: mutationDataF, error: mutationErorF, loading: mutationLoadingF }] = useMutation(EDITAR_PROYECTO_FASE);
@@ -111,13 +117,17 @@ export const Proyecto = () => {
     useEffect(() => {
         queryLoading ? <Loader /> : document.getElementById("fase-proy").value = queryData.leerProyecto.fase
     }, [queryData])
+    
+    useEffect(() => {
+        queryLoadingI ? <Loader /> : console.log(queryDataI);
+    }, [queryDataI])
 
     return (
         <>
             {
                 queryLoading ?
-                    <Loader />
-                    :
+                    <Loader /> 
+                    : 
                     <>
                         <div className="container" style={{ marginTop: "100px" }}>
 
@@ -127,7 +137,7 @@ export const Proyecto = () => {
 
 
                             <div className="row">
-                                {<div className="col">
+                                {<div className="col-6">
                                     <div className="card">
                                         <div className="card-body">
                                             <h4 className="card-title text-center">{queryData.leerProyecto.nombre}</h4>
@@ -137,10 +147,10 @@ export const Proyecto = () => {
                                             <p className="card-text">Avances: {queryData.leerProyecto.avances.length}</p>
                                             <p className="card-text">Estado: {queryData.leerProyecto.estado} <button className='btn btn-warning  isI btn-sm  ms-3' onClick={() => setCuentaEstado(cuentaEstado + 1)}> Cambiar Estado</button></p>
                                             <div className="row">
-                                                <div className="col-2">
+                                                <div className="col-4">
                                                     <p className="card-text"> Fase: </p>
                                                 </div>
-                                                <div className="col-3">
+                                                <div className="col-4">
                                                     <select style={{ maxWidth: "180px" }} className="form-select" aria-label="select-fase" required='true' name="fase" id='fase-proy'>
                                                         <option> Seleccione </option>
                                                         <option value="INICIADO">Iniciado</option>
@@ -149,7 +159,7 @@ export const Proyecto = () => {
                                                         <option value="POR_DEFINIR">Por Definir</option>
                                                     </select>
                                                 </div>
-                                                <div className="col-3">
+                                                <div className="col-4">
                                                     <button className='btn btn-warning  sI btn-sm ms-3' onClick={() => setCuentaFase(cuentaFase + 1)}>Cambiar fase </button>
                                                 </div>
                                             </div>
@@ -160,37 +170,32 @@ export const Proyecto = () => {
                                         </div>
                                     </div>
                                 </div>}
-                                <div className="col">
+                                <div className="col-6">
                                     <div className="card">
                                         <div className="container">
-                                            <h4 class="card-title mt-3 text-center">Incripciones (aun sin datos)</h4>
+                                            <h4 class="card-title mt-3 text-center">Incripciones</h4>
                                             <table class="table table-hover table-striped">
                                                 <thead>
                                                     <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">First</th>
-                                                    <th scope="col">Last</th>
-                                                    <th scope="col">Handle</th>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Nombres</th>
+                                                        <th scope="col">Apellidos</th>
+                                                        <th scope="col">Correo</th>
+                                                        <th scope="col">Estado Inscipción</th>
+                                                        <th scope="col">Fecha de solicitud</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                    </tr>
-                                                    <tr>
-                                                    <th scope="row">3</th>
-                                                    <td colspan="2">Larry the Bird</td>
-                                                    <td>@twitter</td>
-                                                    </tr>
+                                                    {queryDataI && queryDataI.leerInscripciones.map((i) => (
+                                                        <tr key={i._id}>
+                                                            <td></td>
+                                                            <td>{i.estudiante.nombres}</td>
+                                                            <td>{i.estudiante.apellidos}</td>
+                                                            <td>{i.estudiante.correo}</td>
+                                                            <td>{i.estado}</td>
+                                                            <td>{i.fechaIngreso}</td>
+                                                        </tr>
+                                                    ))}
                                                 </tbody>
                                             </table>
                                         </div>
