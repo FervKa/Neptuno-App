@@ -13,7 +13,7 @@ export const MenuLateral = () => {
 
     const {userData} = useUser()
 
-    const renderizado;
+    /* const renderizado; */
     if(userData.rol === "ADMINISTRADOR"){
         console.log("Administ");
     }
