@@ -3,19 +3,34 @@ import { MenuLateral } from './MenuLateral';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Loader } from './Loader.jsx';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { GET_PROYECTOS } from './graphql/proyectos/querys';
-/* import { ToastContainer } from 'react-toastify'; */
-/* import 'react-toastify/dist/ReactToas' */
-/* import { toast } from 'react-toastify'; */
+import { CREAR_INSCRIPCION } from './graphql/proyectos/mutations';
+import { useUser } from '../context/userContext';
 
 const Proyectos = () => {
 
     const { data, loading, error } = useQuery(GET_PROYECTOS);
 
+    const [crearInscripcion, { data: mutationDataI, error: mutationErorI, loading: mutationLoadingI }] = useMutation(CREAR_INSCRIPCION);
+
+    const [idProyecto, setIdProyecto]=useState()
+
+    const { userData } = useUser()
 
     const cargarProyectos = () => {
         console.log('Lista de proyectos',data)
+    }
+
+    const generarInscripcion = () =>{
+        //console.log("proyecto: "+ idProyecto);
+        //console.log("estudiante: " + userData._id)
+
+        crearInscripcion({
+            variables: { proyecto: idProyecto, estudiante: userData._id }
+        }) 
+        console.log("Inscripcion correcto: ", mutationDataI)
+
     }
   
     useEffect(() => {
@@ -70,6 +85,12 @@ const Proyectos = () => {
                             <Link to={`/proyecto/${p._id}`} className="btn btn-warning  isI me-2 mb-2">
                                 Ver mas...
                             </Link>
+                            <button className="btn btn-warning  isI me-2 mb-2" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#modalInsc"
+                                    onClick={()=>setIdProyecto(p._id)}> 
+                                Inscribirme
+                            </button>
                         </div>
                         <div className="card-footer d-flex justify-content-end">
                             <small className="text-muted">Presupuesto: ${p.presupuesto}</small>
@@ -86,6 +107,27 @@ const Proyectos = () => {
                 
                 
           </div>}
+
+        {/* Modal solicitar inscripción */}
+
+        <div className="modal fade" id="modalInsc" tabindex="-1" aria-labelledby="modalInscLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="modalInscLabel">Inscripción</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                        Esta seguro de postular la inscripción a este proyecto
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button onClick={generarInscripcion} type="button" className="btn btn-primary" data-bs-dismiss="modal">Inscribirme</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
 
         </>
     )

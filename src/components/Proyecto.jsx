@@ -346,12 +346,14 @@ export const Proyecto = () => {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <button onClick={cambiarEstadoIncripcion} type="button" className="btn btn-primary" data-bs-dismiss="modal">Actualizar estado</button>
                             </div>
                             </div>
                         </div>
                     </div>
+
+                    
 
         </>
     )

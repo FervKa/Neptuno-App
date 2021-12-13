@@ -82,9 +82,19 @@ mutation EditarInscripcion($_id: ID!, $estado: Enum_EstadoInscripcion) {
  
 `;
 
+const CREAR_INSCRIPCION = gql`
+
+mutation CrearInscripcion($proyecto: ID!, $estudiante: ID!) {
+  crearInscripcion(proyecto: $proyecto, estudiante: $estudiante) {
+    _id
+  }
+}
+ 
+`;
 
 
 
 
 
-export {EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, CREAR_PROYECTO, CREAR_OBJETIVO, CREAR_AVANCE, EDITAR_INSCRIPCION};
+
+export {EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, CREAR_PROYECTO, CREAR_OBJETIVO, CREAR_AVANCE, EDITAR_INSCRIPCION, CREAR_INSCRIPCION};
