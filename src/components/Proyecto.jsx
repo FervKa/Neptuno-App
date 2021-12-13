@@ -121,7 +121,7 @@ export const Proyecto = () => {
                     <>
                         <div className="container" style={{ marginTop: "100px" }}>
 
-                            <Link to={"/proyectos"} className="btn btn-primary  mb-3" >regresar</Link>
+                            <Link to={"/proyectos"} className="btn btn-warning  isI  mb-3" >regresar</Link>
 
                             <Navbar titulo={queryData.leerProyecto.nombre} />
                             <div className="row">
@@ -133,7 +133,7 @@ export const Proyecto = () => {
                                             <p className="card-text">Lider: {queryData.leerProyecto.lider.nombres} {queryData.leerProyecto.lider.apellidos}</p>
                                             <p className="card-text">Objetivos: {queryData.leerProyecto.objetivos.length}</p>
                                             <p className="card-text">Avances: {queryData.leerProyecto.avances.length}</p>
-                                            <p className="card-text">Estado: {queryData.leerProyecto.estado} <button className='btn btn-sm btn-primary ms-3' onClick={() => setCuentaEstado(cuentaEstado + 1)}> Cambiar Estado</button></p>
+                                            <p className="card-text">Estado: {queryData.leerProyecto.estado} <button className='btn btn-warning  isI btn-sm  ms-3' onClick={() => setCuentaEstado(cuentaEstado + 1)}> Cambiar Estado</button></p>
                                             <div className="row">
                                                 <div className="col-2">
                                                     <p className="card-text"> Fase: </p>
@@ -148,7 +148,7 @@ export const Proyecto = () => {
                                                     </select>
                                                 </div>
                                                 <div className="col-3">
-                                                    <button className='btn btn-sm btn-primary ms-3' onClick={() => setCuentaFase(cuentaFase + 1)}>Cambiar fase </button>
+                                                    <button className='btn btn-warning  sI btn-sm ms-3' onClick={() => setCuentaFase(cuentaFase + 1)}>Cambiar fase </button>
                                                 </div>
                                             </div>
 
@@ -197,7 +197,7 @@ export const Proyecto = () => {
                                             </form>
                                         </div>
                                         <div className="card-footer d-flex justify-content-end">
-                                            <button onClick={submitForm} className="btn btn-primary"> Agregar Objetivo</button>
+                                            <button onClick={submitForm} className="btn btn-warning isI"> Agregar Objetivo</button>
                                         </div>
                                     </div>
 
@@ -232,7 +232,7 @@ export const Proyecto = () => {
                                             </form>
                                         </div>
                                         <div className="card-footer d-flex justify-content-end">
-                                            <button onClick={submitFormA} className="btn btn-primary"> Agregar Avance</button>
+                                            <button onClick={submitFormA} className="btn btn-warning isI"> Agregar Avance</button>
                                         </div>
                                     </div>
 
@@ -244,7 +244,7 @@ export const Proyecto = () => {
 
                             <br />
 
-                            <Link to="/proyectos" className="btn btn-primary d-flex justify-content-center mb-3" >regresar</Link>
+                            <Link to="/proyectos" className="btn btn-warning isI d-flex justify-content-center mb-3" >regresar</Link>
 
                         </div>
                     </>}

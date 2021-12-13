@@ -44,7 +44,7 @@ const Proyectos = () => {
                         <h1 >Lista de Proyectos</h1>
                     </div>
                     <div className="col">
-                        <Link to="/proyectoNuevo" className="btn btn-primary mb-3 d-flex ml-auto"> nuevo proyecto</Link>
+                        <Link to="/proyectoNuevo" className="btn btn-warning  isI mb-3 d-flex ml-auto"> nuevo proyecto</Link>
                     </div>
                 </div>
                  
@@ -67,7 +67,7 @@ const Proyectos = () => {
                             <p className="card-text">Fase: {p.fase}</p>
                             {/* <p className="card-text">Objetivos: {p.objetivos.length}</p>
                             <p className="card-text">Avances: {p.avances.length}</p> */}
-                            <Link to={`/proyecto/${p._id}`} className="btn btn-primary me-2 mb-2">
+                            <Link to={`/proyecto/${p._id}`} className="btn btn-warning  isI me-2 mb-2">
                                 Ver mas...
                             </Link>
                         </div>
