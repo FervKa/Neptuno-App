@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Navbar } from './Navbar';
 import '../css/usuarios.css'
-import { MenuLateral } from './MenuLateral'
 import { useMutation, useQuery } from '@apollo/client';
 import { useUser } from '../context/userContext'
 import { Loader } from './Loader';
@@ -247,11 +246,8 @@ export const User = () => {
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-                {/* <MenuLateral /> */}
             </div>
 
         </>
