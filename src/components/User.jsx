@@ -2,40 +2,63 @@ import React, { useState, useEffect } from 'react'
 import { Navbar } from './Navbar';
 import '../css/usuarios.css'
 import { MenuLateral } from './MenuLateral'
-import { useQuery } from '@apollo/client';
-import { GET_USUARIO, GET_USUARIOS } from './graphql/usuarios/querys';
+import { useMutation, useQuery } from '@apollo/client';
 import { useUser } from '../context/userContext'
+import { Loader } from './Loader';
+import { GET_PERFIL, EDITAR_PERFIL } from './graphql/perfil/querys';
+import useFormData from '../hooks/useFormData';
 
 export const User = () => {
 
-    const [email, setEmail] = useState("");
 
-    const {userData} = useUser()
+    const { userData } = useUser()
+    const { form, formData, updateFormData } = useFormData(null);
 
-    const { data, loading, error } = useQuery(GET_USUARIOS);
+    const { data: queryData, loading: queryLoading, error: queryError } = useQuery(GET_PERFIL, {
+        variables: {
+            correo: userData.correo
+        }
+    });
+    const [editarPerfil, { data: mutacionData, loading: mutacionLoading, error: mutacionError }] = useMutation(EDITAR_PERFIL)
+
+
+
+
+
+    const submitForm = (e) => {
+        e.preventDefault();
+        console.log('fd', formData);
+
+        editarPerfil({
+            variables: {
+                nombres: formData.nombres,
+                apellidos: formData.apellidos,
+                correo: formData.correo
+            }
+        })
+
+
+    }
 
 
     useEffect(() => {
-        console.log("Recibidos con éxito:", data)
-    }, [data])
+        console.log('db', queryData);
+    }, [queryData])
+
+    /*     useEffect(() => {
+            console.log("Recibidos con éxito:", userData)
+        }, [userData]) */
+
+    useEffect(() => {
+        document.getElementById('rol_select').value = userData.rol
+    })
 
 
 
-    const validacion = () => {
-        /* if(!email.trim()){
-            let inputValido = document.querySelectorAll('.isI');
-            inputValido.forEach(function(element){
-                if(!element.value.trim()){
-                    inputValido.classList.toggle("is-invalid");
-                }
-            });
-            console.log(inputValido);
-            return;
-        } */
 
-        console.log("Pasó esta mondá acá");
-        setEmail("");
-    };
+    /*  if (queryLoading) return <Loader />; */
+
+
 
     return (
         <>
@@ -103,91 +126,104 @@ export const User = () => {
                                 <div className="container pt-1">
                                     <div className="row">
                                         <div className="col border-end border-3 border-warning">
-                                            <form>
+                                            <form
+                                                onSubmit={submitForm}
+                                                onChange={updateFormData}
+                                                ref={form}>
                                                 <div className="mb-3">
                                                     <label htmlFor="nombre" className="form-label  npcolor">Nombre:*</label>
-                                                    <input onChange={e => (setEmail(e.target.value))} type="text" className="form-control isI" id="nombre" aria-describedby="nameHelp" />
+                                                    {/* <input defaultValue={userData.nombres} name="nombres" type="text" className="form-control isI" id="nombre" aria-describedby="nameHelp" /> */}
+                                                    <input
+                                                        required
+                                                        type='text'
+                                                        name="nombres"
+                                                        className='form-control'
+                                                        defaultValue={userData.nombres}
+                                                    ></input>
                                                     {/* <div id="emailHelp" className="form-text">Todos los campos con (*) son obligatorios</div> */}
                                                 </div>
                                                 <div className="mb-3">
                                                     <label htmlFor="apellido" className="form-label  npcolor">Apellido</label>
-                                                    <input onChange={e => (setEmail(e.target.value))} type="lastname" className="form-control isI" id="apellido" aria-describedby="nameHelp" required />
+                                                    <input defaultValue={userData.apellidos} name="apellidos" type="lastname" className="form-control isI" id="apellido" aria-describedby="nameHelp" required />
                                                     {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
                                                 </div>
                                                 <div className="mb-3">
                                                     <label htmlFor="rol" className="form-label  npcolor">Rol</label>
-                                                    <select className="form-select" aria-label="Default select example">
+                                                    <select disabled id="rol_select" className="form-select" aria-label="Default select example">
                                                         <option defaultValue>Seleccione</option>
-                                                        <option value="1">Estudiante</option>
-                                                        <option value="2">Lider</option>
-                                                        <option value="3">Administrador</option>
+                                                        <option value="ESTUDIANTE">Estudiante</option>
+                                                        <option value="LIDER">Lider</option>
+                                                        <option value="ADMINISTRADOR">Administrador</option>
                                                     </select>
                                                 </div>
                                                 <div className="mb-3">
                                                     <label htmlFor="Email" className="form-label  npcolor">Email</label>
-                                                    <input type="email" className="form-control" id="Email" aria-describedby="emailHelp" />
+                                                    <input defaultValue={userData.correo} name="correo" id="correo_input" type="text" className="form-control" aria-describedby="emailHelp" />
                                                 </div>
 
                                             </form>
                                         </div>
                                         <div className="col">
-                                            <form>
-                                                <div className="mb-3">
-                                                    <label htmlFor="facebook2" className="form-label  npcolor">Facebook </label>
-                                                    <div className="container p-0">
-                                                        <div className="row">
-                                                            <div className="col-9 ">
-                                                                <input type="text" className="form-control" id="facebook2" aria-describedby="emailHelp" />
-                                                            </div>
-                                                            <div className="col-3">
-                                                                <i className="fab fa-2x fa-facebook-f facebooksh" aria-hidden="true"></i>
-                                                            </div>
+                                            {/* <form
+                                                onSubmit={submitForm}
+                                                onChange={updateFormData}
+                                                ref={form}> */}
+                                            <div className="mb-3">
+                                                <label htmlFor="facebook2" className="form-label  npcolor">Facebook </label>
+                                                <div className="container p-0">
+                                                    <div className="row">
+                                                        <div className="col-9 ">
+                                                            <input type="text" className="form-control" id="facebook2" aria-describedby="emailHelp" />
+                                                        </div>
+                                                        <div className="col-3">
+                                                            <i className="fab fa-2x fa-facebook-f facebooksh" aria-hidden="true"></i>
                                                         </div>
                                                     </div>
-                                                    {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
+                                                </div>
+                                                {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
 
-                                                </div>
-                                                <div className="mb-3">
-                                                    <label htmlFor="exalinkedin2" className="form-label  npcolor">Linkedin</label>
-                                                    <div className="container p-0">
-                                                        <div className="row">
-                                                            <div className="col-9 ">
-                                                                <input type="text" className="form-control" id="linkedin2" />
-                                                            </div>
-                                                            <div className="col-3">
-                                                                <i className="fab fa-2x fa-linkedin-in linkedinsh" aria-hidden="true"></i>
-                                                            </div>
+                                            </div>
+                                            <div className="mb-3">
+                                                <label htmlFor="exalinkedin2" className="form-label  npcolor">Linkedin</label>
+                                                <div className="container p-0">
+                                                    <div className="row">
+                                                        <div className="col-9 ">
+                                                            <input type="text" className="form-control" id="linkedin2" />
+                                                        </div>
+                                                        <div className="col-3">
+                                                            <i className="fab fa-2x fa-linkedin-in linkedinsh" aria-hidden="true"></i>
                                                         </div>
                                                     </div>
+                                                </div>
 
-                                                </div>
-                                                <div className="mb-3">
-                                                    <label htmlFor="twitter2" className="form-label  npcolor">Twitter</label>
-                                                    <div className="container p-0">
-                                                        <div className="row">
-                                                            <div className="col-9 ">
-                                                                <input type="text" className="form-control" id="twitter2" />
-                                                            </div>
-                                                            <div className="col-3">
-                                                                <i className="fab fa-2x fa-twitter twittersh" aria-hidden="true"></i>
-                                                            </div>
+                                            </div>
+                                            <div className="mb-3">
+                                                <label htmlFor="twitter2" className="form-label  npcolor">Twitter</label>
+                                                <div className="container p-0">
+                                                    <div className="row">
+                                                        <div className="col-9 ">
+                                                            <input type="text" className="form-control" id="twitter2" />
+                                                        </div>
+                                                        <div className="col-3">
+                                                            <i className="fab fa-2x fa-twitter twittersh" aria-hidden="true"></i>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="mb-3">
-                                                    <label htmlFor="instagram2" className="form-label  npcolor">Instagram</label>
-                                                    <div className="container p-0">
-                                                        <div className="row">
-                                                            <div className="col-9 ">
-                                                                <input type="text" className="form-control" id="instagram2" />
-                                                            </div>
-                                                            <div className="col-3">
-                                                                <i className="fab fa-2x fa-instagram instagramsh" aria-hidden="true"></i>
-                                                            </div>
+                                            </div>
+                                            <div className="mb-3">
+                                                <label htmlFor="instagram2" className="form-label  npcolor">Instagram</label>
+                                                <div className="container p-0">
+                                                    <div className="row">
+                                                        <div className="col-9 ">
+                                                            <input type="text" className="form-control" id="instagram2" />
+                                                        </div>
+                                                        <div className="col-3">
+                                                            <i className="fab fa-2x fa-instagram instagramsh" aria-hidden="true"></i>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
+                                            {/* </form> */}
                                         </div>
                                     </div>
                                 </div>
@@ -198,15 +234,15 @@ export const User = () => {
                                     <div className="profile-name mt-3 text-center border-top border-3 border-warning pt-3 pb-3  npcolorbold">
                                         Experiencia Laboral
                                     </div>
-                                    <form>
-                                        <div className="mb-3">
-                                            {/* <label htmlFor="exampleFormControlTextarea1" className="form-label  npcolor">Experiencia Laboral</label> */}
-                                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                        </div>
+                                    {/* <form> */}
+                                    <div className="mb-3">
+                                        {/* <label htmlFor="exampleFormControlTextarea1" className="form-label  npcolor">Experiencia Laboral</label> */}
+                                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
 
-                                    </form>
+                                    {/* </form> */}
                                     <div className="d-grid gap-2 col-6 mx-auto pb-3">
-                                        <button onClick={validacion} className="btn btn-warning  isI" type="button">Actualizar Perfil</button>
+                                        <button onClick={submitForm} className="btn btn-warning  isI" type="button">Actualizar Perfil</button>
                                     </div>
                                 </div>
                             </div>
