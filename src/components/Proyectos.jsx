@@ -26,6 +26,9 @@ const Proyectos = () => {
         crearInscripcion({
             variables: { proyecto: idProyecto, estudiante: userData._id }
         }) 
+        setTimeout(() => {
+            window.location.reload()
+        }, 300);
         //console.log("Inscripcion correcto: ", mutationDataI)
     }
   
