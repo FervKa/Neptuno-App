@@ -13,6 +13,11 @@ export const MenuLateral = () => {
 
     const {userData} = useUser()
 
+    const renderizado;
+    if(userData.rol === "ADMINISTRADOR"){
+        console.log("Administ");
+    }
+
     /* Código para eliminar y agregar clase showMenu a las etiquetas arrow */
 
     const [arrow, setArrow] = useState([]);
