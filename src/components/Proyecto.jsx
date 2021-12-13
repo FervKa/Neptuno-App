@@ -4,7 +4,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Loader } from './Loader';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_INCRIPCIONES, GET_PROYECTO } from './graphql/proyectos/querys';
-import { CREAR_AVANCE, CREAR_OBJETIVO, EDITAR_INSCRIPCION, EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE } from './graphql/proyectos/mutations';
+import { CREAR_AVANCE, CREAR_OBJETIVO, EDITAR_INSCRIPCION, EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, ELIMINAR_INSCRIPCION } from './graphql/proyectos/mutations';
 import { Navbar } from './Navbar';
 import useFormData from '../hooks/useFormData';
 import { useUser } from '../context/userContext';
@@ -32,6 +32,7 @@ export const Proyecto = () => {
     const [crearObjetivo, { data: mutationDataO, error: mutationErorO, loading: mutationLoadingO }] = useMutation(CREAR_OBJETIVO);
     const [crearAvance, { data: mutationDataA, error: mutationErorA, loading: mutationLoadingA }] = useMutation(CREAR_AVANCE);
     const [editarInscripcion, { data: mutationDataI, error: mutationErorI, loading: mutationLoadingI }] = useMutation(EDITAR_INSCRIPCION);
+    const [eliminarInscripcionP, { data: mutationDataEI, error: mutationErorEI, loading: mutationLoadingEI }] = useMutation(ELIMINAR_INSCRIPCION);
 
     const [cuentaEstado, setCuentaEstado] = useState(0)
     const [cuentaFase, setCuentaFase] = useState(0)
@@ -109,9 +110,21 @@ export const Proyecto = () => {
         editarInscripcion({
             variables: { _id: idInscripcion, estado: estadoInscripcion }
         }) 
-        console.log("Cambio de estado correcto: ", mutationDataI)
-        
+        //console.log("Cambio de estado correcto: ", mutationDataI)
+    }
 
+    const eliminarIncripcion = () => {
+        console.log("prueba eliminar Inscripcion: " + idInscripcion);
+        console.log("proyecto: "+ _id);
+
+        eliminarInscripcionP({
+            variables: { proyecto: _id, id: idInscripcion  }
+        }) 
+        
+        setTimeout(() => {
+            window.location.reload()
+        }, 300);
+        
     }
 
     useEffect(() => {
@@ -167,7 +180,7 @@ export const Proyecto = () => {
                                                     <p className="card-text"> Fase: </p>
                                                 </div>
                                                 <div className="col-4">
-                                                    <select style={{ maxWidth: "180px" }} className="form-select" aria-label="select-fase" required='true' name="fase" id='fase-proy'>
+                                                    <select style={{ maxWidth: "180px" }} className="form-select" aria-label="select-fase" required="true" name="fase" id='fase-proy'>
                                                         <option> Seleccione </option>
                                                         <option value="INICIADO">Iniciado</option>
                                                         <option value="EN_DESARROLLO">En desarrollo</option>
@@ -200,6 +213,7 @@ export const Proyecto = () => {
                                                             {/* <th scope="col">Correo</th> */}
                                                             <th scope="col">Estado Inscipción</th>
                                                             <th scope="col">Fecha de solicitud</th>
+                                                            <th scope="col"></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -219,6 +233,18 @@ export const Proyecto = () => {
                                                                         <i className='bx bx-edit-alt'></i>
                                                                     </button>  {i.estado} </td>
                                                                 <td>{i.fechaIngreso}</td>
+                                                                <td><button 
+                                                                        className='border-0' 
+                                                                        style={{backgroundColor: "transparent"}}
+                                                                        data-bs-toggle="modal" 
+                                                                        data-bs-target="#modalInscEliminar"
+                                                                        onClick={()=>setIdIncripcion(i._id)}
+                                                                        >
+                                                                        <i className='bx bx-x-circle'></i>
+                                                                    </button> 
+                                                                </td>
+                                                               
+
                                                             </tr>
                                                         ))}
                                                     </tbody>
@@ -257,7 +283,7 @@ export const Proyecto = () => {
                                                 id='form-obj'>
                                                 <div className="mb-3">
                                                     <label htmlFor="tipo" className="form-label  npcolor">Tipo de Objetivo:*</label>
-                                                    <select className="form-select" aria-label="select-tipo" required='true' name="tipo" id='tipo-obj'>
+                                                    <select className="form-select" aria-label="select-tipo" required="true" name="tipo" id='tipo-obj'>
                                                         <option> Seleccione </option>
                                                         <option value="GENERAL">General</option>
                                                         <option value="ESPECIFICO">Específico</option>
@@ -337,7 +363,7 @@ export const Proyecto = () => {
                             <div className="modal-body">
                                 <div className="mb-3">
                                     <label htmlFor="tipo" className="form-label  npcolor">Estado de la incripción:*</label>
-                                    <select className="form-select" aria-label="select-tipo" required='true' name="tipo" id='estado_insc'>
+                                    <select className="form-select" aria-label="select-tipo" required="true" name="tipo" id='estado_insc'>
                                         <option> Seleccione </option>
                                         <option value="ACEPTADA">Aceptada</option>
                                         <option value="RECHAZADA">Rechazada</option>
@@ -348,6 +374,28 @@ export const Proyecto = () => {
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <button onClick={cambiarEstadoIncripcion} type="button" className="btn btn-primary" data-bs-dismiss="modal">Actualizar estado</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    {/* Modal Eliminar inscripción */}
+
+                    <div className="modal fade" id="modalInscEliminar" tabindex="-1" aria-labelledby="modalInscEliminarLabel" aria-hidden="true">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="modalInscEliminarLabel">Eliminar inscripción</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                Esta seguro de eliminar esta inscripción?
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button onClick={eliminarIncripcion} type="button" className="btn btn-primary" data-bs-dismiss="modal">Eliminar</button>
                             </div>
                             </div>
                         </div>

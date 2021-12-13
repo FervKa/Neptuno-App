@@ -92,9 +92,21 @@ mutation CrearInscripcion($proyecto: ID!, $estudiante: ID!) {
  
 `;
 
+const ELIMINAR_INSCRIPCION = gql`
+
+mutation EliminarInscripcion($proyecto: ID!, $id: String) {
+  eliminarInscripcion(proyecto: $proyecto, _id: $id) {
+    _id
+  }
+}
+ 
+`;
 
 
 
 
 
-export {EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, CREAR_PROYECTO, CREAR_OBJETIVO, CREAR_AVANCE, EDITAR_INSCRIPCION, CREAR_INSCRIPCION};
+
+
+
+export {EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, CREAR_PROYECTO, CREAR_OBJETIVO, CREAR_AVANCE, EDITAR_INSCRIPCION, CREAR_INSCRIPCION, ELIMINAR_INSCRIPCION};

@@ -18,24 +18,20 @@ const Proyectos = () => {
 
     const { userData } = useUser()
 
-    const cargarProyectos = () => {
+    /* const cargarProyectos = () => {
         console.log('Lista de proyectos',data)
-    }
+    } */
 
     const generarInscripcion = () =>{
-        //console.log("proyecto: "+ idProyecto);
-        //console.log("estudiante: " + userData._id)
-
         crearInscripcion({
             variables: { proyecto: idProyecto, estudiante: userData._id }
         }) 
-        console.log("Inscripcion correcto: ", mutationDataI)
-
+        //console.log("Inscripcion correcto: ", mutationDataI)
     }
   
-    useEffect(() => {
+    /* useEffect(() => {
         cargarProyectos()
-    }, [])
+    }, []) */
 
     
     useEffect(() => {
@@ -110,7 +106,7 @@ const Proyectos = () => {
 
         {/* Modal solicitar inscripción */}
 
-        <div className="modal fade" id="modalInsc" tabindex="-1" aria-labelledby="modalInscLabel" aria-hidden="true">
+        <div className="modal fade" id="modalInsc" tabIndex="-1" aria-labelledby="modalInscLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                     <div className="modal-header">
