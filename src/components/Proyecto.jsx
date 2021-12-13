@@ -121,19 +121,21 @@ export const Proyecto = () => {
                     <>
                         <div className="container" style={{ marginTop: "100px" }}>
 
-                            <Link to={"/proyectos"} className="btn btn-primary  mb-3" >regresar</Link>
+                            <Link to={"/proyectos"} className="btn btn-warning  isI  mb-3" >regresar</Link>
 
                             <Navbar titulo={queryData.leerProyecto.nombre} />
+
+
                             <div className="row">
                                 {<div className="col">
                                     <div className="card">
                                         <div className="card-body">
-                                            <h4 className="card-title">{queryData.leerProyecto.nombre}</h4>
+                                            <h4 className="card-title text-center">{queryData.leerProyecto.nombre}</h4>
                                             <h6>Inicio: {queryData.leerProyecto.fechaInicio}</h6>
                                             <p className="card-text">Lider: {queryData.leerProyecto.lider.nombres} {queryData.leerProyecto.lider.apellidos}</p>
                                             <p className="card-text">Objetivos: {queryData.leerProyecto.objetivos.length}</p>
                                             <p className="card-text">Avances: {queryData.leerProyecto.avances.length}</p>
-                                            <p className="card-text">Estado: {queryData.leerProyecto.estado} <button className='btn btn-sm btn-primary ms-3' onClick={() => setCuentaEstado(cuentaEstado + 1)}> Cambiar Estado</button></p>
+                                            <p className="card-text">Estado: {queryData.leerProyecto.estado} <button className='btn btn-warning  isI btn-sm  ms-3' onClick={() => setCuentaEstado(cuentaEstado + 1)}> Cambiar Estado</button></p>
                                             <div className="row">
                                                 <div className="col-2">
                                                     <p className="card-text"> Fase: </p>
@@ -148,7 +150,7 @@ export const Proyecto = () => {
                                                     </select>
                                                 </div>
                                                 <div className="col-3">
-                                                    <button className='btn btn-sm btn-primary ms-3' onClick={() => setCuentaFase(cuentaFase + 1)}>Cambiar fase </button>
+                                                    <button className='btn btn-warning  sI btn-sm ms-3' onClick={() => setCuentaFase(cuentaFase + 1)}>Cambiar fase </button>
                                                 </div>
                                             </div>
 
@@ -158,11 +160,51 @@ export const Proyecto = () => {
                                         </div>
                                     </div>
                                 </div>}
+                                <div className="col">
+                                    <div className="card">
+                                        <div className="container">
+                                            <h4 class="card-title mt-3 text-center">Incripciones (aun sin datos)</h4>
+                                            <table class="table table-hover table-striped">
+                                                <thead>
+                                                    <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">First</th>
+                                                    <th scope="col">Last</th>
+                                                    <th scope="col">Handle</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>Mark</td>
+                                                    <td>Otto</td>
+                                                    <td>@mdo</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Jacob</td>
+                                                    <td>Thornton</td>
+                                                    <td>@fat</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <th scope="row">3</th>
+                                                    <td colspan="2">Larry the Bird</td>
+                                                    <td>@twitter</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>        
+                                </div>
                             </div>
                             <br />
 
                             <div className="row">
                                 <div className="col">
+                                    <div className="card mb-3">
+                                        <h4 class="card-title mt-3 text-center">Objetivos</h4>
+                                    </div>
+
                                     {queryData && queryData.leerProyecto.objetivos.map((o) => (
                                         <div className="card mb-2" key={o._id}>
                                             <div className="card-body">
@@ -197,13 +239,16 @@ export const Proyecto = () => {
                                             </form>
                                         </div>
                                         <div className="card-footer d-flex justify-content-end">
-                                            <button onClick={submitForm} className="btn btn-primary"> Agregar Objetivo</button>
+                                            <button onClick={submitForm} className="btn btn-warning isI"> Agregar Objetivo</button>
                                         </div>
                                     </div>
 
                                 </div>
 
                                 <div className="col">
+                                    <div className="card mb-3">
+                                        <h4 class="card-title mt-3 text-center">Avances</h4>
+                                    </div>
                                     {queryData && queryData.leerProyecto.avances.map((a) => (
                                         <div className="card mb-2" key={a._id}>
                                             <div className="card-body">
@@ -232,7 +277,7 @@ export const Proyecto = () => {
                                             </form>
                                         </div>
                                         <div className="card-footer d-flex justify-content-end">
-                                            <button onClick={submitFormA} className="btn btn-primary"> Agregar Avance</button>
+                                            <button onClick={submitFormA} className="btn btn-warning isI"> Agregar Avance</button>
                                         </div>
                                     </div>
 
@@ -244,7 +289,7 @@ export const Proyecto = () => {
 
                             <br />
 
-                            <Link to="/proyectos" className="btn btn-primary d-flex justify-content-center mb-3" >regresar</Link>
+                            <Link to="/proyectos" className="btn btn-warning isI d-flex justify-content-center mb-3" >regresar</Link>
 
                         </div>
                     </>}
