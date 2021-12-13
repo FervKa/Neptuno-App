@@ -312,10 +312,10 @@ export const Proyecto = () => {
                                                 <h6>Avance </h6>
                                                 <p className="card-text">{a.descripcion}</p>
                                             </div>
-                                            {/* <div className="card-footer d-flex justify-content-end">
-                                        <Link to="" className="btn btn-primary me-3">Modificar</Link>
-                                        <Link to="" className="btn btn-primary">Agregar Observación</Link>
-                                    </div> */}
+                                            <div className="card-footer d-flex justify-content-end">
+                                        {/* <Link to="" className="btn btn-primary me-3">Modificar</Link> */}
+                                        <Link to="" className="btn btn-warning isI btn-sm">Agregar Observación</Link>
+                                    </div>
                                         </div>
                                     ))}
 
