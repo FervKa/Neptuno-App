@@ -15,12 +15,12 @@ const Proyectos = () => {
 
 
     const cargarProyectos = () => {
-        console.log(data)
+        console.log('Lista de proyectos',data)
     }
   
     useEffect(() => {
         cargarProyectos()
-    }, [data])
+    }, [])
 
     
     useEffect(() => {
@@ -51,6 +51,7 @@ const Proyectos = () => {
                 <hr /> <br />
 
                 <div className="row row-cols-1 row-cols-md-3 g-4">
+                    
                 {
                     data && data.leerProyectos.map((p) => (
                     <div className="col" key={p._id}>
@@ -75,7 +76,7 @@ const Proyectos = () => {
                         </div>
                         </div>
                     </div>
-                    ))                 
+                    ))
 
                 }
 
