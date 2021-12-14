@@ -53,12 +53,17 @@ query($_id: ID!) {
 `;
 
 const GET_INCRIPCIONES = gql`
-query LeerInscripciones($proyecto: ID!) {
+query LeerInscripciones($proyecto: ID) {
   leerInscripciones(proyecto: $proyecto) {
     estudiante {
       nombres
       apellidos
       correo
+      rol
+      estado
+    }
+    proyecto{
+      _id
     }
     fechaIngreso
     estado

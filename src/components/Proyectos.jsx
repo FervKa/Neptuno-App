@@ -4,13 +4,14 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Loader } from './Loader.jsx';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_PROYECTOS } from './graphql/proyectos/querys';
+import { GET_INCRIPCIONES, GET_PROYECTOS } from './graphql/proyectos/querys';
 import { CREAR_INSCRIPCION } from './graphql/proyectos/mutations';
 import { useUser } from '../context/userContext';
 
 const Proyectos = () => {
 
     const { data, loading, error } = useQuery(GET_PROYECTOS);
+    const { data: queryDataI, error: queryErrorI, loading: queryLoadingI } = useQuery(GET_INCRIPCIONES);
 
     const [crearInscripcion, { data: mutationDataI, error: mutationErorI, loading: mutationLoadingI }] = useMutation(CREAR_INSCRIPCION);
 
@@ -31,11 +32,44 @@ const Proyectos = () => {
         }, 300);
         //console.log("Inscripcion correcto: ", mutationDataI)
     }
- // -----------------------
-    const inscrito= () =>{
+  
+    useEffect(() => {
+        //cargarProyectos()
+        queryLoadingI ? <Loader /> : console.log(queryDataI);
+        
+    }, [queryDataI])
 
+    let cuentaPendientes = 0
+    let cuentaAceptadas = 0
+    let cuenta = 0
+
+    const inscrito = (id) => {
+
+        cuentaPendientes = 0
+        cuentaAceptadas = 0
+        cuenta = 0
+        
+        if(queryLoadingI){
+            <Loader />
+        }else if(queryDataI && queryDataI.leerInscripciones){
+            queryDataI.leerInscripciones.map((i)=>{
+                if(i.proyecto._id==id){
+                    if(i.estado == "PENDIENTE"){
+                        cuentaPendientes = cuentaPendientes + 1
+                    }else if(i.estado == "ACEPTADA"){
+                        cuentaAceptadas = cuentaAceptadas + 1
+                    }
+                    cuenta += 1
+                }
+            })
+            console.log("inscripciones proyecto"+ id + " #" + cuenta);
+            console.log("inscripciones pendientes"+ id + " #" + cuentaPendientes);
+            console.log("inscripciones aceptadas"+ id + " #" + cuentaAceptadas);
         }
-//---------------------
+        
+        /* console.log("prueba: " + cuenta + id) */
+    }
+
     
     useEffect(() => {
         if (error){
@@ -65,13 +99,11 @@ const Proyectos = () => {
                 <hr /> <br />
 
                 <div className="row row-cols-1 row-cols-md-3 g-4">
-                                      
-                {   
-
-                    data && data.leerProyectos.map((p) => (
-                      
-
-                    <div className="col" key={p._id}>
+                    
+                {
+                    data && data.leerProyectos.map((p, index) => (
+                    <div className="col" key={p._id} >
+                        {inscrito(p._id)}
                         <div className="card">
                         <div className="card-body">
 
@@ -82,6 +114,9 @@ const Proyectos = () => {
                             <p className="card-text">Lider: {p.lider.nombres} {p.lider.apellidos}</p>
                             <p className="card-text">Estado: {p.estado}</p>
                             <p className="card-text">Fase: {p.fase}</p>
+                            <p className="card-text">Inscripciones Pendientes: {cuentaPendientes} </p>
+                            <p className="card-text">Incripciones Aceptadas: {cuentaAceptadas}</p>
+
                             {/* <p className="card-text">Objetivos: {p.objetivos.length}</p>
                             <p className="card-text">Avances: {p.avances.length}</p> */}
                             <Link to={`/proyecto/${p._id}`} className="btn btn-warning  isI me-2 mb-2">
@@ -99,7 +134,6 @@ const Proyectos = () => {
                         </div>
                         </div>
                     </div>
-                
                     ))
 
                 }

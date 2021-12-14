@@ -16,6 +16,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import jwt_decode from 'jwt-decode'
 import { ProyectoNuevo } from './components/ProyectoNuevo.jsx';
+import  AgregarObservaciones  from './components/AgregarObservaciones.jsx';
 
 
 const httpLink = createHttpLink({
@@ -39,7 +40,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
-function App() {
+function App() {  
+
   const [userData, setUserData] = useState({});
   const [authToken, setAuthToken] = useState("")
 
@@ -47,15 +49,15 @@ function App() {
     if (token) {
       setAuthToken(token)
       localStorage.setItem('token', JSON.stringify(token))
-    }else{
+    } else {
       setAuthToken(null)
       localStorage.removeItem('token')
     }
   }
 
   useEffect(() => {
-    
-    if(authToken){
+
+    if (authToken) {
       const decodedToken = jwt_decode(authToken)
       // console.log('token decoded: ',decodedToken);
       setUserData({
@@ -69,7 +71,7 @@ function App() {
       });
       // console.log('Datos de usuario',userData);
     }
-  },[authToken])
+  }, [authToken])
 
 
   return (
@@ -88,6 +90,9 @@ function App() {
                   <Route path="/proyecto/:_id" element={<Proyecto />} />  
                   <Route path="/proyectoNuevo" element={<ProyectoNuevo />} />
                   <Route path="/misproyectos" element={<Proyectos />} />  
+                  <Route path="/proyecto/observacion/:_id" element={<AgregarObservaciones />} />
+                  
+                  
                   {/* <Consult /> */}
                 </Route>
                 <Route path='/auth' element={<AuthLayout />}>
