@@ -16,6 +16,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import jwt_decode from 'jwt-decode'
 import { ProyectoNuevo } from './components/ProyectoNuevo.jsx';
+import  AgregarObservaciones  from './components/AgregarObservaciones.jsx';
 
 
 const httpLink = createHttpLink({
@@ -85,10 +86,12 @@ function App() {
                   <Route path="/perfil" element={<User />} />
                   <Route path="/usuarios" element={<User_admin />} />
                   <Route path="/usuarios/editar/:_id" element={<Editar_usuario />} />
-                  <Route path="/proyectos" element={<Proyectos />} />
-                  <Route path="/proyecto/:_id" element={<Proyecto />} />
+                  <Route path="/proyectos" element={<Proyectos />} />  
+                  <Route path="/proyecto/:_id" element={<Proyecto />} />  
                   <Route path="/proyectoNuevo" element={<ProyectoNuevo />} />
-
+                  <Route path="/proyecto/observacion/:_id" element={<AgregarObservaciones />} />
+                  
+                  
                   {/* <Consult /> */}
                 </Route>
                 <Route path='/auth' element={<AuthLayout />}>

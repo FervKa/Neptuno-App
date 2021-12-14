@@ -42,7 +42,7 @@ export const ProyectoNuevo = () => {
             <div className="container " >
 
                 <div className="d-grid gap-2 col-3 ml-auto ms-3 ps-3">
-                    <Link to="/proyectos" className="btn btn-primary d-flex justify-content-center mb-3" style={{marginTop: "70px"}}>regresar</Link>
+                    <Link to="/proyectos" className="btn btn-warning isI d-flex justify-content-center mb-3" style={{marginTop: "70px"}}>regresar</Link>
                 </div>
 
                 <div className="profile-card-2 border border-3 border-warning ">

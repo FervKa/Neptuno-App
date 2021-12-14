@@ -38,7 +38,16 @@ const Editar_usuario = () => {
         e.preventDefault();
         console.log('fd', formData);
         editarUsuario({
-            variables: { _id, ...formData }
+            variables: {
+                _id,
+                nombres: formData.nombres,
+                apellidos: formData.apellidos,
+                correo: formData.correo,
+                rol: formData.rol,
+                estado: formData.estado,
+                identificacion: formData.identificacion
+
+            }
         })
     }
 
@@ -55,19 +64,19 @@ const Editar_usuario = () => {
                         ref={form}
                     >
                         <div className="mb-3">
-                            <label htmlFor="nombre" className="form-label  npcolor">Nombre:*</label>
+                            <label htmlFor="nombres" className="form-label  npcolor">Nombre:*</label>
                             <input
-                                required={false}
+                                required
                                 type='text'
-                                name="nombre"
+                                name="nombres"
                                 className='form-control'
                                 defaultValue={querdyData && querdyData.leerUsuario.nombres}
                             ></input>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="apellido" className="form-label  npcolor">Apellidos:*</label>
+                            <label htmlFor="apellidos" className="form-label  npcolor">Apellidos:*</label>
                             <input
-                                required={false}
+                                required
                                 type='text'
                                 name="apellidos"
                                 className='form-control'
@@ -76,7 +85,7 @@ const Editar_usuario = () => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="rol" className="form-label  npcolor" >Rol</label>
-                            <select className="form-select" aria-label="Default select example" required='true' name="rol">
+                            <select defaultValue={querdyData && querdyData.leerUsuario.rol} className="form-select" aria-label="Default select example" required='true' name="rol">
                                 <option >Seleccione</option>
                                 <option value="ESTUDIANTE">Estudiante</option>
                                 <option value="LIDER">Lider</option>
@@ -86,9 +95,9 @@ const Editar_usuario = () => {
                         <div className="mb-3">
                             <label htmlFor="Email" className="form-label  npcolor">Email</label>
                             <input
-                                required={false}
+                                required
                                 type='text'
-                                name="email"
+                                name="correo"
                                 className='form-control'
                                 defaultValue={querdyData && querdyData.leerUsuario.correo}
                             ></input>
@@ -99,7 +108,7 @@ const Editar_usuario = () => {
                                 <div className="row">
                                     <div className="col-9 ">
                                         <input
-                                            required={false}
+                                            required
                                             type='text'
                                             name="identificacion"
                                             className='form-control'
@@ -115,7 +124,7 @@ const Editar_usuario = () => {
                                 <div className="row">
                                     <div className="col-9 ">
                                         <input
-                                            required={false}
+                                            required
                                             type='password'
                                             /* name="contrasena" */
                                             className='form-control'
@@ -131,7 +140,7 @@ const Editar_usuario = () => {
                                 <div className="row">
                                     <div className="col-9 ">
                                         <input
-                                            required={false}
+                                            required
                                             type='password'
                                             /* name="contra_repetida" */
                                             className='form-control'
@@ -143,7 +152,7 @@ const Editar_usuario = () => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="rol" className="form-label  npcolor" >Estado</label>
-                            <select className="form-select" aria-label="Default select example" required='true' name="estado">
+                            <select defaultValue={querdyData && querdyData.leerUsuario.estado} className="form-select" aria-label="Default select example" required='true' name="estado">
                                 <option value='' >Seleccione</option>
                                 <option value="PENDIENTE">Pendiente</option>
                                 <option value="AUTORIZADO">Autorizado</option>
@@ -159,7 +168,7 @@ const Editar_usuario = () => {
                                     onSubmit={submitForm}
                                 /> */}
                                 <div className="d-grid gap-2 col-6 mx-auto pb-3">
-                                    <button onClick={submitForm} className="btn btn-warning  isI" type="button">Actualizar Perfil</button>
+                                    <button onClick={submitForm} className="btn btn-warning  isI  btn-sm" type="button">Actualizar Usuario</button>
                                 </div>
                             </div>
                         </div>

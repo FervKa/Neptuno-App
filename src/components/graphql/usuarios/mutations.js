@@ -7,12 +7,16 @@ mutation EditarUsuario($_id: ID!,
 $identificacion: String, 
 $nombres: String, 
 $apellidos: String, 
-$correo: String) {
+$correo: String, 
+$rol: Enum_RolUsario, 
+$estado: Enum_EstadoUsuario) {
   editarUsuario(_id: $_id, 
   identificacion: $identificacion, 
   nombres: $nombres, 
   apellidos: $apellidos, 
-  correo: $correo) {
+  correo: $correo,
+  rol: $rol,
+  estado:$estado) {
 
     _id
     identificacion
@@ -28,4 +32,4 @@ $correo: String) {
 `;
 
 
-export {EDITAR_USUARIO};
+export { EDITAR_USUARIO };
