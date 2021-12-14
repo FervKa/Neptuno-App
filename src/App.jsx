@@ -39,7 +39,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
-function App() {
+function App() {  
+
   const [userData, setUserData] = useState({});
   const [authToken, setAuthToken] = useState("")
 
@@ -47,15 +48,15 @@ function App() {
     if (token) {
       setAuthToken(token)
       localStorage.setItem('token', JSON.stringify(token))
-    }else{
+    } else {
       setAuthToken(null)
       localStorage.removeItem('token')
     }
   }
 
   useEffect(() => {
-    
-    if(authToken){
+
+    if (authToken) {
       const decodedToken = jwt_decode(authToken)
       // console.log('token decoded: ',decodedToken);
       setUserData({
@@ -69,7 +70,7 @@ function App() {
       });
       // console.log('Datos de usuario',userData);
     }
-  },[authToken])
+  }, [authToken])
 
 
   return (
@@ -84,10 +85,10 @@ function App() {
                   <Route path="/perfil" element={<User />} />
                   <Route path="/usuarios" element={<User_admin />} />
                   <Route path="/usuarios/editar/:_id" element={<Editar_usuario />} />
-                  <Route path="/proyectos" element={<Proyectos />} />  
-                  <Route path="/proyecto/:_id" element={<Proyecto />} />  
-                  <Route path="/proyectoNuevo" element={<ProyectoNuevo />} />  
-                  
+                  <Route path="/proyectos" element={<Proyectos />} />
+                  <Route path="/proyecto/:_id" element={<Proyecto />} />
+                  <Route path="/proyectoNuevo" element={<ProyectoNuevo />} />
+
                   {/* <Consult /> */}
                 </Route>
                 <Route path='/auth' element={<AuthLayout />}>

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../context/authContext";
 
 export const Registro = () => {
-    const {setToken} = useAuth()
+    const { setToken } = useAuth()
 
     const { form, formData, updateFormData } = useFormData(null)
 
@@ -21,7 +21,7 @@ export const Registro = () => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        
+
         Registro({
             variables: { ...formData }
         })
@@ -29,9 +29,9 @@ export const Registro = () => {
 
     useEffect(() => {
         console.log('mutacion registro', mutationData);
-        // toast.success('Registro exitoso')
         if (mutationData) {
             if (mutationData.Registro.token) {
+                toast.success('Registro exitoso')
                 setToken(mutationData.Registro.token)
                 navigate("/perfil")
             }
@@ -39,10 +39,10 @@ export const Registro = () => {
     }, [mutationData])
 
     useEffect(() => {
-        if (!mutationError) {
-            // toast.error('Error al crear el usuario', mutationError)
+        if (mutationError) {
+            toast.error('Error al crear el usuario', mutationError)
         }
-    }, [mutationError,setToken, navigate])
+    }, [mutationError])
 
 
     return (
