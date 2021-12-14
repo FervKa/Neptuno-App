@@ -87,6 +87,10 @@ query AvanceSimple($_id: ID) {
     proyecto {
       _id
     }
+    observacionesLider {
+      _id
+      observacion
+    }
   }
 }
 `;

@@ -49,14 +49,37 @@ const AgregarObservaciones = () => {
             <Navbar titulo={"Observaciones"} />
 
             <div className="container">
-                <Link to={`/proyecto/${queryData && queryData.avanceSimple.proyecto._id}`} className="btn btn-warning  isI" style={{margin: "120px 0px 0px 180px"}} >regresar</Link>
+                <Link to={`/proyecto/${queryData && queryData.avanceSimple.proyecto._id}`} className="btn btn-warning  isI mb-3" style={{margin: "120px 0px 0px 180px"}} >regresar</Link>
             </div>
 
-            <div className="container pt-1 cont_propio" style={{marginTop: "20px"}}>
+            <div className="container cont_propio" style={{marginTop: "20px"}} >
 
-                
-                
-                <h4> Avance id: {_id}</h4>
+                <div className="row">
+                    <div className="col">
+                        <div className="card mb-3 mt-3">
+                            <h4 className="card-title mt-3 text-center">Observaciones</h4>
+                        </div>
+
+                        {queryData && queryData.avanceSimple.observacionesLider.map((o, index) => (
+                            <div className="card mb-2" key={o._id}>
+                                <div className="card-body">
+                                    <h6 className='npcolor'>Observacion {index + 1} </h6>
+                                    <p className="card-text">{o.observacion}</p>
+
+                                </div>
+                                {/*  <div className="card-footer d-flex justify-content-end">
+                                    <Link to="" className="btn btn-primary">Modificar</Link>
+                                </div> */}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <div className="container pt-1 cont_propio mb-3" style={{marginTop: "20px"}}>
+
+                <h4 className='mt-3 text-center'>Agregar Observación</h4>
+                <h6 className='npcolor text-center'> Avance id: {_id}</h6>
 
                 <div className="col">
                     <form>
