@@ -100,6 +100,28 @@ mutation EliminarInscripcion($proyecto: ID!, $id: String) {
  
 `;
 
+const CREAR_OBSERVACION = gql`
+
+mutation CrearObservacion($avance: ID!, $observacion: String!, $lider: ID!) {
+  crearObservacion(avance: $avance, observacion: $observacion, lider: $lider) {
+    _id
+    descripcion
+  }
+}
+ 
+`;
+
+const MODIFICAR_AVANCE = gql`
+
+mutation Mutation($_id: ID!, $descripcion: String!) {
+  editarAvance(_id: $_id, descripcion: $descripcion) {
+    _id
+    descripcion
+  }
+}
+
+ 
+`;
 
 
 
@@ -107,4 +129,5 @@ mutation EliminarInscripcion($proyecto: ID!, $id: String) {
 
 
 
-export {EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, CREAR_PROYECTO, CREAR_OBJETIVO, CREAR_AVANCE, EDITAR_INSCRIPCION, CREAR_INSCRIPCION, ELIMINAR_INSCRIPCION};
+
+export {EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, CREAR_PROYECTO, CREAR_OBJETIVO, CREAR_AVANCE, EDITAR_INSCRIPCION, CREAR_INSCRIPCION, ELIMINAR_INSCRIPCION, CREAR_OBSERVACION, MODIFICAR_AVANCE};

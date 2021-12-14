@@ -72,4 +72,23 @@ query LeerInscripciones($proyecto: ID) {
 }
 `;
 
-export {GET_PROYECTOS, GET_PROYECTO, GET_INCRIPCIONES};
+const GET_AVANCE = gql`
+query AvanceSimple($_id: ID) {
+  avanceSimple(_id: $_id) {
+    _id
+    descripcion
+    estudiante {
+      _id
+      nombres
+      apellidos
+      correo
+    }
+    fechaAvance
+    proyecto {
+      _id
+    }
+  }
+}
+`;
+
+export {GET_PROYECTOS, GET_PROYECTO, GET_INCRIPCIONES, GET_AVANCE};

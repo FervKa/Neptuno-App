@@ -4,7 +4,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Loader } from './Loader';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_INCRIPCIONES, GET_PROYECTO } from './graphql/proyectos/querys';
-import { CREAR_AVANCE, CREAR_OBJETIVO, EDITAR_INSCRIPCION, EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, ELIMINAR_INSCRIPCION } from './graphql/proyectos/mutations';
+import { CREAR_AVANCE, CREAR_OBJETIVO, EDITAR_INSCRIPCION, EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, ELIMINAR_INSCRIPCION, MODIFICAR_AVANCE } from './graphql/proyectos/mutations';
 import { Navbar } from './Navbar';
 import useFormData from '../hooks/useFormData';
 import { useUser } from '../context/userContext';
@@ -33,6 +33,7 @@ export const Proyecto = () => {
     const [crearAvance, { data: mutationDataA, error: mutationErorA, loading: mutationLoadingA }] = useMutation(CREAR_AVANCE);
     const [editarInscripcion, { data: mutationDataI, error: mutationErorI, loading: mutationLoadingI }] = useMutation(EDITAR_INSCRIPCION);
     const [eliminarInscripcionP, { data: mutationDataEI, error: mutationErorEI, loading: mutationLoadingEI }] = useMutation(ELIMINAR_INSCRIPCION);
+    const [modificarAvanceF, { data: mutationDataMA, error: mutationErorMA, loading: mutationLoadingMA }] = useMutation(MODIFICAR_AVANCE);
 
     const [cuentaEstado, setCuentaEstado] = useState(0)
     const [cuentaFase, setCuentaFase] = useState(0)
@@ -130,6 +131,18 @@ export const Proyecto = () => {
             window.location.reload()
         }, 300);
         
+    }
+
+    const [idAvance, setIdAvance]=useState()
+    
+    const modificarAvance = () => {
+        //console.log(idAvance);
+
+        modificarAvanceF({
+            variables: { _id: idAvance, descripcion: document.getElementById("modAvance").value }
+        })
+
+
     }
 
     useEffect(() => {
@@ -318,8 +331,13 @@ export const Proyecto = () => {
                                                 <p className="card-text">{a.descripcion}</p>
                                             </div>
                                             <div className="card-footer d-flex justify-content-end">
-                                        {/* <Link to="" className="btn btn-primary me-3">Modificar</Link> */}
-                                        <Link to={`/proyecto/observacion/${_id}`} className="btn btn-warning isI btn-sm">Agregar Observación</Link>
+                                        <buton 
+                                            className="btn btn-warning isI btn-sm me-3" 
+                                            data-bs-toggle="modal" data-bs-target="#modalModAvance" 
+                                            onClick={()=>setIdAvance(a._id)} >
+                                                Modificar
+                                        </buton>
+                                        <Link to={`/proyecto/observacion/${a._id}`} className="btn btn-warning isI btn-sm">Agregar Observación</Link>
                                     </div>
                                         </div>
                                     ))}
@@ -401,6 +419,29 @@ export const Proyecto = () => {
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <button onClick={eliminarIncripcion} type="button" className="btn btn-primary" data-bs-dismiss="modal">Eliminar</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Modal modificar Avance */}
+
+                    <div className="modal fade" id="modalModAvance" tabIndex="-1" aria-labelledby="modalModAvanceLabel" aria-hidden="true">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="modalModAvanceLabel">Modificar Avance</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                <div className="mb-3">
+                                    <label htmlFor="descripcion" className="form-label  npcolor" >Descripción:*</label>
+                                    <textarea className="form-control"  rows="2" name='descripcion' id='modAvance'></textarea>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button onClick={modificarAvance} type="button" className="btn btn-primary" data-bs-dismiss="modal">Confirmar</button>
                             </div>
                             </div>
                         </div>
