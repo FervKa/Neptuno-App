@@ -56,14 +56,12 @@ mutation CrearObjetivo($proyecto: ID!, $tipo: Enum_TipoObjetivo!, $descripcion: 
 const CREAR_AVANCE = gql`
 
 mutation CrearAvance($descripcion: String!, $estudiante: ID!, $proyecto: ID!) {
-  crearAvance(descripcion: $descripcion, estudiante: $estudiante, proyecto: $proyecto) {
-    nombre
-    _id
-    avances {
+  crearAvance(
+    descripcion: $descripcion, 
+    estudiante: $estudiante, 
+    proyecto: $proyecto) 
+    {
       _id
-      descripcion
-      fechaAvance
-    }
   }
 }
 

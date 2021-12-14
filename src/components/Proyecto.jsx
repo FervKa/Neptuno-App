@@ -96,8 +96,13 @@ export const Proyecto = () => {
                 estudiante: userData._id,
                 descripcion: document.getElementById("descripcionAvance").value
             }
+            
 
         })
+        setTimeout(() => {
+            window.location.reload()
+        }, 300);
+        
         document.getElementById("form-avc").reset()
     }
 
