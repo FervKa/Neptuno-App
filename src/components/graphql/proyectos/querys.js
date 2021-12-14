@@ -52,4 +52,19 @@ query($_id: ID!) {
 }
 `;
 
-export {GET_PROYECTOS, GET_PROYECTO};
+const GET_INCRIPCIONES = gql`
+query LeerInscripciones($proyecto: ID!) {
+  leerInscripciones(proyecto: $proyecto) {
+    estudiante {
+      nombres
+      apellidos
+      correo
+    }
+    fechaIngreso
+    estado
+    _id
+  }
+}
+`;
+
+export {GET_PROYECTOS, GET_PROYECTO, GET_INCRIPCIONES};
