@@ -314,7 +314,7 @@ export const Proyecto = () => {
                                             </div>
                                             <div className="card-footer d-flex justify-content-end">
                                         {/* <Link to="" className="btn btn-primary me-3">Modificar</Link> */}
-                                        <Link to="" className="btn btn-warning isI btn-sm">Agregar Observación</Link>
+                                        <Link to={`/proyecto/observacion/${_id}`} className="btn btn-warning isI btn-sm">Agregar Observación</Link>
                                     </div>
                                         </div>
                                     ))}

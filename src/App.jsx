@@ -16,6 +16,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import jwt_decode from 'jwt-decode'
 import { ProyectoNuevo } from './components/ProyectoNuevo.jsx';
+import  AgregarObservaciones  from './components/AgregarObservaciones.jsx';
 
 
 const httpLink = createHttpLink({
@@ -87,6 +88,8 @@ function App() {
                   <Route path="/proyectos" element={<Proyectos />} />  
                   <Route path="/proyecto/:_id" element={<Proyecto />} />  
                   <Route path="/proyectoNuevo" element={<ProyectoNuevo />} />
+                  <Route path="/proyecto/observacion/:_id" element={<AgregarObservaciones />} />
+                  
                   
                   {/* <Consult /> */}
                 </Route>
