@@ -4,7 +4,7 @@ import '../css/menuLateral.scss'
 import { useUser } from '../context/userContext';
 import { MenuLateralAdmin } from './MenuLateralAdmin';
 import { MenuLateralEstudiante } from './MenuLateralEstudiante'
-
+import { MenuLateralLider } from './MenuLateralLider'
 
 export const MenuLateral = () => {
 
@@ -13,8 +13,11 @@ export const MenuLateral = () => {
     const data = userData.rol;
     if (data === "ADMINISTRADOR") {
         return <MenuLateralAdmin />
-    } else {
+    } else if (data === "ESTUDIANTE") {
         return <MenuLateralEstudiante />
+    }
+    else {
+        return <MenuLateralLider/>
     }
 
     return (<>

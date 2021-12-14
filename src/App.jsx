@@ -87,7 +87,7 @@ function App() {
                   <Route path="/proyectos" element={<Proyectos />} />  
                   <Route path="/proyecto/:_id" element={<Proyecto />} />  
                   <Route path="/proyectoNuevo" element={<ProyectoNuevo />} />
-                  
+                  <Route path="/misproyectos" element={<Proyectos />} />  
                   {/* <Consult /> */}
                 </Route>
                 <Route path='/auth' element={<AuthLayout />}>

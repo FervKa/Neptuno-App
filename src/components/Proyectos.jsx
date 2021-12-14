@@ -31,11 +31,11 @@ const Proyectos = () => {
         }, 300);
         //console.log("Inscripcion correcto: ", mutationDataI)
     }
-  
-    /* useEffect(() => {
-        cargarProyectos()
-    }, []) */
+ // -----------------------
+    const inscrito= () =>{
 
+        }
+//---------------------
     
     useEffect(() => {
         if (error){
@@ -65,9 +65,12 @@ const Proyectos = () => {
                 <hr /> <br />
 
                 <div className="row row-cols-1 row-cols-md-3 g-4">
-                    
-                {
+                                      
+                {   
+
                     data && data.leerProyectos.map((p) => (
+                      
+
                     <div className="col" key={p._id}>
                         <div className="card">
                         <div className="card-body">
@@ -96,6 +99,7 @@ const Proyectos = () => {
                         </div>
                         </div>
                     </div>
+                
                     ))
 
                 }
