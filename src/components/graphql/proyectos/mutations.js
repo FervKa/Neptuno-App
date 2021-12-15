@@ -22,6 +22,18 @@ mutation ActualizarFaseProyecto($_id: ID!, $fase: Enum_FaseProyecto!) {
 
 `;
 
+const EDITAR_PROYECTO = gql`
+
+mutation EditarProyecto($_id: ID!, $nombre: String, $presupuesto: Float) {
+  editarProyecto(_id: $_id, nombre: $nombre, presupuesto: $presupuesto) {
+    _id
+    nombre
+    presupuesto
+  }
+}
+
+`;
+
 const CREAR_PROYECTO = gql`
 
 mutation CrearProyecto($nombre: String!, $presupuesto: Float!, $fechaInicio: Date!, $fechaTerminacion: Date!, $lider: ID!) {
@@ -130,4 +142,4 @@ mutation Mutation($_id: ID!, $descripcion: String!) {
 
 
 
-export {EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, CREAR_PROYECTO, CREAR_OBJETIVO, CREAR_AVANCE, EDITAR_INSCRIPCION, CREAR_INSCRIPCION, ELIMINAR_INSCRIPCION, CREAR_OBSERVACION, MODIFICAR_AVANCE};
+export {EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, CREAR_PROYECTO, CREAR_OBJETIVO, CREAR_AVANCE, EDITAR_INSCRIPCION, CREAR_INSCRIPCION, ELIMINAR_INSCRIPCION, CREAR_OBSERVACION, MODIFICAR_AVANCE, EDITAR_PROYECTO};

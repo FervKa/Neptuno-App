@@ -4,7 +4,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Loader } from './Loader';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_INCRIPCIONES, GET_PROYECTO } from './graphql/proyectos/querys';
-import { CREAR_AVANCE, CREAR_OBJETIVO, EDITAR_INSCRIPCION, EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, ELIMINAR_INSCRIPCION, MODIFICAR_AVANCE } from './graphql/proyectos/mutations';
+import { CREAR_AVANCE, CREAR_OBJETIVO, EDITAR_INSCRIPCION, EDITAR_PROYECTO, EDITAR_PROYECTO_ESTADO, EDITAR_PROYECTO_FASE, ELIMINAR_INSCRIPCION, MODIFICAR_AVANCE } from './graphql/proyectos/mutations';
 import { Navbar } from './Navbar';
 import useFormData from '../hooks/useFormData';
 import { useUser } from '../context/userContext';
@@ -34,6 +34,7 @@ export const Proyecto = () => {
     const [editarInscripcion, { data: mutationDataI, error: mutationErorI, loading: mutationLoadingI }] = useMutation(EDITAR_INSCRIPCION);
     const [eliminarInscripcionP, { data: mutationDataEI, error: mutationErorEI, loading: mutationLoadingEI }] = useMutation(ELIMINAR_INSCRIPCION);
     const [modificarAvanceF, { data: mutationDataMA, error: mutationErorMA, loading: mutationLoadingMA }] = useMutation(MODIFICAR_AVANCE);
+    const [editarProyecto, { data: mutationDataEP, error: mutationErorEP, loading: mutationLoadingEP }] = useMutation(EDITAR_PROYECTO);
 
     const [cuentaEstado, setCuentaEstado] = useState(0)
     const [cuentaFase, setCuentaFase] = useState(0)
@@ -141,7 +142,18 @@ export const Proyecto = () => {
         modificarAvanceF({
             variables: { _id: idAvance, descripcion: document.getElementById("modAvance").value }
         })
+    }
 
+    const modificarProyecto = () => {
+        
+        const nPresupuesto = parseInt( document.getElementById("presupuestoNuevo").value)
+        //console.log(nPresupuesto);
+        
+        editarProyecto({
+            variables: {_id: _id, nombre: document.getElementById("nombreProyectoNuevo").value, presupuesto: nPresupuesto}
+        })
+        /* document.getElementById("nombreProyectoNuevo").value= "" 
+        document.getElementById("presupuestoNuevo").value = "" */
 
     }
 
@@ -214,6 +226,9 @@ export const Proyecto = () => {
                                         </div>
                                         <div className="card-footer">
                                             <small className="text-muted">Presupuesto: ${queryData.leerProyecto.presupuesto}</small>
+                                            <div className='d-flex justify-content-end'>
+                                                <button className='btn btn-warning sI btn-sm ms-3' data-bs-toggle="modal" data-bs-target="#modalModProyecto"> Modificar Proyecto</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>}
@@ -442,6 +457,65 @@ export const Proyecto = () => {
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <button onClick={modificarAvance} type="button" className="btn btn-primary" data-bs-dismiss="modal">Confirmar</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     {/* Modal modificar Proyecto */}
+
+                     <div className="modal fade" id="modalModProyecto" tabIndex="-1" aria-labelledby="modalModProyecto" aria-hidden="true">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="modalModProyecto">Modificar Proyecto</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                
+                            <div className="container " >
+
+                                <div className="d-grid gap-2 col-3 ml-auto ms-3 ps-3">
+                                    <Link to="/proyectos" className="btn btn-warning isI d-flex justify-content-center mb-3" style={{marginTop: "70px"}}>regresar</Link>
+                                </div>
+                                <div className="profile-card-2 border border-3 border-warning ">
+                                    <div className="profile-content ms-3 me-3">
+                                        <div className="container pb-3">
+                                            <div className="row">
+                                                <div className="profile-name mt-3 text-center border-bottom border-3 border-warning pb-3  npcolorbold">
+                                                    Nuevo Proyecto
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                        <form >
+                                            <div className="mb-3">
+                                                <label htmlFor="Lider" className="form-label  npcolor">Lider: {userData.nombres} {userData.apellidos}</label> <br />
+                                                <label htmlFor="Lider" className="form-label  npcolor">email: {userData.correo}</label>
+                                            </div>
+                                            <div className="mb-3">
+                                                <label htmlFor="nombre" className="form-label  npcolor">Nombre:*</label>
+                                                <input type="text" className="form-control" name="nombre" id='nombreProyectoNuevo' aria-describedby="nameHelp" defaultValue={queryData && queryData.leerProyecto.nombre}/>
+                                            </div>
+
+                                            <div className="mb-3">
+                                                <label htmlFor="presupuesto" className="form-label  npcolor">Presupuesto</label>
+                                                <input type="number" className="form-control" name="presupuesto" id='presupuestoNuevo' aria-describedby="nameHelp" required defaultValue={queryData && queryData.leerProyecto.presupuesto}/>
+                                                {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
+                                            </div>
+                                            
+                                            {/* <div className="d-grid gap-2 col-6 mx-auto pb-3">
+                                                <button onClick={submitFormP} className="btn btn-warning" type="button">Modificar Proyecto</button>
+                                            </div> */}
+                                        </form>    
+                                    </div>
+                                </div>
+                                </div>     
+
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button onClick={modificarProyecto} type="button" className="btn btn-primary" data-bs-dismiss="modal">Confirmar</button>
                             </div>
                             </div>
                         </div>
